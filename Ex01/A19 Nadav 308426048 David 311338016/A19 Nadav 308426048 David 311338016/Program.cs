@@ -25,7 +25,6 @@ namespace A19_Nadav_308426048_David_311338016
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
 
-            LoginResult result = FacebookService.Login(s_AppID,"email");
         }
     }
 }

@@ -33,6 +33,9 @@ namespace A19_Nadav_308426048_David_311338016
             if (login.IsLoginValid)
             {
                 MessageBox.Show("What a lovely login!");
+                MainFeedForm mainFeedForm = new MainFeedForm(login.LoginResult.LoggedInUser);
+                mainFeedForm.ShowDialog();
+
             }
             else
             {
