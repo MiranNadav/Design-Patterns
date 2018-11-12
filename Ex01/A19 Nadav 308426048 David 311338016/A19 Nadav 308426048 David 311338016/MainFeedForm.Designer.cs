@@ -35,9 +35,10 @@
             // 
             // ProfilePictureBox
             // 
-            this.ProfilePictureBox.Location = new System.Drawing.Point(12, 25);
+            this.ProfilePictureBox.Location = new System.Drawing.Point(18, 38);
+            this.ProfilePictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ProfilePictureBox.Name = "ProfilePictureBox";
-            this.ProfilePictureBox.Size = new System.Drawing.Size(194, 162);
+            this.ProfilePictureBox.Size = new System.Drawing.Size(291, 249);
             this.ProfilePictureBox.TabIndex = 0;
             this.ProfilePictureBox.TabStop = false;
             this.ProfilePictureBox.Click += new System.EventHandler(this.ProfilePictureBox_Click);
@@ -45,19 +46,21 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.AutoSize = true;
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
+            this.WelcomeLabel.Location = new System.Drawing.Point(18, 14);
+            this.WelcomeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(35, 13);
+            this.WelcomeLabel.Size = new System.Drawing.Size(109, 20);
             this.WelcomeLabel.TabIndex = 1;
-            this.WelcomeLabel.Text = "label1";
+            this.WelcomeLabel.Text = "Welcome Text";
             // 
             // MainFeedForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.ProfilePictureBox);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainFeedForm";
             this.Text = "MainFeedForm";
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();

@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacebookWrapper;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class LoginForm : Form
+    partial class LoginForm : Form
     {
         public LoginForm()
         {
@@ -32,15 +33,25 @@ namespace A19_Nadav_308426048_David_311338016
             Login login = new Login();
             if (login.IsLoginValid)
             {
-                MessageBox.Show("What a lovely login!");
-                MainFeedForm mainFeedForm = new MainFeedForm(login.LoginResult.LoggedInUser);
-                mainFeedForm.ShowDialog();
+                AppSettings appSettings = new AppSettings
+                {
+                    RememberUser = rememberMeCheckBox.Checked
+                };
 
+                LoginResult loggeInResult= login.LoginResult;
+                MainFeedForm mainFeedForm = new MainFeedForm(loggeInResult, appSettings);
+                this.Hide();
+                mainFeedForm.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Shit on your face");
             }
+        }
+
+        private void rememberMeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

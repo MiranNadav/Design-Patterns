@@ -12,16 +12,21 @@ using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
-{   
-    public partial class MainFeedForm : Form
+{
+    partial class MainFeedForm : Form
     {
 
+        private LoginResult m_LoggeInResult;
         private User m_CurrentUser;
         private enum DayStatus { morning, evening, afternoon }
-        private DayStatus m_CurrentStatus;
-        public MainFeedForm(User i_User)
+        private DayStatus m_CurrentDayStatus;
+        private AppSettings m_AppSettings;
+
+        public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
-            m_CurrentUser = i_User;
+            m_LoggeInResult = i_Result;
+            m_CurrentUser = m_LoggeInResult.LoggedInUser;
+            m_AppSettings = i_AppSettings;
             InitializeComponent();
             fetchBasicDetails();
 
@@ -37,28 +42,11 @@ namespace A19_Nadav_308426048_David_311338016
         {
             setDayStatus();
 
-            WelcomeLabel.Text = string.Format("Hello {0} {1}, good {2}", m_CurrentUser.FirstName, m_CurrentUser.LastName, m_CurrentStatus);
-        }
-
-        private void setDayStatus()
-        {
-            int Hour = DateTime.Now.Hour;
-            if (Hour >= 6 && Hour < 12)
-            {
-                m_CurrentStatus = DayStatus.morning;
-            }
-            else if (Hour >= 12 && Hour < 18)
-            {
-                m_CurrentStatus = DayStatus.afternoon;
-            }
-            else
-            {
-                m_CurrentStatus = DayStatus.evening;
-            }
+            WelcomeLabel.Text = string.Format("Hello {0} {1}, good {2}", m_CurrentUser.FirstName, m_CurrentUser.LastName, m_CurrentDayStatus);
         }
 
         private void fetchProfilePicture()
-        {        
+        {
             ProfilePictureBox.LoadAsync(m_CurrentUser.PictureNormalURL);
         }
 
@@ -71,5 +59,37 @@ namespace A19_Nadav_308426048_David_311338016
         {
 
         }
+
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            if (m_AppSettings.RememberUser)
+            {
+                m_AppSettings.LastWindowSize = this.Size;
+                m_AppSettings.LastWindowLocation = this.Location;
+                m_AppSettings.LastAccessToken = m_LoggeInResult.AccessToken;
+                //m_LoggeInResult.LoggedInUser.i
+                m_AppSettings.SaveSettingsToDataBase();
+            }
+        }
+
+        private void setDayStatus()
+        {
+            int Hour = DateTime.Now.Hour;
+            if (Hour >= 6 && Hour < 12)
+            {
+                m_CurrentDayStatus = DayStatus.morning;
+            }
+            else if (Hour >= 12 && Hour < 18)
+            {
+                m_CurrentDayStatus = DayStatus.afternoon;
+            }
+            else
+            {
+                m_CurrentDayStatus = DayStatus.evening;
+            }
+        }
+
     }
 }
