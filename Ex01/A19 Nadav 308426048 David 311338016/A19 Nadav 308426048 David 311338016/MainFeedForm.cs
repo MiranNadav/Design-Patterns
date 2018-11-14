@@ -91,5 +91,17 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
+        private void fetchPosts_Click(object sender, EventArgs e)
+        {
+            fetchAllPosts();
+        }
+
+        private void fetchAllPosts()
+        {
+            foreach(Post post in m_CurrentUser.Posts)
+            {
+                listBoxPosts.Items.Add(post.Caption);
+            }
+        }
     }
 }
