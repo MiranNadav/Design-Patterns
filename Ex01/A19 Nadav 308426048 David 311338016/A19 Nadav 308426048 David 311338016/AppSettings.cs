@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Web.Script.Serialization;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace A19_Nadav_308426048_David_311338016
 {
@@ -31,15 +32,18 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void saveAccessToken()
         {
-            string path = @"appSettings.txt";
 
-            using (Stream stream = new FileStream(path, FileMode.OpenOrCreate))
-            {
-                //TODO: missing clearing the file
-                byte[] stringToBytes;
-                stringToBytes = Encoding.ASCII.GetBytes(this.LastAccessToken);
-                stream.Write(stringToBytes, 0, stringToBytes.Length);
-            }
+            string json = JsonConvert.SerializeObject(this);
+            Console.WriteLine(json);
+            //string path = @"appSettings.txt";
+
+            //using (Stream stream = new FileStream(path, FileMode.OpenOrCreate))
+            //{
+            //    //TODO: missing clearing the file
+            //    byte[] stringToBytes;
+            //    stringToBytes = Encoding.ASCII.GetBytes(this.LastAccessToken);
+            //    stream.Write(stringToBytes, 0, stringToBytes.Length);
+            //}
         }
     }
 }
