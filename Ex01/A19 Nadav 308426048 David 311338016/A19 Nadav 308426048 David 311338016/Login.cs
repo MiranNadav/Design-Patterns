@@ -25,7 +25,6 @@ namespace A19_Nadav_308426048_David_311338016
         private void DoLogin()
         {
             LoginResult = FacebookService.Login(r_AppID, r_Permissions);
-            //LoginResult = FacebookService.Connect("EAADiiIHg2IcBAJaydVeCjqaSeqy0C0gT3NoU8WimJIiCbYSBOIg4N3qmX9Jh7JqpBB9nBRo7NRTpR0S74gjQdCYsZC8T86ry0s2QZCZB92AQhYGCVChaFvVfsZAO1ZBRALJpGlPpVlLnYcnjmBd6loWV59pErItEZD");
             IsLoginValid = ValidateLogin();
             if (IsLoginValid)
             {
@@ -35,7 +34,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private bool ValidateLogin()
         {
-            return string.IsNullOrEmpty(LoginResult.AccessToken) ? false: true;
+            return string.IsNullOrEmpty(LoginResult.AccessToken) ? false : true;
         }
     }
 }

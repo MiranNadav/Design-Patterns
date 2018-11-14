@@ -66,11 +66,10 @@ namespace A19_Nadav_308426048_David_311338016
             base.OnFormClosing(e);
             if (m_AppSettings.RememberUser)
             {
-                //m_AppSettings.LastWindowSize = this.Size;
-                //m_AppSettings.LastWindowLocation = this.Location;
-                //m_AppSettings.LastAccessToken = m_LoggeInResult.AccessToken;
-                ////m_LoggeInResult.LoggedInUser.i
-                m_AppSettings.SaveSettingsToDataBase();
+                m_AppSettings.LastWindowSize = this.Size;
+                m_AppSettings.LastWindowLocation = this.Location;
+                m_AppSettings.LastAccessToken = m_LoggeInResult.AccessToken;
+                m_AppSettings.SaveAppSettingsToFile();
             }
         }
 
