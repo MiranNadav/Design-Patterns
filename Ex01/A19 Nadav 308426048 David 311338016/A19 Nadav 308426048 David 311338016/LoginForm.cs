@@ -76,7 +76,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
             else
             {
-                MessageBox.Show("Shit on your face");
+                MessageBox.Show("Login was unsuccessful");
             }
         }
 

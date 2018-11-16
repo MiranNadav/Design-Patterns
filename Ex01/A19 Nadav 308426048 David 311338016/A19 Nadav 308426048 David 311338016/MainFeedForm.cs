@@ -102,5 +102,75 @@ namespace A19_Nadav_308426048_David_311338016
                 listBoxPosts.Items.Add(post.Caption);
             }
         }
+        //This function is for the 1st feature
+        //It returns only shows your best liked posts (with a given amount of likes)
+        private void fetchMostLikedPosts()
+        {
+            int postLikes;
+            if (!string.IsNullOrEmpty(textBoxLikesLimit.Text)
+                 && int.TryParse(textBoxLikesLimit.Text, out int likesLimit))
+            {
+                foreach (Post post in m_CurrentUser.Posts)
+                {
+                    postLikes = post.LikedBy.Count;
+                    if (postLikes >= likesLimit)
+                    {
+                        listBoxBestPosts.Items.Add(post.Name + " - " + postLikes);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid amount of likes");
+            }
+        }
+
+        private void fetchFriendsButton_Click(object sender, EventArgs e)
+        {
+            fetchAllFriends();
+        }
+
+        private void fetchAllFriends()
+        {
+            foreach(User friend in m_CurrentUser.Friends)
+            {
+                listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName);
+            }
+        }
+
+        private void uploadPostButton_Click(object sender, EventArgs e)
+        {
+            uploadPost();
+        }
+
+        private void uploadPost()
+        {
+            if (!string.IsNullOrEmpty(textBoxPostDetails.Text))
+            {
+                m_CurrentUser.PostStatus(textBoxPostDetails.Text);
+            }
+            else
+            {
+                MessageBox.Show("Please fill in your post status");
+            }
+        }
+
+        private void myLikesButton_Click(object sender, EventArgs e)
+        {
+            fetchAllLikes();
+        }
+
+        private void fetchAllLikes()
+        {
+            foreach(Page page in m_CurrentUser.LikedPages)
+            {
+                listBoxLikes.Items.Add(page.Name);
+            }
+        }
+
+        private void fetchBestPostsButton_Click(object sender, EventArgs e)
+        {
+            fetchMostLikedPosts();
+        }
     }
 }
