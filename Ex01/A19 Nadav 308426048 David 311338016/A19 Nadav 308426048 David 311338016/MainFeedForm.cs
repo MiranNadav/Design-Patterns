@@ -31,7 +31,8 @@ namespace A19_Nadav_308426048_David_311338016
             fetchBasicDetails();
 
         }
-
+        
+        //TODO: Add a PopulateDetails method - which puts all details in the main form.
         private void fetchBasicDetails()
         {
             fetchProfilePicture();
@@ -41,7 +42,6 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchWelcomeMessage()
         {
             setDayStatus();
-
             WelcomeLabel.Text = string.Format("Hello {0} {1}, good {2}", m_CurrentUser.FirstName, m_CurrentUser.LastName, m_CurrentDayStatus);
         }
 
@@ -99,7 +99,10 @@ namespace A19_Nadav_308426048_David_311338016
         {
             foreach(Post post in m_CurrentUser.Posts)
             {
-                listBoxPosts.Items.Add(post.Caption);
+                if (post.Message != null)
+                {
+                    listBoxPosts.Items.Add(post.Message);
+                } 
             }
         }
         //This function is for the 1st feature
@@ -113,7 +116,7 @@ namespace A19_Nadav_308426048_David_311338016
                 foreach (Post post in m_CurrentUser.Posts)
                 {
                     postLikes = post.LikedBy.Count;
-                    if (postLikes >= likesLimit)
+                    if (postLikes >= likesLimit && post.Message != null)
                     {
                         listBoxBestPosts.Items.Add(post.Name + " - " + postLikes);
                     }
@@ -124,6 +127,21 @@ namespace A19_Nadav_308426048_David_311338016
                 MessageBox.Show("Invalid amount of likes");
             }
         }
+
+        private void fetchSameMonthFriends ()
+        {
+            string myBirthDayMonth = m_CurrentUser.Birthday.Substring(0,2);
+            string friendBirthdayMonth;
+            foreach (User friend in m_CurrentUser.Friends)
+            {
+                friendBirthdayMonth = friend.Birthday.Substring(0, 2);
+                if (friendBirthdayMonth == myBirthDayMonth)
+                {
+                    listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName + " - " + friend.Birthday);
+                }
+            }
+        }
+
 
         private void fetchFriendsButton_Click(object sender, EventArgs e)
         {
@@ -171,6 +189,16 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchBestPostsButton_Click(object sender, EventArgs e)
         {
             fetchMostLikedPosts();
+        }
+
+        private void MainFeedForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fetchSameMonthFriendsButton_Click(object sender, EventArgs e)
+        {
+            fetchSameMonthFriends();
         }
     }
 }

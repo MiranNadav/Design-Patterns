@@ -41,6 +41,8 @@
             this.fetchBestPostsButton = new System.Windows.Forms.Button();
             this.listBoxBestPosts = new System.Windows.Forms.ListBox();
             this.textBoxLikesLimit = new System.Windows.Forms.TextBox();
+            this.fetchSameMonthFriendsButton = new System.Windows.Forms.Button();
+            this.listBoxSameMonthFriends = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +87,7 @@
             // 
             this.listViewFriends.Location = new System.Drawing.Point(332, 49);
             this.listViewFriends.Name = "listViewFriends";
-            this.listViewFriends.Size = new System.Drawing.Size(121, 97);
+            this.listViewFriends.Size = new System.Drawing.Size(121, 95);
             this.listViewFriends.TabIndex = 4;
             this.listViewFriends.UseCompatibleStateImageBehavior = false;
             // 
@@ -101,7 +103,7 @@
             // 
             // uploadPostButton
             // 
-            this.uploadPostButton.Location = new System.Drawing.Point(479, 164);
+            this.uploadPostButton.Location = new System.Drawing.Point(479, 151);
             this.uploadPostButton.Name = "uploadPostButton";
             this.uploadPostButton.Size = new System.Drawing.Size(120, 23);
             this.uploadPostButton.TabIndex = 6;
@@ -111,7 +113,7 @@
             // 
             // textBoxPostDetails
             // 
-            this.textBoxPostDetails.Location = new System.Drawing.Point(479, 193);
+            this.textBoxPostDetails.Location = new System.Drawing.Point(479, 180);
             this.textBoxPostDetails.Name = "textBoxPostDetails";
             this.textBoxPostDetails.Size = new System.Drawing.Size(120, 20);
             this.textBoxPostDetails.TabIndex = 7;
@@ -160,11 +162,31 @@
             this.textBoxLikesLimit.TabIndex = 12;
             this.textBoxLikesLimit.Text = "Likes limit";
             // 
+            // fetchSameMonthFriendsButton
+            // 
+            this.fetchSameMonthFriendsButton.Location = new System.Drawing.Point(332, 151);
+            this.fetchSameMonthFriendsButton.Name = "fetchSameMonthFriendsButton";
+            this.fetchSameMonthFriendsButton.Size = new System.Drawing.Size(121, 23);
+            this.fetchSameMonthFriendsButton.TabIndex = 13;
+            this.fetchSameMonthFriendsButton.Text = "Same month friends";
+            this.fetchSameMonthFriendsButton.UseVisualStyleBackColor = true;
+            this.fetchSameMonthFriendsButton.Click += new System.EventHandler(this.fetchSameMonthFriendsButton_Click);
+            // 
+            // listBoxSameMonthFriends
+            // 
+            this.listBoxSameMonthFriends.FormattingEnabled = true;
+            this.listBoxSameMonthFriends.Location = new System.Drawing.Point(332, 180);
+            this.listBoxSameMonthFriends.Name = "listBoxSameMonthFriends";
+            this.listBoxSameMonthFriends.Size = new System.Drawing.Size(120, 95);
+            this.listBoxSameMonthFriends.TabIndex = 14;
+            // 
             // MainFeedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 450);
+            this.ClientSize = new System.Drawing.Size(613, 322);
+            this.Controls.Add(this.listBoxSameMonthFriends);
+            this.Controls.Add(this.fetchSameMonthFriendsButton);
             this.Controls.Add(this.textBoxLikesLimit);
             this.Controls.Add(this.listBoxBestPosts);
             this.Controls.Add(this.fetchBestPostsButton);
@@ -181,6 +203,7 @@
             this.Name = "MainFeedForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainFeedForm";
+            this.Load += new System.EventHandler(this.MainFeedForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -202,5 +225,7 @@
         private System.Windows.Forms.Button fetchBestPostsButton;
         private System.Windows.Forms.ListBox listBoxBestPosts;
         private System.Windows.Forms.TextBox textBoxLikesLimit;
+        private System.Windows.Forms.Button fetchSameMonthFriendsButton;
+        private System.Windows.Forms.ListBox listBoxSameMonthFriends;
     }
 }
