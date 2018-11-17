@@ -45,6 +45,7 @@
             this.fetchSameMonthFriendsButton = new System.Windows.Forms.Button();
             this.listBoxSameMonthFriends = new System.Windows.Forms.ListBox();
             this.showAllLikesButton = new System.Windows.Forms.Button();
+            this.pickMonthComboBox = new System.Windows.Forms.ComboBox();
             FacebookLogoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(FacebookLogoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
@@ -186,14 +187,14 @@
             this.fetchSameMonthFriendsButton.Name = "fetchSameMonthFriendsButton";
             this.fetchSameMonthFriendsButton.Size = new System.Drawing.Size(121, 23);
             this.fetchSameMonthFriendsButton.TabIndex = 13;
-            this.fetchSameMonthFriendsButton.Text = "Same month friends";
+            this.fetchSameMonthFriendsButton.Text = "Friends by Month";
             this.fetchSameMonthFriendsButton.UseVisualStyleBackColor = true;
             this.fetchSameMonthFriendsButton.Click += new System.EventHandler(this.fetchSameMonthFriendsButton_Click);
             // 
             // listBoxSameMonthFriends
             // 
             this.listBoxSameMonthFriends.FormattingEnabled = true;
-            this.listBoxSameMonthFriends.Location = new System.Drawing.Point(332, 185);
+            this.listBoxSameMonthFriends.Location = new System.Drawing.Point(332, 211);
             this.listBoxSameMonthFriends.Name = "listBoxSameMonthFriends";
             this.listBoxSameMonthFriends.Size = new System.Drawing.Size(120, 95);
             this.listBoxSameMonthFriends.TabIndex = 14;
@@ -208,12 +209,34 @@
             this.showAllLikesButton.UseVisualStyleBackColor = true;
             this.showAllLikesButton.Click += new System.EventHandler(this.showAllLikesButton_Click);
             // 
+            // pickMonthComboBox
+            // 
+            this.pickMonthComboBox.FormattingEnabled = true;
+            this.pickMonthComboBox.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.pickMonthComboBox.Location = new System.Drawing.Point(331, 184);
+            this.pickMonthComboBox.Name = "pickMonthComboBox";
+            this.pickMonthComboBox.Size = new System.Drawing.Size(121, 21);
+            this.pickMonthComboBox.TabIndex = 17;
+            // 
             // MainFeedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(624, 322);
+            this.Controls.Add(this.pickMonthComboBox);
             this.Controls.Add(this.showAllLikesButton);
             this.Controls.Add(FacebookLogoPictureBox);
             this.Controls.Add(this.listBoxSameMonthFriends);
@@ -260,5 +283,6 @@
         private System.Windows.Forms.Button fetchSameMonthFriendsButton;
         private System.Windows.Forms.ListBox listBoxSameMonthFriends;
         private System.Windows.Forms.Button showAllLikesButton;
+        private System.Windows.Forms.ComboBox pickMonthComboBox;
     }
 }

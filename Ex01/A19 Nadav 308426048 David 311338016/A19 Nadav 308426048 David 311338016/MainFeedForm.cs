@@ -130,12 +130,13 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchSameMonthFriends ()
         {
+            listBoxSameMonthFriends.Items.Clear();
             string myBirthDayMonth = m_CurrentUser.Birthday.Substring(0,2);
             string friendBirthdayMonth;
             foreach (User friend in m_CurrentUser.Friends)
             {
                 friendBirthdayMonth = friend.Birthday.Substring(0, 2);
-                if (friendBirthdayMonth == myBirthDayMonth)
+                if (friendBirthdayMonth == pickMonthComboBox.Text)
                 {
                     listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName + " - " + friend.Birthday);
                 }

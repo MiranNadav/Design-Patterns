@@ -59,6 +59,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Connect.cs" />
     <Compile Include="DataBaseConnectionManager.cs" />
+    <Compile Include="FriendsHandler.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
