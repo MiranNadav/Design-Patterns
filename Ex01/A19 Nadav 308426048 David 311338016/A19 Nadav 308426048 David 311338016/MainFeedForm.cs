@@ -21,7 +21,7 @@ namespace A19_Nadav_308426048_David_311338016
         private enum DayStatus { morning, evening, afternoon }
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
-
+        private FriendsHandler friendsHandler;
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
             m_LoggeInResult = i_Result;
@@ -118,13 +118,13 @@ namespace A19_Nadav_308426048_David_311338016
                     postLikes = post.LikedBy.Count;
                     if (postLikes >= likesLimit && post.Message != null)
                     {
-                        listBoxBestPosts.Items.Add(post.Name + " - " + postLikes);
+                        listBoxBestPosts.Items.Add(post.Message.Substring(0,10) + " - " + postLikes);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Invalid amount of likes");
+                MessageBox.Show("Invalid amount of likes", "Wrong Input");
             }
         }
 
@@ -169,7 +169,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
             else
             {
-                MessageBox.Show("Please fill in your post status");
+                MessageBox.Show("Please fill in your post status", "Missing Details");
             }
         }
 
@@ -199,6 +199,26 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchSameMonthFriendsButton_Click(object sender, EventArgs e)
         {
             fetchSameMonthFriends();
+        }
+
+        private void WelcomeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void showAllLikesButton_Click(object sender, EventArgs e)
+        {
+            showAllLikes();
+        }
+
+        private void showAllLikes()
+        {
+            int totalLikes = 0;
+            foreach(Post post in m_CurrentUser.Posts)
+            {
+                totalLikes += post.LikedBy.Count;
+            }
+            MessageBox.Show("Total Likes:\n" + totalLikes, "Your Likes");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace A19_Nadav_308426048_David_311338016
     partial class LoginForm : Form
     {
         private AppSettings m_AppSettings;
-        private LoginResult m_LogeinUser;
+        private LoginResult m_LoggedinUser;
 
         public LoginForm()
         {
@@ -40,7 +40,7 @@ namespace A19_Nadav_308426048_David_311338016
             string accessToken = m_AppSettings.LastAccessToken;
             //TODO: should this (connect) be static? 
             Connect connect = new Connect(accessToken);
-            m_LogeinUser = connect.ConnectResult;
+            m_LoggedinUser = connect.ConnectResult;
             initialMainFeedForm();
         }
 
@@ -67,7 +67,7 @@ namespace A19_Nadav_308426048_David_311338016
         private void doLogin()
         {
             Login login = new Login();
-            m_LogeinUser = login.LoginResult;
+            m_LoggedinUser = login.LoginResult;
 
             if (login.IsLoginValid)
             {
@@ -76,13 +76,13 @@ namespace A19_Nadav_308426048_David_311338016
             }
             else
             {
-                MessageBox.Show("Login was unsuccessful");
+                MessageBox.Show("Login was unsuccessful", "Login Failed");
             }
         }
 
         private void initialMainFeedForm()
         {
-            MainFeedForm mainFeedForm = new MainFeedForm(m_LogeinUser, m_AppSettings);
+            MainFeedForm mainFeedForm = new MainFeedForm(m_LoggedinUser, m_AppSettings);
             this.Hide();
             mainFeedForm.ShowDialog();
         }
