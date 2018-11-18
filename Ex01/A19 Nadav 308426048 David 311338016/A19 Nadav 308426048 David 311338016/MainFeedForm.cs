@@ -22,6 +22,7 @@ namespace A19_Nadav_308426048_David_311338016
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
         private FriendsHandler friendsHandler;
+
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
             m_LoggeInResult = i_Result;
@@ -42,7 +43,7 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchWelcomeMessage()
         {
             setDayStatus();
-            WelcomeLabel.Text = string.Format("Hello {0} {1}, good {2}", m_CurrentUser.FirstName, m_CurrentUser.LastName, m_CurrentDayStatus);
+            WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", m_CurrentUser.FirstName, m_CurrentUser.LastName, m_CurrentDayStatus);
         }
 
         private void fetchProfilePicture()
@@ -220,6 +221,46 @@ namespace A19_Nadav_308426048_David_311338016
                 totalLikes += post.LikedBy.Count;
             }
             MessageBox.Show("Total Likes:\n" + totalLikes, "Your Likes");
+        }
+
+        private void fetchAlbumPictures()
+        {
+            foreach(Album album in m_CurrentUser.Albums)
+            {
+                foreach(Photo photo in album.Photos)
+                {
+                    PictureBox picbox = new PictureBox();
+                    albumPhotosListBox.Items.Add(picbox);
+                    picbox.LoadAsync(photo.PictureNormalURL);
+                }
+            }
+        }
+
+        private void albumPhotosListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void fetchAllPhotosButton_Click(object sender, EventArgs e)
+        {
+            fetchAlbumPictures();
+        }
+
+        private void friendRandomGeneratorButton_Click(object sender, EventArgs e)
+        {
+        }
+
+
+        private void openBirthdayGameButton_Click(object sender, EventArgs e)
+        {
+            initializeFriendsBirthdayForm();
+        }
+
+        private void initializeFriendsBirthdayForm()
+        {
+            FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm();
+            friendsBirthdayForm.m_CurrentUser = m_CurrentUser;
+            this.Hide();
+            friendsBirthdayForm.ShowDialog();
         }
     }
 }

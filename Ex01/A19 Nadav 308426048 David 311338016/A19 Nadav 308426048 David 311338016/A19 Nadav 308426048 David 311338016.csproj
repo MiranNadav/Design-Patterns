@@ -59,6 +59,12 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Connect.cs" />
     <Compile Include="DataBaseConnectionManager.cs" />
+    <Compile Include="FriendsBirthdayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FriendsBirthdayForm.Designer.cs">
+      <DependentUpon>FriendsBirthdayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FriendsHandler.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginForm.cs">
@@ -76,6 +82,9 @@
     <Compile Include="Posts.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FriendsBirthdayForm.resx">
+      <DependentUpon>FriendsBirthdayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
