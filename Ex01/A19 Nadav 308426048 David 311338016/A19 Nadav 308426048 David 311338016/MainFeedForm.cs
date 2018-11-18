@@ -21,7 +21,6 @@ namespace A19_Nadav_308426048_David_311338016
         private enum DayStatus { morning, evening, afternoon }
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
-        private FriendsHandler friendsHandler;
         private FacebookAppManager m_FacebookManager;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
