@@ -16,17 +16,19 @@ namespace A19_Nadav_308426048_David_311338016
     partial class MainFeedForm : Form
     {
 
-        private LoginResult m_LoggeInResult;
-        private User m_CurrentUser;
+        private LoginResult m_LoggedInResult;
+        //private User m_CurrentUser;
         private enum DayStatus { morning, evening, afternoon }
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
         private FriendsHandler friendsHandler;
+        private FacebookAppManager m_FacebookManager;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
-            m_LoggeInResult = i_Result;
-            m_CurrentUser = m_LoggeInResult.LoggedInUser;
+            m_LoggedInResult = i_Result;
+            m_FacebookManager = new FacebookAppManager(m_LoggedInResult.LoggedInUser);
+            //m_CurrentUser = m_LoggedInResult.LoggedInUser;
             m_AppSettings = i_AppSettings;
             InitializeComponent();
             fetchBasicDetails();
@@ -43,12 +45,12 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchWelcomeMessage()
         {
             setDayStatus();
-            WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", m_CurrentUser.FirstName, m_CurrentUser.LastName, m_CurrentDayStatus);
+            WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", m_FacebookManager.CurrentUser.FirstName, m_FacebookManager.CurrentUser.LastName, m_CurrentDayStatus);
         }
 
         private void fetchProfilePicture()
         {
-            ProfilePictureBox.LoadAsync(m_CurrentUser.PictureNormalURL);
+            ProfilePictureBox.LoadAsync(m_FacebookManager.CurrentUser.PictureNormalURL);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -69,7 +71,7 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 m_AppSettings.LastWindowSize = this.Size;
                 m_AppSettings.LastWindowLocation = this.Location;
-                m_AppSettings.LastAccessToken = m_LoggeInResult.AccessToken;
+                m_AppSettings.LastAccessToken = m_LoggedInResult.AccessToken;
                 m_AppSettings.SaveAppSettingsToFile();
             }
         }
@@ -98,7 +100,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllPosts()
         {
-            foreach(Post post in m_CurrentUser.Posts)
+            foreach(Post post in m_FacebookManager.Posts)
             {
                 if (post.Message != null)
                 {
@@ -114,13 +116,9 @@ namespace A19_Nadav_308426048_David_311338016
             if (!string.IsNullOrEmpty(textBoxLikesLimit.Text)
                  && int.TryParse(textBoxLikesLimit.Text, out int likesLimit))
             {
-                foreach (Post post in m_CurrentUser.Posts)
+                foreach (Post post in m_FacebookManager.GetMostLikedPosts(likesLimit))
                 {
-                    postLikes = post.LikedBy.Count;
-                    if (postLikes >= likesLimit && post.Message != null)
-                    {
-                        listBoxBestPosts.Items.Add(post.Message.Substring(0,10) + " - " + postLikes);
-                    }
+                    listBoxBestPosts.Items.Add(post.Message.Substring(0,10) + " - " + post.LikedBy.Count);
                 }
             }
             else
@@ -132,15 +130,9 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchSameMonthFriends ()
         {
             listBoxSameMonthFriends.Items.Clear();
-            string myBirthDayMonth = m_CurrentUser.Birthday.Substring(0,2);
-            string friendBirthdayMonth;
-            foreach (User friend in m_CurrentUser.Friends)
+            foreach (User friend in m_FacebookManager.GetSameMonthFriends(pickMonthComboBox.Text))
             {
-                friendBirthdayMonth = friend.Birthday.Substring(0, 2);
-                if (friendBirthdayMonth == pickMonthComboBox.Text)
-                {
-                    listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName + " - " + friend.Birthday);
-                }
+                listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName + " - " + friend.Birthday);
             }
         }
 
@@ -152,7 +144,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllFriends()
         {
-            foreach(User friend in m_CurrentUser.Friends)
+            foreach(User friend in m_FacebookManager.Friends)
             {
                 listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName);
             }
@@ -167,7 +159,14 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (!string.IsNullOrEmpty(textBoxPostDetails.Text))
             {
-                m_CurrentUser.PostStatus(textBoxPostDetails.Text);
+                try
+                {
+                    m_FacebookManager.UploadPost(textBoxPostDetails.Text);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Unable to upload post, Exception caught", "Error");
+                }
             }
             else
             {
@@ -182,7 +181,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllLikes()
         {
-            foreach(Page page in m_CurrentUser.LikedPages)
+            foreach(Page page in m_FacebookManager.LikedPages)
             {
                 listBoxLikes.Items.Add(page.Name);
             }
@@ -215,17 +214,13 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void showAllLikes()
         {
-            int totalLikes = 0;
-            foreach(Post post in m_CurrentUser.Posts)
-            {
-                totalLikes += post.LikedBy.Count;
-            }
+            int totalLikes = m_FacebookManager.GetAmountOfLikes();
             MessageBox.Show("Total Likes:\n" + totalLikes, "Your Likes");
         }
 
         private void fetchAlbumPictures()
         {
-            foreach(Album album in m_CurrentUser.Albums)
+            foreach(Album album in m_FacebookManager.Albums)
             {
                 foreach(Photo photo in album.Photos)
                 {
@@ -257,8 +252,8 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initializeFriendsBirthdayForm()
         {
-            FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm();
-            friendsBirthdayForm.m_CurrentUser = m_CurrentUser;
+            FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm(m_FacebookManager, this);
+            //friendsBirthdayForm.m_CurrentUser = m_CurrentUser;
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }

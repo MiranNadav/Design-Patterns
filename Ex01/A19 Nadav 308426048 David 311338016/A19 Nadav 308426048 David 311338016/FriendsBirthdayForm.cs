@@ -14,12 +14,15 @@ namespace A19_Nadav_308426048_David_311338016
     public partial class FriendsBirthdayForm : Form
     {
 
-        public User m_CurrentUser { get; set; }
         public User m_GeneratedFriend { get; set; }
+        private FacebookAppManager m_FacebookManager;
+        private Form m_OpenedMe;
 
 
-        public FriendsBirthdayForm()
+        public FriendsBirthdayForm(FacebookAppManager i_FacebookManager, Form i_OpenedMe)
         {
+            m_OpenedMe = i_OpenedMe;
+            m_FacebookManager = i_FacebookManager;
             InitializeComponent();
         }
 
@@ -30,30 +33,30 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAFriendsName()
         {
-            int amountOfFriends = m_CurrentUser.Friends.Count;
-            Random random = new Random();
-            int friendIndex = random.Next(0, amountOfFriends);
-            m_GeneratedFriend = m_CurrentUser.Friends[friendIndex];
+            m_GeneratedFriend = m_FacebookManager.GenerateAFriend();
             FriendNameTextBox.Text = m_GeneratedFriend.FirstName + " " + m_GeneratedFriend.LastName;
         }
 
         private void checkIfBirthdayIsCorrect()
         {
-            DateTime myDate = DateTime.ParseExact(m_GeneratedFriend.Birthday, "MM/dd/yyyy", null);
-            if (birthDatePickTime.Value.Year == myDate.Year && 
-                birthDatePickTime.Value.Month == myDate.Month && 
-                birthDatePickTime.Value.Day == myDate.Day)
+            if (m_GeneratedFriend != null)
             {
-                MessageBox.Show("You are right, you really know your friends!!", "Success");
-            }
-            else if (birthDatePickTime.Value.Year == myDate.Year &&
-                birthDatePickTime.Value.Month == myDate.Month)
-            {
-                MessageBox.Show("You were close, you got the year and month correctly..", "Almost");
-            }
-            else
-            {
-                MessageBox.Show("You are wrong...", "Wrong answer");
+                DateTime myDate = DateTime.ParseExact(m_GeneratedFriend.Birthday, "MM/dd/yyyy", null);
+                if (birthDatePickTime.Value.Year == myDate.Year &&
+                    birthDatePickTime.Value.Month == myDate.Month &&
+                    birthDatePickTime.Value.Day == myDate.Day)
+                {
+                    MessageBox.Show("You are right, you really know your friends!!", "Success");
+                }
+                else if (birthDatePickTime.Value.Year == myDate.Year &&
+                    birthDatePickTime.Value.Month == myDate.Month)
+                {
+                    MessageBox.Show("You were close, you got the year and month correctly..", "Almost");
+                }
+                else
+                {
+                    MessageBox.Show("You are wrong...", "Wrong answer");
+                }
             }
         }
 
@@ -64,7 +67,8 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void backButton_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            m_OpenedMe.Show();
         }
    
     }

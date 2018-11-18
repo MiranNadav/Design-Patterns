@@ -59,6 +59,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Connect.cs" />
     <Compile Include="DataBaseConnectionManager.cs" />
+    <Compile Include="FacebookAppManager.cs" />
     <Compile Include="FriendsBirthdayForm.cs">
       <SubType>Form</SubType>
     </Compile>
