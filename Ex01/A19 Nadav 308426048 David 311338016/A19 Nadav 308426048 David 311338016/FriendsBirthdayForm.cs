@@ -16,12 +16,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         public User m_GeneratedFriend { get; set; }
         private FacebookAppManager m_FacebookManager;
-        private Form m_OpenedMe;
+        private Form m_OpenedBy;
 
 
         public FriendsBirthdayForm(FacebookAppManager i_FacebookManager, Form i_OpenedMe)
         {
-            m_OpenedMe = i_OpenedMe;
+            m_OpenedBy = i_OpenedMe;
             m_FacebookManager = i_FacebookManager;
             InitializeComponent();
         }
@@ -68,7 +68,7 @@ namespace A19_Nadav_308426048_David_311338016
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            m_OpenedMe.Show();
+            m_OpenedBy.Show();
         }
    
     }

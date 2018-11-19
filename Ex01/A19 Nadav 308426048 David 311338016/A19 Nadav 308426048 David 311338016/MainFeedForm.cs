@@ -17,7 +17,6 @@ namespace A19_Nadav_308426048_David_311338016
     {
 
         private LoginResult m_LoggedInResult;
-        //private User m_CurrentUser;
         private enum DayStatus { morning, evening, afternoon }
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
@@ -27,14 +26,26 @@ namespace A19_Nadav_308426048_David_311338016
         {
             m_LoggedInResult = i_Result;
             m_FacebookManager = new FacebookAppManager(m_LoggedInResult.LoggedInUser);
-            //m_CurrentUser = m_LoggedInResult.LoggedInUser;
             m_AppSettings = i_AppSettings;
             InitializeComponent();
-            fetchBasicDetails();
-
         }
         
-        //TODO: Add a PopulateDetails method - which puts all details in the main form.
+        private void populateDetails()
+        {
+            fetchBasicDetails();
+            fetchAllFriends();
+            fetchAllLikes();
+            fetchAlbumPictures();
+            fetchAllPosts();
+            fetchAllLikes();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            populateDetails();
+
+        }
         private void fetchBasicDetails()
         {
             fetchProfilePicture();
@@ -52,17 +63,6 @@ namespace A19_Nadav_308426048_David_311338016
             ProfilePictureBox.LoadAsync(m_FacebookManager.CurrentUser.PictureNormalURL);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ProfilePictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -73,6 +73,7 @@ namespace A19_Nadav_308426048_David_311338016
                 m_AppSettings.LastAccessToken = m_LoggedInResult.AccessToken;
                 m_AppSettings.SaveAppSettingsToFile();
             }
+            Application.Exit();
         }
 
         private void setDayStatus()
@@ -107,8 +108,7 @@ namespace A19_Nadav_308426048_David_311338016
                 } 
             }
         }
-        //This function is for the 1st feature
-        //It returns only shows your best liked posts (with a given amount of likes)
+
         private void fetchMostLikedPosts()
         {
             int postLikes;
@@ -201,15 +201,12 @@ namespace A19_Nadav_308426048_David_311338016
             fetchSameMonthFriends();
         }
 
-        private void WelcomeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void showAllLikesButton_Click(object sender, EventArgs e)
         {
             showAllLikes();
         }
+
 
         private void showAllLikes()
         {
@@ -230,19 +227,10 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        private void albumPhotosListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void fetchAllPhotosButton_Click(object sender, EventArgs e)
         {
             fetchAlbumPictures();
         }
-
-        private void friendRandomGeneratorButton_Click(object sender, EventArgs e)
-        {
-        }
-
 
         private void openBirthdayGameButton_Click(object sender, EventArgs e)
         {
@@ -252,7 +240,18 @@ namespace A19_Nadav_308426048_David_311338016
         private void initializeFriendsBirthdayForm()
         {
             FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm(m_FacebookManager, this);
-            //friendsBirthdayForm.m_CurrentUser = m_CurrentUser;
+            this.Hide();
+            friendsBirthdayForm.ShowDialog();
+        }
+
+        private void searchInAllFacebook_Click(object sender, EventArgs e)
+        {
+            initalizeSearchFrom();
+        }
+
+        private void initalizeSearchFrom()
+        {
+            SearchForm friendsBirthdayForm = new SearchForm(m_FacebookManager, this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }

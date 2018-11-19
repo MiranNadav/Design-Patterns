@@ -40,7 +40,7 @@ namespace A19_Nadav_308426048_David_311338016
             string accessToken = m_AppSettings.LastAccessToken;
             //TODO: should this (connect) be static? 
             Connect connect = new Connect(accessToken);
-            m_LoggedinUser = connect.ConnectResult;
+            m_LoggedinUser = connect.ConnectionResult;
             initialMainFeedForm();
         }
 

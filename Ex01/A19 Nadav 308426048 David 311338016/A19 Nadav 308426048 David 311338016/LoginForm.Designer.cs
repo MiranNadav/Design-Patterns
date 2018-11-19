@@ -58,7 +58,7 @@
             // 
             this.rememberMeCheckBox.AutoSize = true;
             this.rememberMeCheckBox.Location = new System.Drawing.Point(124, 170);
-            this.rememberMeCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rememberMeCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.rememberMeCheckBox.Name = "rememberMeCheckBox";
             this.rememberMeCheckBox.Size = new System.Drawing.Size(95, 17);
             this.rememberMeCheckBox.TabIndex = 2;
@@ -74,6 +74,7 @@
             this.Controls.Add(this.rememberMeCheckBox);
             this.Controls.Add(this.Hello);
             this.Controls.Add(this.LoginButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
