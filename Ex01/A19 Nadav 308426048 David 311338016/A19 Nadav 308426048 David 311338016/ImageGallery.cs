@@ -15,11 +15,13 @@ namespace A19_Nadav_308426048_David_311338016
     {
         private readonly FacebookAppManager r_FacebookAppMananger;
         private Album m_CurrentAlbum;
+        private Form m_OpenedBy;
 
-        public ImageGallery(FacebookAppManager i_FacebookAppMananger)
+        public ImageGallery(FacebookAppManager i_FacebookAppMananger, Form i_OpenedBy)
         {
-            InitializeComponent();
             r_FacebookAppMananger = i_FacebookAppMananger;
+            m_OpenedBy = i_OpenedBy;
+            InitializeComponent();
             fetchAlbumList();
         }
 
@@ -27,7 +29,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             foreach (Album album in r_FacebookAppMananger.Albums)
             {
-                albumsListComboBox.Items.Add(album);
+                albumsListComboBox.Items.Add(album.Name);
             }
         }
 
@@ -36,17 +38,18 @@ namespace A19_Nadav_308426048_David_311338016
             //FacebookObjectCollection<Photo> currentAlbum = r_FacebookAppMananger.Albums[0].Photos;
             List<string> list = new List<string>();
 
-            Point location = new Point(100, 100);
+            Point location = new Point(10, 10);
 
             for (int i = 0; i < m_CurrentAlbum.Photos.Count; i++)
             {
                 PictureBox pb = new PictureBox();
+
                 string currentPictureUrl = m_CurrentAlbum.Photos[i].PictureNormalURL;
                 pb.LoadAsync(currentPictureUrl);
                 pb.SizeMode = PictureBoxSizeMode.Zoom;
                 if (i % 5 == 0)
                 {
-                    location.X = 100;
+                    location.X = 10;
                     location.Y += 100;
                 }
                 else
@@ -63,7 +66,26 @@ namespace A19_Nadav_308426048_David_311338016
         {
             int selectedAlbumIndex = albumsListComboBox.SelectedIndex;
             m_CurrentAlbum = r_FacebookAppMananger.Albums[selectedAlbumIndex];
+            cleanAllPictures();
             populateImages();
+        }
+
+        private void cleanAllPictures()
+        {
+            for (int i = Controls.Count - 1; i >= 0; i--)
+            {
+                Control control = Controls[i];
+                if (control is PictureBox)
+                {
+                    Controls.RemoveAt(i);
+                }
+            }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            m_OpenedBy.Show();
         }
     }
 }

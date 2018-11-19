@@ -179,9 +179,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllLikes()
         {
-            foreach(Page page in m_FacebookManager.LikedPages)
+            if (m_FacebookManager.LikedPages != null)
             {
-                listBoxLikes.Items.Add(page.Name);
+                foreach (Page page in m_FacebookManager.LikedPages)
+                {
+                    listBoxLikes.Items.Add(page.Name);
+                }
             }
         }
 
@@ -257,8 +260,32 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void openGalleryButton_Click(object sender, EventArgs e)
         {
-            ImageGallery imageGallery = new ImageGallery(m_FacebookManager);
+            ImageGallery imageGallery = new ImageGallery(m_FacebookManager, this);
             imageGallery.ShowDialog();
+        }
+
+        public FacebookAppManager FacebookAppManager
+        {
+            get => default(FacebookAppManager);
+            set
+            {
+            }
+        }
+
+        internal AppSettings AppSettings
+        {
+            get => default(AppSettings);
+            set
+            {
+            }
+        }
+
+        internal LoginForm LoginForm
+        {
+            get => default(LoginForm);
+            set
+            {
+            }
         }
     }
 }

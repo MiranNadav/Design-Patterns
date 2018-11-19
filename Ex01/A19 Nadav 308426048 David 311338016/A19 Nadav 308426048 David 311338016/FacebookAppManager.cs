@@ -17,7 +17,6 @@ namespace A19_Nadav_308426048_David_311338016
         public FacebookObjectCollection<Album> Albums { get; set; }
         public FacebookObjectCollection<Group> Groups { get; set; }
 
-
         public FacebookAppManager(User i_CurrentUser)
         {
             CurrentUser = i_CurrentUser;
