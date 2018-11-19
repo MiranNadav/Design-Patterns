@@ -20,10 +20,10 @@ namespace A19_Nadav_308426048_David_311338016
         
         public Login()
         {
-            DoLogin();
+            doLogin();
         }
 
-        private void DoLogin()
+        private void doLogin()
         {
             LoginResult = FacebookService.Login(r_AppID, r_Permissions);
             IsLoginValid = ValidateLogin();

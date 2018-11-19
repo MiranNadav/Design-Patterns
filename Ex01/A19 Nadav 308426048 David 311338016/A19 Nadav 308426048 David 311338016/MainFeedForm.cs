@@ -111,7 +111,6 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchMostLikedPosts()
         {
-            int postLikes;
             if (!string.IsNullOrEmpty(textBoxLikesLimit.Text)
                  && int.TryParse(textBoxLikesLimit.Text, out int likesLimit))
             {
@@ -254,6 +253,12 @@ namespace A19_Nadav_308426048_David_311338016
             SearchForm friendsBirthdayForm = new SearchForm(m_FacebookManager, this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
+        }
+
+        private void openGalleryButton_Click(object sender, EventArgs e)
+        {
+            ImageGallery imageGallery = new ImageGallery(m_FacebookManager);
+            imageGallery.ShowDialog();
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.PictureBox FacebookLogoPictureBox;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFeedForm));
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.listBoxPosts = new System.Windows.Forms.ListBox();
             this.listViewFriends = new System.Windows.Forms.ListView();
@@ -51,6 +52,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.ProfilePictureBox = new System.Windows.Forms.PictureBox();
+            this.openGalleryButton = new System.Windows.Forms.Button();
             FacebookLogoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(FacebookLogoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
@@ -58,7 +60,7 @@
             // 
             // FacebookLogoPictureBox
             // 
-            FacebookLogoPictureBox.Image = global::A19_Nadav_308426048_David_311338016.Properties.Resources.facebook1;
+            FacebookLogoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("FacebookLogoPictureBox.Image")));
             FacebookLogoPictureBox.Location = new System.Drawing.Point(534, 231);
             FacebookLogoPictureBox.Name = "FacebookLogoPictureBox";
             FacebookLogoPictureBox.Size = new System.Drawing.Size(209, 187);
@@ -216,7 +218,7 @@
             this.albumPhotosListBox.FormattingEnabled = true;
             this.albumPhotosListBox.Location = new System.Drawing.Point(647, 54);
             this.albumPhotosListBox.Name = "albumPhotosListBox";
-            this.albumPhotosListBox.Size = new System.Drawing.Size(120, 147);
+            this.albumPhotosListBox.Size = new System.Drawing.Size(120, 108);
             this.albumPhotosListBox.TabIndex = 18;
             // 
             // openBirthdayGameButton
@@ -300,12 +302,29 @@
             this.ProfilePictureBox.TabIndex = 0;
             this.ProfilePictureBox.TabStop = false;
             // 
+            // openGalleryButton
+            // 
+            this.openGalleryButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.openGalleryButton.BackColor = System.Drawing.Color.DimGray;
+            this.openGalleryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.openGalleryButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.openGalleryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openGalleryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openGalleryButton.Location = new System.Drawing.Point(647, 178);
+            this.openGalleryButton.Name = "openGalleryButton";
+            this.openGalleryButton.Size = new System.Drawing.Size(120, 23);
+            this.openGalleryButton.TabIndex = 26;
+            this.openGalleryButton.Text = "Open Gallery";
+            this.openGalleryButton.UseVisualStyleBackColor = false;
+            this.openGalleryButton.Click += new System.EventHandler(this.openGalleryButton_Click);
+            // 
             // MainFeedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(786, 443);
+            this.Controls.Add(this.openGalleryButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -365,5 +384,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button openGalleryButton;
     }
 }

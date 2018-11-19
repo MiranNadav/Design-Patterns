@@ -66,6 +66,12 @@
     <Compile Include="FriendsBirthdayForm.Designer.cs">
       <DependentUpon>FriendsBirthdayForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageGallery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageGallery.Designer.cs">
+      <DependentUpon>ImageGallery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -90,6 +96,9 @@
     </Compile>
     <EmbeddedResource Include="FriendsBirthdayForm.resx">
       <DependentUpon>FriendsBirthdayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageGallery.resx">
+      <DependentUpon>ImageGallery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

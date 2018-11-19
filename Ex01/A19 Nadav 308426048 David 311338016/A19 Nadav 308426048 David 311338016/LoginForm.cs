@@ -62,6 +62,10 @@ namespace A19_Nadav_308426048_David_311338016
         private void LoginButton_Click(object sender, EventArgs e)
         {
             doLogin();
+
+            FacebookAppManager fam = new FacebookAppManager(m_LoggedinUser.LoggedInUser);
+            ImageGallery ig = new ImageGallery(fam);
+            ig.ShowDialog();
         }
 
         private void doLogin()
@@ -72,7 +76,7 @@ namespace A19_Nadav_308426048_David_311338016
             if (login.IsLoginValid)
             {
                 m_AppSettings.RememberUser = rememberMeCheckBox.Checked;
-                initialMainFeedForm();
+                //initialMainFeedForm();
             }
             else
             {
