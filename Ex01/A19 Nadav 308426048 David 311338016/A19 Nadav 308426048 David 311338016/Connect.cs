@@ -9,13 +9,13 @@ namespace A19_Nadav_308426048_David_311338016
 {
     class Connect
     {
-        public LoginResult ConnectResult { get; set; }
-        public string AccessToke { get; set; }
+        public LoginResult ConnectionResult { get; set; }
+        public string AccessToken { get; set; }
 
         public Connect(string i_AccessToken)
         {
-            AccessToke = i_AccessToken;
-            ConnectResult = FacebookService.Connect(i_AccessToken);
+            AccessToken = i_AccessToken;
+            ConnectionResult = FacebookService.Connect(i_AccessToken);
         }
     }
 }

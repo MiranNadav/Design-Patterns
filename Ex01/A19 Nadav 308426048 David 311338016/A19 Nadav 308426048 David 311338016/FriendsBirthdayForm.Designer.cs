@@ -100,6 +100,7 @@
             this.Controls.Add(this.checkIfCorrectBirthdayButton);
             this.Controls.Add(this.friendRandomGeneratorButton);
             this.Controls.Add(this.birthDatePickTime);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FriendsBirthdayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FriendsBirthdayForm";

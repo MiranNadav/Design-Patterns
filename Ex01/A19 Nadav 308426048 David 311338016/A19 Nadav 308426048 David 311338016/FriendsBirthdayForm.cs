@@ -13,16 +13,14 @@ namespace A19_Nadav_308426048_David_311338016
 {
     public partial class FriendsBirthdayForm : Form
     {
-
         public User m_GeneratedFriend { get; set; }
-        private FacebookAppManager m_FacebookManager;
-        private Form m_OpenedMe;
-
+        private readonly FacebookAppManager r_FacebookManager;
+        private Form m_OpenedBy;
 
         public FriendsBirthdayForm(FacebookAppManager i_FacebookManager, Form i_OpenedMe)
         {
-            m_OpenedMe = i_OpenedMe;
-            m_FacebookManager = i_FacebookManager;
+            m_OpenedBy = i_OpenedMe;
+            r_FacebookManager = i_FacebookManager;
             InitializeComponent();
         }
 
@@ -33,7 +31,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAFriendsName()
         {
-            m_GeneratedFriend = m_FacebookManager.GenerateAFriend();
+            m_GeneratedFriend = r_FacebookManager.GenerateAFriend();
             FriendNameTextBox.Text = m_GeneratedFriend.FirstName + " " + m_GeneratedFriend.LastName;
         }
 
@@ -68,7 +66,7 @@ namespace A19_Nadav_308426048_David_311338016
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            m_OpenedMe.Show();
+            m_OpenedBy.Show();
         }
    
     }

@@ -15,7 +15,7 @@ namespace A19_Nadav_308426048_David_311338016
         public FacebookObjectCollection<Event> Events { get; set; }
         public FacebookObjectCollection<Page> LikedPages { get; set; }
         public FacebookObjectCollection<Album> Albums { get; set; }
-
+        public FacebookObjectCollection<Group> Groups { get; set; }
 
         public FacebookAppManager(User i_CurrentUser)
         {
@@ -30,7 +30,16 @@ namespace A19_Nadav_308426048_David_311338016
             setEvents();
             setPages();
             setAlbums();
+            setGroups();
+        }
 
+        private void setGroups()
+        {
+            try
+            {
+                Groups = CurrentUser.Groups;
+            }
+            catch (Exception e) { }
         }
 
         private void setAlbums()
@@ -39,16 +48,16 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Albums = CurrentUser.Albums;
             }
-            finally { }
+            catch (Exception e) { }
         }
 
         private void setPages()
         {
-            try
-            {
-                LikedPages = CurrentUser.LikedPages;
-            }
-            finally{}
+                try
+                {
+                    LikedPages = CurrentUser.LikedPages;
+                }
+                catch (Exception e) { }
         }
 
         private void setEvents()
@@ -67,7 +76,7 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Posts = CurrentUser.Posts;
             }
-            finally { }
+            catch (Exception e) { }
         }
 
         private void setFriends()
@@ -76,7 +85,7 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Friends = CurrentUser.Friends;
             }
-            finally { }
+            catch (Exception e) { }
         }
 
         public FacebookObjectCollection<Post> GetMostLikedPosts(int i_MaxLikes)

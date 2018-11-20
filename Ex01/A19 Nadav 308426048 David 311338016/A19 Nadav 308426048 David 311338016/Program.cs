@@ -17,7 +17,6 @@ namespace A19_Nadav_308426048_David_311338016
         /// The main entry point for the application.
         /// </summary>
 
-        static readonly string s_AppID = "249075922425991";
 
         [STAThread]
         static void Main()
