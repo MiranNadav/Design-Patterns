@@ -52,7 +52,6 @@
             this.uploadPostTitleLabel.Size = new System.Drawing.Size(365, 31);
             this.uploadPostTitleLabel.TabIndex = 10;
             this.uploadPostTitleLabel.Text = "Upload a new Facebook post";
-            this.uploadPostTitleLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // uploadPostButton
             // 

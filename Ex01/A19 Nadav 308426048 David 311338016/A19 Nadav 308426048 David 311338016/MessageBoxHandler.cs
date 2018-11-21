@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    static class Tools
+    static class MessageBoxHandler
     {
         public static DialogResult ShowUserMessageBoxWithResponse(string messageText, string title, MessageBoxButtons buttons, MessageBoxIcon icon)
         {

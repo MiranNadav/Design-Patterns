@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="AppStartSequence.cs" />
-    <Compile Include="Connect.cs" />
     <Compile Include="DataBaseConnectionManager.cs" />
     <Compile Include="FacebookAppManager.cs" />
     <Compile Include="FriendsBirthdayForm.cs">
@@ -96,7 +95,7 @@
     <Compile Include="SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools.cs" />
+    <Compile Include="MessageBoxHandler.cs" />
     <Compile Include="UploadPostForm.cs">
       <SubType>Form</SubType>
     </Compile>

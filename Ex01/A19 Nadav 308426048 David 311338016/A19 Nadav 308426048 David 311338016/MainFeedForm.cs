@@ -15,15 +15,16 @@ namespace A19_Nadav_308426048_David_311338016
 {
     partial class MainFeedForm : Form
     {
-
         private LoginResult m_LoggedInResult;
         private enum DayStatus { morning, evening, afternoon }
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
         private FacebookAppManager m_FacebookManager;
+        private bool m_TryingToLogout;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
+            m_TryingToLogout = false;
             m_LoggedInResult = i_Result;
             m_FacebookManager = new FacebookAppManager(m_LoggedInResult.LoggedInUser);
             m_AppSettings = i_AppSettings;
@@ -45,13 +46,52 @@ namespace A19_Nadav_308426048_David_311338016
             fetchAllLikes();
             fetchAlbumPictures();
             fetchAllPosts();
+            fetchAllEvents();
             fetchAllLikes();
+            fetchAllGroups();
+            fetchAllFriendsPosts();
+        }
+
+        private void fetchAllEvents()
+        {
+            if (m_FacebookManager.Events != null)
+            {
+                foreach (Event fbEvent in m_FacebookManager.Events)
+                {
+                    if (fbEvent.Name != null)
+                    {
+                        listBoxEvents.Items.Add(fbEvent.Name);
+                    }
+                }
+            }
+        }
+
+        private void fetchAllFriendsPosts()
+        {
+            foreach (Post post in m_FacebookManager.FriendsPosts)
+            {
+                listBoxFriendsPosts.Items.Add(post.Message);
+            }
+        }
+
+        private void fetchAllGroups()
+        {
+            if (m_FacebookManager.Groups != null)
+            {
+                foreach (Group group in m_FacebookManager.Groups)
+                {
+                    if (group.Name != null)
+                    {
+                        listBoxGroups.Items.Add(group.Name);
+                    }
+                }
+            }
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            //populateDetails();
+            populateDetails();
         }
 
         private void fetchBasicDetails()
@@ -74,9 +114,9 @@ namespace A19_Nadav_308426048_David_311338016
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
+            if (!m_TryingToLogout && !e.CloseReason.Equals(CloseReason.ApplicationExitCall))
             {
-                DialogResult userWantToExit = Tools.ShowUserMessageBoxWithResponse("Are you sure you want to exit?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult userWantToExit = MessageBoxHandler.ShowUserMessageBoxWithResponse("Are you sure you want to exit?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (userWantToExit == DialogResult.Yes)
                 {
                     if (m_AppSettings.RememberUser)
@@ -85,6 +125,10 @@ namespace A19_Nadav_308426048_David_311338016
                     }
 
                     Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
                 }
             }
         }
@@ -282,11 +326,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void LogOutButton_Click(object sender, EventArgs e)
         {
-            DialogResult shouldLogout = Tools.ShowUserMessageBoxWithResponse("Are you sure you want to log out?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult shouldLogout = MessageBoxHandler.ShowUserMessageBoxWithResponse("Are you sure you want to log out?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (shouldLogout == DialogResult.Yes)
             {
                 m_AppSettings.DeleteAppSettingsFile();
                 m_AppSettings.RememberUser = false;
+                m_TryingToLogout = true;
                 this.Hide();
                 LoginForm loginForm = new LoginForm(m_AppSettings);
                 loginForm.Show();

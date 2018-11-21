@@ -21,12 +21,9 @@ namespace A19_Nadav_308426048_David_311338016
 
         public void ReconnectRememberdUser()
         {
-            //TODO: should this (connect) be static? 
             try
             {
-                Connect connect = new Connect(m_SavedAccessToken);
-                LoginResult connectionResult = connect.ConnectionResult;
-                ConnectionResult = connectionResult;
+                ConnectionResult = FacebookService.Connect(m_SavedAccessToken);
                 IsSuccessfulReconnection = true;
             }
             catch (Exception)

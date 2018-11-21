@@ -26,8 +26,8 @@ namespace A19_Nadav_308426048_David_311338016
         {
             // Defualt Values 
             FilePath = i_filePath;
-            LastWindowLocation = new Point(300, 300);
-            LastWindowSize = new Size(802, 482);
+            LastWindowLocation = new Point(100, 100);
+            LastWindowSize = new Size(933, 520);
             RememberUser = false;
             LastAccessToken = null;
         }
@@ -50,7 +50,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         public static AppSettings loadSettingsFromFileOrUseDefualtValues()
         {
-            AppSettings appSettings;
+            AppSettings appSettings = null;
             string[] paths = { Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "facebookAppSettings" };
             string filePath = Path.Combine(paths);
 
