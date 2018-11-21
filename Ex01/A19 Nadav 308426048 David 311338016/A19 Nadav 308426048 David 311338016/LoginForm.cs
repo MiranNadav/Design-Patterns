@@ -18,38 +18,10 @@ namespace A19_Nadav_308426048_David_311338016
         private AppSettings m_AppSettings;
         private LoginResult m_LoggedinUser;
 
-        public LoginForm()
+        public LoginForm(AppSettings i_AppSettings)
         {
-            //TODO: should there be a static methode who check if settings where saved inside app setting instead of creating a new object?
-            m_AppSettings = new AppSettings();
-            bool isUserRememberd = m_AppSettings.SettingsWereSaved;
-
-            if (isUserRememberd)
-            {
-                reconnectUser();
-            }
-            else
-            {
-                InitializeComponent();
-            }
-        }
-
-        internal Login Login
-        {
-            get => default(Login);
-            set
-            {
-            }
-        }
-
-        private void reconnectUser()
-        {
-            m_AppSettings = m_AppSettings.ReadSavedSettingsFromFile();
-            string accessToken = m_AppSettings.LastAccessToken;
-            //TODO: should this (connect) be static? 
-            Connect connect = new Connect(accessToken);
-            m_LoggedinUser = connect.ConnectionResult;
-            initialMainFeedForm();
+            m_AppSettings = i_AppSettings;
+            InitializeComponent();
         }
 
         protected override void OnShown(EventArgs e)
@@ -65,6 +37,12 @@ namespace A19_Nadav_308426048_David_311338016
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            Application.Exit();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

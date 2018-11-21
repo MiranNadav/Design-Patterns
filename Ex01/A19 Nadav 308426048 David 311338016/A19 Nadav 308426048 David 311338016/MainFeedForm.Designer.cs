@@ -34,7 +34,6 @@
             this.listBoxPosts = new System.Windows.Forms.ListBox();
             this.listViewFriends = new System.Windows.Forms.ListView();
             this.uploadPostButton = new System.Windows.Forms.Button();
-            this.textBoxPostDetails = new System.Windows.Forms.TextBox();
             this.listBoxLikes = new System.Windows.Forms.ListBox();
             this.fetchBestPostsButton = new System.Windows.Forms.Button();
             this.listBoxBestPosts = new System.Windows.Forms.ListBox();
@@ -43,7 +42,6 @@
             this.listBoxSameMonthFriends = new System.Windows.Forms.ListBox();
             this.showAllLikesButton = new System.Windows.Forms.Button();
             this.pickMonthComboBox = new System.Windows.Forms.ComboBox();
-            this.albumPhotosListBox = new System.Windows.Forms.ListBox();
             this.openBirthdayGameButton = new System.Windows.Forms.Button();
             this.searchInAllFacebook = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,6 +51,7 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.ProfilePictureBox = new System.Windows.Forms.PictureBox();
             this.openGalleryButton = new System.Windows.Forms.Button();
+            this.LogOutButton = new System.Windows.Forms.Button();
             FacebookLogoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(FacebookLogoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
@@ -101,22 +100,13 @@
             this.uploadPostButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.uploadPostButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uploadPostButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.uploadPostButton.Location = new System.Drawing.Point(35, 161);
+            this.uploadPostButton.Location = new System.Drawing.Point(28, 173);
             this.uploadPostButton.Name = "uploadPostButton";
-            this.uploadPostButton.Size = new System.Drawing.Size(146, 23);
+            this.uploadPostButton.Size = new System.Drawing.Size(153, 65);
             this.uploadPostButton.TabIndex = 6;
             this.uploadPostButton.Text = "Upload a Post";
             this.uploadPostButton.UseVisualStyleBackColor = false;
             this.uploadPostButton.Click += new System.EventHandler(this.uploadPostButton_Click);
-            // 
-            // textBoxPostDetails
-            // 
-            this.textBoxPostDetails.Location = new System.Drawing.Point(35, 190);
-            this.textBoxPostDetails.Multiline = true;
-            this.textBoxPostDetails.Name = "textBoxPostDetails";
-            this.textBoxPostDetails.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxPostDetails.Size = new System.Drawing.Size(146, 109);
-            this.textBoxPostDetails.TabIndex = 7;
             // 
             // listBoxLikes
             // 
@@ -186,9 +176,9 @@
             this.showAllLikesButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.showAllLikesButton.Location = new System.Drawing.Point(35, 386);
             this.showAllLikesButton.Name = "showAllLikesButton";
-            this.showAllLikesButton.Size = new System.Drawing.Size(146, 34);
+            this.showAllLikesButton.Size = new System.Drawing.Size(146, 45);
             this.showAllLikesButton.TabIndex = 16;
-            this.showAllLikesButton.Text = "Show All Likes";
+            this.showAllLikesButton.Text = "Show total amount of Likes";
             this.showAllLikesButton.UseVisualStyleBackColor = false;
             this.showAllLikesButton.Click += new System.EventHandler(this.showAllLikesButton_Click);
             // 
@@ -212,14 +202,6 @@
             this.pickMonthComboBox.Name = "pickMonthComboBox";
             this.pickMonthComboBox.Size = new System.Drawing.Size(121, 21);
             this.pickMonthComboBox.TabIndex = 17;
-            // 
-            // albumPhotosListBox
-            // 
-            this.albumPhotosListBox.FormattingEnabled = true;
-            this.albumPhotosListBox.Location = new System.Drawing.Point(647, 54);
-            this.albumPhotosListBox.Name = "albumPhotosListBox";
-            this.albumPhotosListBox.Size = new System.Drawing.Size(120, 108);
-            this.albumPhotosListBox.TabIndex = 18;
             // 
             // openBirthdayGameButton
             // 
@@ -295,7 +277,7 @@
             // 
             // ProfilePictureBox
             // 
-            this.ProfilePictureBox.Location = new System.Drawing.Point(45, 35);
+            this.ProfilePictureBox.Location = new System.Drawing.Point(15, 45);
             this.ProfilePictureBox.Name = "ProfilePictureBox";
             this.ProfilePictureBox.Size = new System.Drawing.Size(112, 95);
             this.ProfilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -310,7 +292,7 @@
             this.openGalleryButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.openGalleryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openGalleryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openGalleryButton.Location = new System.Drawing.Point(647, 178);
+            this.openGalleryButton.Location = new System.Drawing.Point(647, 54);
             this.openGalleryButton.Name = "openGalleryButton";
             this.openGalleryButton.Size = new System.Drawing.Size(120, 23);
             this.openGalleryButton.TabIndex = 26;
@@ -318,12 +300,29 @@
             this.openGalleryButton.UseVisualStyleBackColor = false;
             this.openGalleryButton.Click += new System.EventHandler(this.openGalleryButton_Click);
             // 
+            // LogOutButton
+            // 
+            this.LogOutButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.LogOutButton.BackColor = System.Drawing.Color.DimGray;
+            this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.LogOutButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogOutButton.Location = new System.Drawing.Point(647, 147);
+            this.LogOutButton.Name = "LogOutButton";
+            this.LogOutButton.Size = new System.Drawing.Size(120, 23);
+            this.LogOutButton.TabIndex = 27;
+            this.LogOutButton.Text = "Log Out";
+            this.LogOutButton.UseVisualStyleBackColor = false;
+            this.LogOutButton.Click += new System.EventHandler(this.LogOutButton_Click);
+            // 
             // MainFeedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(786, 443);
+            this.Controls.Add(this.LogOutButton);
             this.Controls.Add(this.openGalleryButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -331,7 +330,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchInAllFacebook);
             this.Controls.Add(this.openBirthdayGameButton);
-            this.Controls.Add(this.albumPhotosListBox);
             this.Controls.Add(this.pickMonthComboBox);
             this.Controls.Add(this.showAllLikesButton);
             this.Controls.Add(FacebookLogoPictureBox);
@@ -341,7 +339,6 @@
             this.Controls.Add(this.listBoxBestPosts);
             this.Controls.Add(this.fetchBestPostsButton);
             this.Controls.Add(this.listBoxLikes);
-            this.Controls.Add(this.textBoxPostDetails);
             this.Controls.Add(this.uploadPostButton);
             this.Controls.Add(this.listViewFriends);
             this.Controls.Add(this.listBoxPosts);
@@ -367,7 +364,6 @@
         private System.Windows.Forms.ListBox listBoxPosts;
         private System.Windows.Forms.ListView listViewFriends;
         private System.Windows.Forms.Button uploadPostButton;
-        private System.Windows.Forms.TextBox textBoxPostDetails;
         private System.Windows.Forms.ListBox listBoxLikes;
         private System.Windows.Forms.Button fetchBestPostsButton;
         private System.Windows.Forms.ListBox listBoxBestPosts;
@@ -376,7 +372,6 @@
         private System.Windows.Forms.ListBox listBoxSameMonthFriends;
         private System.Windows.Forms.Button showAllLikesButton;
         private System.Windows.Forms.ComboBox pickMonthComboBox;
-        private System.Windows.Forms.ListBox albumPhotosListBox;
         private System.Windows.Forms.Button openBirthdayGameButton;
         private System.Windows.Forms.Button searchInAllFacebook;
         private System.Windows.Forms.Label label1;
@@ -385,5 +380,6 @@
         private System.Windows.Forms.Label label4;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button openGalleryButton;
+        private System.Windows.Forms.Button LogOutButton;
     }
 }

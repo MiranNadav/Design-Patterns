@@ -28,8 +28,16 @@ namespace A19_Nadav_308426048_David_311338016
             m_FacebookManager = new FacebookAppManager(m_LoggedInResult.LoggedInUser);
             m_AppSettings = i_AppSettings;
             InitializeComponent();
+            loadSettingsFromAppSettingsFile();
         }
-        
+
+        private void loadSettingsFromAppSettingsFile()
+        {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = m_AppSettings.LastWindowLocation;
+            this.Size = m_AppSettings.LastWindowSize;
+        }
+
         private void populateDetails()
         {
             fetchBasicDetails();
@@ -43,9 +51,9 @@ namespace A19_Nadav_308426048_David_311338016
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            populateDetails();
-
+            //populateDetails();
         }
+
         private void fetchBasicDetails()
         {
             fetchProfilePicture();
@@ -66,14 +74,35 @@ namespace A19_Nadav_308426048_David_311338016
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            if (m_AppSettings.RememberUser)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
-                m_AppSettings.LastWindowSize = this.Size;
-                m_AppSettings.LastWindowLocation = this.Location;
-                m_AppSettings.LastAccessToken = m_LoggedInResult.AccessToken;
-                m_AppSettings.SaveAppSettingsToFile();
+                DialogResult userWantToExit = Tools.ShowUserMessageBoxWithResponse("Are you sure you want to exit?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (userWantToExit == DialogResult.Yes)
+                {
+                    if (m_AppSettings.RememberUser)
+                    {
+                        saveUserSettings();
+                    }
+
+                    Application.Exit();
+                }
             }
-            Application.Exit();
+        }
+
+        private void saveUserSettings()
+        {
+            m_AppSettings.LastWindowSize = this.Size;
+            m_AppSettings.LastWindowLocation = this.Location;
+            m_AppSettings.LastAccessToken = m_LoggedInResult.AccessToken;
+            m_AppSettings.SaveAppSettingsToFile();
+        }
+
+        private DialogResult showUserMessageBox(string messageText, string title, MessageBoxButtons buttons, MessageBoxIcon icon)
+        {
+            DialogResult dialogResult;
+            dialogResult = MessageBox.Show(messageText, title, buttons, icon);
+
+            return DialogResult;
         }
 
         private void setDayStatus()
@@ -100,12 +129,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllPosts()
         {
-            foreach(Post post in m_FacebookManager.Posts)
+            foreach (Post post in m_FacebookManager.Posts)
             {
                 if (post.Message != null)
                 {
                     listBoxPosts.Items.Add(post.Message);
-                } 
+                }
             }
         }
 
@@ -116,7 +145,7 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 foreach (Post post in m_FacebookManager.GetMostLikedPosts(likesLimit))
                 {
-                    listBoxBestPosts.Items.Add(post.Message.Substring(0,10) + " - " + post.LikedBy.Count);
+                    listBoxBestPosts.Items.Add(post.Message.Substring(0, 10) + " - " + post.LikedBy.Count);
                 }
             }
             else
@@ -125,7 +154,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        private void fetchSameMonthFriends ()
+        private void fetchSameMonthFriends()
         {
             listBoxSameMonthFriends.Items.Clear();
             foreach (User friend in m_FacebookManager.GetSameMonthFriends(pickMonthComboBox.Text))
@@ -142,7 +171,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllFriends()
         {
-            foreach(User friend in m_FacebookManager.Friends)
+            foreach (User friend in m_FacebookManager.Friends)
             {
                 listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName);
             }
@@ -150,26 +179,14 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void uploadPostButton_Click(object sender, EventArgs e)
         {
-            uploadPost();
+            initalizePostFrom();
         }
 
-        private void uploadPost()
+        private void initalizePostFrom()
         {
-            if (!string.IsNullOrEmpty(textBoxPostDetails.Text))
-            {
-                try
-                {
-                    m_FacebookManager.UploadPost(textBoxPostDetails.Text);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Unable to upload post, Exception caught", "Error");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please fill in your post status", "Missing Details");
-            }
+            UploadPostForm uploadPostForm = new UploadPostForm(m_FacebookManager, this);
+            this.Hide();
+            uploadPostForm.Show();
         }
 
         private void myLikesButton_Click(object sender, EventArgs e)
@@ -218,12 +235,11 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAlbumPictures()
         {
-            foreach(Album album in m_FacebookManager.Albums)
+            foreach (Album album in m_FacebookManager.Albums)
             {
-                foreach(Photo photo in album.Photos)
+                foreach (Photo photo in album.Photos)
                 {
                     PictureBox picbox = new PictureBox();
-                    albumPhotosListBox.Items.Add(picbox);
                     picbox.LoadAsync(photo.PictureNormalURL);
                 }
             }
@@ -264,27 +280,16 @@ namespace A19_Nadav_308426048_David_311338016
             imageGallery.ShowDialog();
         }
 
-        public FacebookAppManager FacebookAppManager
+        private void LogOutButton_Click(object sender, EventArgs e)
         {
-            get => default(FacebookAppManager);
-            set
+            DialogResult shouldLogout = Tools.ShowUserMessageBoxWithResponse("Are you sure you want to log out?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (shouldLogout == DialogResult.Yes)
             {
-            }
-        }
-
-        internal AppSettings AppSettings
-        {
-            get => default(AppSettings);
-            set
-            {
-            }
-        }
-
-        internal LoginForm LoginForm
-        {
-            get => default(LoginForm);
-            set
-            {
+                m_AppSettings.DeleteAppSettingsFile();
+                m_AppSettings.RememberUser = false;
+                this.Hide();
+                LoginForm loginForm = new LoginForm(m_AppSettings);
+                loginForm.Show();
             }
         }
     }

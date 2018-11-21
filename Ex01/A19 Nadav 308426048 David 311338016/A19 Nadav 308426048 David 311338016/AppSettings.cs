@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Reflection;
 
 namespace A19_Nadav_308426048_David_311338016
 {
@@ -19,17 +20,16 @@ namespace A19_Nadav_308426048_David_311338016
         public bool RememberUser { get; set; }
         public string LastAccessToken { get; set; }
         public string FilePath { get; set; }
-        public bool SettingsWereSaved { get; set; }
 
-        public AppSettings()
+        [JsonConstructor]
+        private AppSettings(string i_filePath)
         {
             // Defualt Values 
-            FilePath = @"C:\Users\shuhs\Desktop.AppSettings.txt";
+            FilePath = i_filePath;
             LastWindowLocation = new Point(300, 300);
-            LastWindowSize = new Size(300, 300);
+            LastWindowSize = new Size(802, 482);
             RememberUser = false;
             LastAccessToken = null;
-            SettingsWereSaved = File.Exists(FilePath) && new FileInfo(FilePath).Length != 0;
         }
 
         public void SaveAppSettingsToFile()
@@ -48,15 +48,38 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        public AppSettings ReadSavedSettingsFromFile()
+        public static AppSettings loadSettingsFromFileOrUseDefualtValues()
         {
-            using (StreamReader appSettingsFile = new StreamReader(FilePath))
-            {
-                //TODO: should use try catch?
-                JsonSerializer serializer = new JsonSerializer();
-                AppSettings appSettingsFromFile = (AppSettings)serializer.Deserialize(appSettingsFile, typeof(AppSettings));
+            AppSettings appSettings;
+            string[] paths = { Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "facebookAppSettings" };
+            string filePath = Path.Combine(paths);
 
-                return appSettingsFromFile;
+            try
+            {
+                using (StreamReader appSettingsFile = File.OpenText(filePath))
+                {
+                    using (JsonTextReader reader = new JsonTextReader(appSettingsFile))
+                    {
+                        JsonSerializer serializer = new JsonSerializer();
+                        appSettings = (AppSettings)serializer.Deserialize(appSettingsFile, typeof(AppSettings));
+                    }
+                }
+
+                return appSettings;
+            }
+            catch (Exception e)
+            {
+                appSettings = new AppSettings(filePath);
+
+                return appSettings;
+            }
+        }
+
+        public void DeleteAppSettingsFile()
+        {
+            if (File.Exists(FilePath))
+            {
+                File.Delete(FilePath);
             }
         }
     }

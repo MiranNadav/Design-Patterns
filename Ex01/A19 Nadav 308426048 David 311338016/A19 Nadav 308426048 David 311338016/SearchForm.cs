@@ -18,14 +18,6 @@ namespace A19_Nadav_308426048_David_311338016
             InitializeComponent();
         }
 
-        public FacebookAppManager FacebookAppManager
-        {
-            get => default(FacebookAppManager);
-            set
-            {
-            }
-        }
-
         private void findRelevantSearchesButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(m_TextToFind))
@@ -141,6 +133,11 @@ namespace A19_Nadav_308426048_David_311338016
         {
             this.Hide();
             m_OpenedBy.Show();
+        }
+
+        private void listBoxEventsFindings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
