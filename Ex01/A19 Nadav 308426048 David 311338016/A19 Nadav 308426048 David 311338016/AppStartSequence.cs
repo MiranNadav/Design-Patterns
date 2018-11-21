@@ -1,5 +1,5 @@
-﻿using FacebookWrapper;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using FacebookWrapper;
 
 namespace A19_Nadav_308426048_David_311338016
 {
@@ -26,8 +26,7 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     appSettings.DeleteAppSettingsFile();
                     DialogResult okWasPressed;
-                    okWasPressed = MessageBox.Show(@"There was a problem while connecting you with your saved setting.
-Please login again", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    okWasPressed = MessageBox.Show("There was a problem while connecting you with your saved setting. Please login again", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Run(new LoginForm());
                 }
             }

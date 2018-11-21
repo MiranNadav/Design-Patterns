@@ -1,18 +1,18 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
     public partial class SearchForm : Form
     {
-        private FacebookAppManager m_FacebookManager;
+        private readonly FacebookAppManager r_FacebookManager;
         private Form m_OpenedBy;
         private string m_TextToFind;
 
         public SearchForm(FacebookAppManager i_FacebookManager, Form i_OpenedBy)
         {
-            m_FacebookManager = i_FacebookManager;
+            r_FacebookManager = i_FacebookManager;
             m_OpenedBy = i_OpenedBy;
             InitializeComponent();
         }
@@ -45,7 +45,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (friendsFindingsIncludeCheckBox.Checked)
             {
-                foreach (User user in m_FacebookManager.Friends)
+                foreach (User user in r_FacebookManager.Friends)
                 {
                     foreach (Post post in user.Posts)
                     {
@@ -65,7 +65,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (groupsFindingsIncludeCheckBox.Checked)
             {
-                foreach (Group group in m_FacebookManager.Groups)
+                foreach (Group group in r_FacebookManager.Groups)
                 {
                     foreach (Post post in group.WallPosts)
                     {
@@ -85,7 +85,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (pageFindingsIncludeCheckBox.Checked)
             {
-                foreach (Page page in m_FacebookManager.LikedPages)
+                foreach (Page page in r_FacebookManager.LikedPages)
                 {
                     foreach (Post post in page.WallPosts)
                     {
@@ -99,14 +99,13 @@ namespace A19_Nadav_308426048_David_311338016
                     }
                 }
             }
-
         }
 
         private void setEventsFindings()
         {
             if (eventsFindingsIncludeCheckBox.Checked)
             {
-                foreach (Event myEvent in m_FacebookManager.Events)
+                foreach (Event myEvent in r_FacebookManager.Events)
                 {
                     foreach (Post post in myEvent.WallPosts)
                     {
@@ -122,7 +121,6 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-
         private void textToFindTextBox_TextChanged(object sender, EventArgs e)
         {
             m_TextToFind = textToFindTextBox.Text;
@@ -132,11 +130,6 @@ namespace A19_Nadav_308426048_David_311338016
         {
             this.Hide();
             m_OpenedBy.Show();
-        }
-
-        private void listBoxEventsFindings_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

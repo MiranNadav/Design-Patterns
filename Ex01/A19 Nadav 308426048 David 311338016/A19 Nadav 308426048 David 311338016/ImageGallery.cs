@@ -1,5 +1,4 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
@@ -35,7 +35,6 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void populateImages()
         {
-            //FacebookObjectCollection<Photo> currentAlbum = r_FacebookAppMananger.Albums[0].Photos;
             List<string> list = new List<string>();
 
             Point location = new Point(10, 10);

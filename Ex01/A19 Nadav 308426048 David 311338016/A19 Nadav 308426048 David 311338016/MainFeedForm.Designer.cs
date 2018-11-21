@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -418,7 +419,6 @@
             this.Name = "MainFeedForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook";
-            this.Load += new System.EventHandler(this.MainFeedForm_Load);
             ((System.ComponentModel.ISupportInitialize)(FacebookLogoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();
             this.ResumeLayout(false);

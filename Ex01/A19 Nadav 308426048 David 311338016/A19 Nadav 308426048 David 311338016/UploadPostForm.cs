@@ -35,7 +35,7 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     r_FacebookManager.UploadPost(textBoxPostDetails.Text);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     MessageBoxHandler.ShowUserErrorMessageBox("Unable to upload post, Exception caught", "Error");
                 }

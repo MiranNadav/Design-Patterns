@@ -9,19 +9,24 @@ using System.Web.Script.Serialization;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Reflection;
 
 namespace A19_Nadav_308426048_David_311338016
 {
     class AppSettings
     {
         public Point LastWindowLocation { get; set; }
+
         public Size LastWindowSize { get; set; }
+
         public bool RememberUser { get; set; }
+
         public string LastAccessToken { get; set; }
+
         public string FilePath { get; set; }
+
         private static AppSettings s_AppSettingsInstance = null;
         private static readonly object sr_InstanceLockContext = new object();
+
         public static AppSettings GetAppSettingsInstance()
         {
             if (s_AppSettingsInstance == null)
@@ -84,7 +89,7 @@ namespace A19_Nadav_308426048_David_311338016
 
                 return appSettings;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 appSettings = new AppSettings(filePath);
 
@@ -101,4 +106,3 @@ namespace A19_Nadav_308426048_David_311338016
         }
     }
 }
-

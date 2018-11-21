@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -78,7 +79,6 @@
             this.listBoxEventsFindings.Name = "listBoxEventsFindings";
             this.listBoxEventsFindings.Size = new System.Drawing.Size(226, 173);
             this.listBoxEventsFindings.TabIndex = 3;
-            this.listBoxEventsFindings.SelectedIndexChanged += new System.EventHandler(this.listBoxEventsFindings_SelectedIndexChanged);
             // 
             // findRelevantSearchesButton
             // 

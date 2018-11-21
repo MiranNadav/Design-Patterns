@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -52,7 +53,6 @@
             this.Hello.Size = new System.Drawing.Size(415, 24);
             this.Hello.TabIndex = 1;
             this.Hello.Text = "Welcome to Shemian && Miran wonderful FB app";
-            this.Hello.Click += new System.EventHandler(this.label1_Click);
             // 
             // rememberMeCheckBox
             // 
@@ -64,7 +64,6 @@
             this.rememberMeCheckBox.TabIndex = 2;
             this.rememberMeCheckBox.Text = "Remember Me";
             this.rememberMeCheckBox.UseVisualStyleBackColor = true;
-            this.rememberMeCheckBox.CheckedChanged += new System.EventHandler(this.rememberMeCheckBox_CheckedChanged);
             // 
             // LoginForm
             // 
@@ -78,8 +77,6 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
-            this.ResumeLayout(false);
             this.PerformLayout();
 
         }
@@ -91,4 +88,3 @@
         private System.Windows.Forms.CheckBox rememberMeCheckBox;
     }
 }
-

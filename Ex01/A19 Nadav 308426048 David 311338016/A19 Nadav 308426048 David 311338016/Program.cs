@@ -7,14 +7,9 @@ namespace A19_Nadav_308426048_David_311338016
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-
-
         [STAThread]
         static void Main()
         {
-            /// TODO: show this to nadav
-            /// should it be static? 
-            /// is the function inside OK?
             AppStartSequence.StartApp();
         }
     }

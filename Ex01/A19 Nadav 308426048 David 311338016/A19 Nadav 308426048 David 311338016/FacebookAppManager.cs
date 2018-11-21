@@ -1,21 +1,28 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
     public class FacebookAppManager
     {
         public User CurrentUser { get; set; }
+
         public FacebookObjectCollection<User> Friends { get; set; }
+
         public FacebookObjectCollection<Post> Posts { get; set; }
+
         public FacebookObjectCollection<Event> Events { get; set; }
+
         public FacebookObjectCollection<Page> LikedPages { get; set; }
+
         public FacebookObjectCollection<Album> Albums { get; set; }
+
         public FacebookObjectCollection<Group> Groups { get; set; }
+
         public FacebookObjectCollection<Post> FriendsPosts { get; set; }
 
         public FacebookAppManager(User i_CurrentUser)
@@ -41,7 +48,15 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Groups = CurrentUser.Groups;
             }
-            catch (Exception e) { }
+            catch (Exception)
+            {
+                showUnableToFetchMessage();
+            }
+        }
+
+        private void showUnableToFetchMessage()
+        {
+            MessageBoxHandler.ShowUnableToFetchMessageBox();
         }
 
         private void setAlbums()
@@ -50,16 +65,22 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Albums = CurrentUser.Albums;
             }
-            catch (Exception e) { }
+            catch (Exception)
+            {
+                showUnableToFetchMessage();
+            }
         }
 
         private void setPages()
         {
-                try
-                {
-                    LikedPages = CurrentUser.LikedPages;
-                }
-                catch (Exception e) { }
+            try
+            {
+                LikedPages = CurrentUser.LikedPages;
+            }
+            catch (Exception)
+            {
+                showUnableToFetchMessage();
+            }
         }
 
         private void setEvents()
@@ -68,8 +89,10 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Events = CurrentUser.Events;
             }
-            catch (Exception e) { }
-            
+            catch (Exception)
+            {
+                showUnableToFetchMessage();
+            }
         }
 
         private void setPosts()
@@ -78,7 +101,10 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Posts = CurrentUser.Posts;
             }
-            catch (Exception e) { }
+            catch (Exception)
+            {
+                showUnableToFetchMessage();
+            }
         }
 
         private void setFriends()
@@ -87,7 +113,10 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Friends = CurrentUser.Friends;
             }
-            catch (Exception e) { }
+            catch (Exception)
+            {
+                showUnableToFetchMessage();
+            }
         }
 
         public void setFriendsPosts()
@@ -155,6 +184,7 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 totalLikes += post.LikedBy.Count;
             }
+
             return totalLikes;
         }
 

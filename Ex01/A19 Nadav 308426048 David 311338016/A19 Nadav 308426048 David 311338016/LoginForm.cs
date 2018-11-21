@@ -29,16 +29,6 @@ namespace A19_Nadav_308426048_David_311338016
             base.OnShown(e);
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -71,11 +61,6 @@ namespace A19_Nadav_308426048_David_311338016
             MainFeedForm mainFeedForm = new MainFeedForm(m_LoggedinUser, m_AppSettings);
             this.Hide();
             mainFeedForm.ShowDialog();
-        }
-
-        private void rememberMeCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

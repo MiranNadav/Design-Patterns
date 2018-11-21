@@ -16,17 +16,24 @@ namespace A19_Nadav_308426048_David_311338016
     partial class MainFeedForm : Form
     {
         private LoginResult m_LoggedInResult;
-        private enum DayStatus { morning, evening, afternoon }
+
+        private enum DayStatus
+        {
+            morning,
+            evening,
+            afternoon
+        }
+
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
-        private FacebookAppManager m_FacebookManager;
+        private readonly FacebookAppManager r_FacebookManager;
         private bool m_TryingToLogout;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
             m_TryingToLogout = false;
             m_LoggedInResult = i_Result;
-            m_FacebookManager = new FacebookAppManager(m_LoggedInResult.LoggedInUser);
+            r_FacebookManager = new FacebookAppManager(m_LoggedInResult.LoggedInUser);
             m_AppSettings = i_AppSettings;
             InitializeComponent();
             loadSettingsFromAppSettingsFile();
@@ -54,9 +61,9 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllEvents()
         {
-            if (m_FacebookManager.Events != null)
+            if (r_FacebookManager.Events != null)
             {
-                foreach (Event fbEvent in m_FacebookManager.Events)
+                foreach (Event fbEvent in r_FacebookManager.Events)
                 {
                     if (fbEvent.Name != null)
                     {
@@ -68,7 +75,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllFriendsPosts()
         {
-            foreach (Post post in m_FacebookManager.FriendsPosts)
+            foreach (Post post in r_FacebookManager.FriendsPosts)
             {
                 listBoxFriendsPosts.Items.Add(post.Message);
             }
@@ -76,9 +83,9 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllGroups()
         {
-            if (m_FacebookManager.Groups != null)
+            if (r_FacebookManager.Groups != null)
             {
-                foreach (Group group in m_FacebookManager.Groups)
+                foreach (Group group in r_FacebookManager.Groups)
                 {
                     if (group.Name != null)
                     {
@@ -103,12 +110,12 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchWelcomeMessage()
         {
             setDayStatus();
-            WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", m_FacebookManager.CurrentUser.FirstName, m_FacebookManager.CurrentUser.LastName, m_CurrentDayStatus);
+            WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", r_FacebookManager.CurrentUser.FirstName, r_FacebookManager.CurrentUser.LastName, m_CurrentDayStatus);
         }
 
         private void fetchProfilePicture()
         {
-            ProfilePictureBox.LoadAsync(m_FacebookManager.CurrentUser.PictureNormalURL);
+            ProfilePictureBox.LoadAsync(r_FacebookManager.CurrentUser.PictureNormalURL);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -173,7 +180,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllPosts()
         {
-            foreach (Post post in m_FacebookManager.Posts)
+            foreach (Post post in r_FacebookManager.Posts)
             {
                 if (post.Message != null)
                 {
@@ -187,7 +194,7 @@ namespace A19_Nadav_308426048_David_311338016
             if (!string.IsNullOrEmpty(textBoxLikesLimit.Text)
                  && int.TryParse(textBoxLikesLimit.Text, out int likesLimit))
             {
-                foreach (Post post in m_FacebookManager.GetMostLikedPosts(likesLimit))
+                foreach (Post post in r_FacebookManager.GetMostLikedPosts(likesLimit))
                 {
                     listBoxBestPosts.Items.Add(post.Message.Substring(0, 10) + " - " + post.LikedBy.Count);
                 }
@@ -201,12 +208,11 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchSameMonthFriends()
         {
             listBoxSameMonthFriends.Items.Clear();
-            foreach (User friend in m_FacebookManager.GetSameMonthFriends(pickMonthComboBox.Text))
+            foreach (User friend in r_FacebookManager.GetSameMonthFriends(pickMonthComboBox.Text))
             {
                 listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName + " - " + friend.Birthday);
             }
         }
-
 
         private void fetchFriendsButton_Click(object sender, EventArgs e)
         {
@@ -215,7 +221,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllFriends()
         {
-            foreach (User friend in m_FacebookManager.Friends)
+            foreach (User friend in r_FacebookManager.Friends)
             {
                 listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName);
             }
@@ -223,12 +229,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void uploadPostButton_Click(object sender, EventArgs e)
         {
-            initalizePostFrom();
+            initalizePostForm();
         }
 
-        private void initalizePostFrom()
+        private void initalizePostForm()
         {
-            UploadPostForm uploadPostForm = new UploadPostForm(m_FacebookManager, this);
+            UploadPostForm uploadPostForm = new UploadPostForm(r_FacebookManager, this);
             this.Hide();
             uploadPostForm.Show();
         }
@@ -240,9 +246,9 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAllLikes()
         {
-            if (m_FacebookManager.LikedPages != null)
+            if (r_FacebookManager.LikedPages != null)
             {
-                foreach (Page page in m_FacebookManager.LikedPages)
+                foreach (Page page in r_FacebookManager.LikedPages)
                 {
                     listBoxLikes.Items.Add(page.Name);
                 }
@@ -254,32 +260,25 @@ namespace A19_Nadav_308426048_David_311338016
             fetchMostLikedPosts();
         }
 
-        private void MainFeedForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void fetchSameMonthFriendsButton_Click(object sender, EventArgs e)
         {
             fetchSameMonthFriends();
         }
-
 
         private void showAllLikesButton_Click(object sender, EventArgs e)
         {
             showAllLikes();
         }
 
-
         private void showAllLikes()
         {
-            int totalLikes = m_FacebookManager.GetAmountOfLikes();
+            int totalLikes = r_FacebookManager.GetAmountOfLikes();
             MessageBox.Show("Total Likes:\n" + totalLikes, "Your Likes");
         }
 
         private void fetchAlbumPictures()
         {
-            foreach (Album album in m_FacebookManager.Albums)
+            foreach (Album album in r_FacebookManager.Albums)
             {
                 foreach (Photo photo in album.Photos)
                 {
@@ -301,26 +300,27 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initializeFriendsBirthdayForm()
         {
-            FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm(m_FacebookManager, this);
+            FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm(r_FacebookManager, this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
 
         private void searchInAllFacebook_Click(object sender, EventArgs e)
         {
-            initalizeSearchFrom();
+            initalizeSearchForm();
         }
 
-        private void initalizeSearchFrom()
+        private void initalizeSearchForm()
         {
-            SearchForm friendsBirthdayForm = new SearchForm(m_FacebookManager, this);
+            SearchForm friendsBirthdayForm = new SearchForm(r_FacebookManager, this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
 
         private void openGalleryButton_Click(object sender, EventArgs e)
         {
-            ImageGallery imageGallery = new ImageGallery(m_FacebookManager, this);
+            ImageGallery imageGallery = new ImageGallery(r_FacebookManager, this);
+            this.Hide();
             imageGallery.ShowDialog();
         }
 
