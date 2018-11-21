@@ -9,7 +9,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            AppSettings appSettings = AppSettings.loadSettingsFromFileOrUseDefualtValues();
+            AppSettings appSettings = AppSettings.GetAppSettingsInstance();
             string savedAccessToken = appSettings.LastAccessToken;
 
             if (!string.IsNullOrEmpty(savedAccessToken))
@@ -28,12 +28,12 @@ namespace A19_Nadav_308426048_David_311338016
                     DialogResult okWasPressed;
                     okWasPressed = MessageBox.Show(@"There was a problem while connecting you with your saved setting.
 Please login again", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Run(new LoginForm(appSettings));
+                    Application.Run(new LoginForm());
                 }
             }
             else
             {
-                Application.Run(new LoginForm(appSettings));
+                Application.Run(new LoginForm());
             }
         }
     }

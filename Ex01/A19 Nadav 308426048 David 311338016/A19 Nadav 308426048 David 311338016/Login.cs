@@ -15,8 +15,7 @@ namespace A19_Nadav_308426048_David_311338016
         public LoginResult LoginResult { get; set; }
         public bool IsLoginValid { get; set; }
         static readonly string r_AppID = "249075922425991";
-        static readonly string[] r_Permissions = { "email" , "user_likes", "user_birthday", "user_friends", "user_posts", "user_photos", "user_events", "publish_to_groups", "manage_pages", "publish_pages" , "publish_stream", "user_groups" };
-        
+        static readonly string[] r_Permissions = { "email", "user_likes", "user_birthday", "user_friends", "user_posts", "user_photos", "user_events", "publish_to_groups", "manage_pages", "publish_pages" , "publish_stream", "user_groups" };
         
         public Login()
         {

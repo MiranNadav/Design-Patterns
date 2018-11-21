@@ -18,9 +18,9 @@ namespace A19_Nadav_308426048_David_311338016
         private AppSettings m_AppSettings;
         private LoginResult m_LoggedinUser;
 
-        public LoginForm(AppSettings i_AppSettings)
+        public LoginForm()
         {
-            m_AppSettings = i_AppSettings;
+            m_AppSettings = AppSettings.GetAppSettingsInstance();
             InitializeComponent();
         }
 

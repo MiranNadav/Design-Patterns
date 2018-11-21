@@ -333,7 +333,7 @@ namespace A19_Nadav_308426048_David_311338016
                 m_AppSettings.RememberUser = false;
                 m_TryingToLogout = true;
                 this.Hide();
-                LoginForm loginForm = new LoginForm(m_AppSettings);
+                LoginForm loginForm = new LoginForm();
                 loginForm.Show();
             }
         }

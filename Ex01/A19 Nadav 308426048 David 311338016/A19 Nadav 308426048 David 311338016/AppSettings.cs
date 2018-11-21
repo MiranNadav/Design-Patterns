@@ -20,6 +20,23 @@ namespace A19_Nadav_308426048_David_311338016
         public bool RememberUser { get; set; }
         public string LastAccessToken { get; set; }
         public string FilePath { get; set; }
+        private static AppSettings s_AppSettingsInstance = null;
+        private static readonly object sr_InstanceLockContext = new object();
+        public static AppSettings GetAppSettingsInstance()
+        {
+            if (s_AppSettingsInstance == null)
+            {
+                lock(sr_InstanceLockContext)
+                {
+                    if (s_AppSettingsInstance == null)
+                    {
+                        s_AppSettingsInstance = loadSettingsFromFileOrUseDefualtValues();
+                    }
+                }
+            }
+
+            return s_AppSettingsInstance;
+        }
 
         [JsonConstructor]
         private AppSettings(string i_filePath)
@@ -48,7 +65,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        public static AppSettings loadSettingsFromFileOrUseDefualtValues()
+        private static AppSettings loadSettingsFromFileOrUseDefualtValues()
         {
             AppSettings appSettings = null;
             string[] paths = { Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "facebookAppSettings" };

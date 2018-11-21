@@ -6,7 +6,6 @@ namespace A19_Nadav_308426048_David_311338016
 {
     public partial class SearchForm : Form
     {
-
         private FacebookAppManager m_FacebookManager;
         private Form m_OpenedBy;
         private string m_TextToFind;

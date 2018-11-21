@@ -93,6 +93,7 @@ namespace A19_Nadav_308426048_David_311338016
         public void setFriendsPosts()
         {
             FriendsPosts = new FacebookObjectCollection<Post>();
+            List<Post> friendsPostsList = new List<Post>();
             if (Friends != null)
             {
                 foreach (User user in Friends)
