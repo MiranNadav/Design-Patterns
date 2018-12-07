@@ -50,13 +50,13 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
+                showUnableToFetchMessage("Groups");
             }
         }
 
-        private void showUnableToFetchMessage()
+        private void showUnableToFetchMessage(string i_Title)
         {
-            MessageBoxHandler.ShowUnableToFetchMessageBox();
+            MessageBoxHandler.ShowUnableToFetchMessageBox(i_Title);
         }
 
         private void setAlbums()
@@ -67,7 +67,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
+                showUnableToFetchMessage("Albums");
             }
         }
 
@@ -79,7 +79,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
+                showUnableToFetchMessage("Liked Pages");
             }
         }
 
@@ -91,7 +91,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
+                showUnableToFetchMessage("Events");
             }
         }
 
@@ -103,7 +103,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
+                showUnableToFetchMessage("Posts");
             }
         }
 
@@ -115,7 +115,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
+                showUnableToFetchMessage("Friend List");
             }
         }
 

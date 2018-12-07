@@ -27,9 +27,9 @@ namespace A19_Nadav_308426048_David_311338016
             MessageBox.Show(messageText, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void ShowUnableToFetchMessageBox()
+        public static void ShowUnableToFetchMessageBox(string i_Title)
         {
-            MessageBox.Show("Unable to fetch data", "Error Fetching", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Unable to fetch data", i_Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

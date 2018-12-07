@@ -48,7 +48,7 @@ namespace A19_Nadav_308426048_David_311338016
             if (login.IsLoginValid)
             {
                 m_AppSettings.RememberUser = rememberMeCheckBox.Checked;
-                initialMainFeedForm();
+                initializeMainFeedForm();
             }
             else
             {
@@ -56,7 +56,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        private void initialMainFeedForm()
+        private void initializeMainFeedForm()
         {
             MainFeedForm mainFeedForm = new MainFeedForm(m_LoggedinUser, m_AppSettings);
             this.Hide();

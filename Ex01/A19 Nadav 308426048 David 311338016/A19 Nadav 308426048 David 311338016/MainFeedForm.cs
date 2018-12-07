@@ -15,6 +15,7 @@ namespace A19_Nadav_308426048_David_311338016
 {
     partial class MainFeedForm : Form
     {
+        private readonly FacebookAppManager r_FacebookManager;
         private LoginResult m_LoggedInResult;
 
         private enum DayStatus
@@ -26,7 +27,6 @@ namespace A19_Nadav_308426048_David_311338016
 
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
-        private readonly FacebookAppManager r_FacebookManager;
         private bool m_TryingToLogout;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
