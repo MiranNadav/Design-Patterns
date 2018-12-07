@@ -59,6 +59,7 @@
             this.listBoxGroups = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.listBoxFriendsPosts = new System.Windows.Forms.ListBox();
+            this.openAboutMeButton = new System.Windows.Forms.Button();
             FacebookLogoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(FacebookLogoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
@@ -380,12 +381,27 @@
             this.listBoxFriendsPosts.Size = new System.Drawing.Size(126, 186);
             this.listBoxFriendsPosts.TabIndex = 33;
             // 
+            // openAboutMeButton
+            // 
+            this.openAboutMeButton.BackColor = System.Drawing.Color.DimGray;
+            this.openAboutMeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openAboutMeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openAboutMeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.openAboutMeButton.Location = new System.Drawing.Point(33, 321);
+            this.openAboutMeButton.Name = "openAboutMeButton";
+            this.openAboutMeButton.Size = new System.Drawing.Size(146, 34);
+            this.openAboutMeButton.TabIndex = 35;
+            this.openAboutMeButton.Text = "About ME";
+            this.openAboutMeButton.UseVisualStyleBackColor = false;
+            this.openAboutMeButton.Click += new System.EventHandler(this.openAboutMeButton_Click);
+            // 
             // MainFeedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(917, 481);
+            this.Controls.Add(this.openAboutMeButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBoxFriendsPosts);
             this.Controls.Add(this.label6);
@@ -456,5 +472,6 @@
         private System.Windows.Forms.ListBox listBoxGroups;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBoxFriendsPosts;
+        private System.Windows.Forms.Button openAboutMeButton;
     }
 }

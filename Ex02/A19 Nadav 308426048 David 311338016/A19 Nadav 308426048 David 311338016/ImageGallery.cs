@@ -19,7 +19,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         public ImageGallery(FacebookAppManager i_FacebookAppMananger, Form i_OpenedBy)
         {
-            r_FacebookAppMananger = i_FacebookAppMananger;
+            r_FacebookAppMananger = FacebookAppManager.GetFacebookManagerInstance();
             m_OpenedBy = i_OpenedBy;
             InitializeComponent();
             fetchAlbumList();

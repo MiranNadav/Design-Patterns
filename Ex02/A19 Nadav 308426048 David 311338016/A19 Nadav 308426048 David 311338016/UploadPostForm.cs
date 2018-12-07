@@ -15,9 +15,9 @@ namespace A19_Nadav_308426048_David_311338016
         private readonly FacebookAppManager r_FacebookManager;
         private Form m_OpenedBy;
 
-        public UploadPostForm(FacebookAppManager i_FacebookManager, Form i_OpenedBy)
+        public UploadPostForm(Form i_OpenedBy)
         {
-            r_FacebookManager = i_FacebookManager;
+            r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
             m_OpenedBy = i_OpenedBy;
             InitializeComponent();
         }

@@ -9,7 +9,20 @@ namespace A19_Nadav_308426048_David_311338016
 {
     public class FacebookAppManager
     {
-        public User CurrentUser { get; set; }
+        private User m_CurrentUser;
+
+        public User CurrentUser
+        {
+            get
+            {
+                return m_CurrentUser;
+            }
+            set
+            {
+                m_CurrentUser = value;
+                setAll();
+            }
+        }
 
         public FacebookObjectCollection<User> Friends { get; set; }
 
@@ -25,11 +38,27 @@ namespace A19_Nadav_308426048_David_311338016
 
         public FacebookObjectCollection<Post> FriendsPosts { get; set; }
 
-        public FacebookAppManager(User i_CurrentUser)
+        private static FacebookAppManager s_FacebookAppManagerInstance = null;
+
+        private static readonly object sr_InstanceLockContext = new object();
+
+        public static FacebookAppManager GetFacebookManagerInstance()
         {
-            CurrentUser = i_CurrentUser;
-            setAll();
+            if (s_FacebookAppManagerInstance == null)
+            {
+                lock (sr_InstanceLockContext)
+                {
+                    if (s_FacebookAppManagerInstance == null)
+                    {
+                        s_FacebookAppManagerInstance = new FacebookAppManager();
+                    }
+                }
+            }
+
+            return s_FacebookAppManagerInstance;
         }
+
+        private FacebookAppManager(){}
 
         private void setAll()
         {

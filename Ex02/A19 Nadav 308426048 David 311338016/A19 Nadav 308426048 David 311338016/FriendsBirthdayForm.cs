@@ -18,10 +18,10 @@ namespace A19_Nadav_308426048_David_311338016
         private readonly FacebookAppManager r_FacebookManager;
         private Form m_OpenedBy;
 
-        public FriendsBirthdayForm(FacebookAppManager i_FacebookManager, Form i_OpenedMe)
+        public FriendsBirthdayForm(Form i_OpenedMe)
         {
             m_OpenedBy = i_OpenedMe;
-            r_FacebookManager = i_FacebookManager;
+            r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
             InitializeComponent();
         }
 

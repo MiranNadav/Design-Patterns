@@ -33,7 +33,8 @@ namespace A19_Nadav_308426048_David_311338016
         {
             m_TryingToLogout = false;
             m_LoggedInResult = i_Result;
-            r_FacebookManager = new FacebookAppManager(m_LoggedInResult.LoggedInUser);
+            r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
+            r_FacebookManager.CurrentUser = i_Result.LoggedInUser;
             m_AppSettings = i_AppSettings;
             InitializeComponent();
             loadSettingsFromAppSettingsFile();
@@ -234,7 +235,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initalizePostForm()
         {
-            UploadPostForm uploadPostForm = new UploadPostForm(r_FacebookManager, this);
+            UploadPostForm uploadPostForm = new UploadPostForm(this);
             this.Hide();
             uploadPostForm.Show();
         }
@@ -300,7 +301,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initializeFriendsBirthdayForm()
         {
-            FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm(r_FacebookManager, this);
+            FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm(this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
@@ -312,7 +313,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initalizeSearchForm()
         {
-            SearchForm friendsBirthdayForm = new SearchForm(r_FacebookManager, this);
+            SearchForm friendsBirthdayForm = new SearchForm(this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
@@ -336,6 +337,12 @@ namespace A19_Nadav_308426048_David_311338016
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
             }
+        }
+
+        private void openAboutMeButton_Click(object sender, EventArgs e)
+        {
+            AboutMe aboutMe= new AboutMe(this);
+            this.Hide();
         }
     }
 }

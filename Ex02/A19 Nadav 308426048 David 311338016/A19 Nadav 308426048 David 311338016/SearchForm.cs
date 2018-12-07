@@ -10,9 +10,9 @@ namespace A19_Nadav_308426048_David_311338016
         private Form m_OpenedBy;
         private string m_TextToFind;
 
-        public SearchForm(FacebookAppManager i_FacebookManager, Form i_OpenedBy)
+        public SearchForm(Form i_OpenedBy)
         {
-            r_FacebookManager = i_FacebookManager;
+            r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
             m_OpenedBy = i_OpenedBy;
             InitializeComponent();
         }
