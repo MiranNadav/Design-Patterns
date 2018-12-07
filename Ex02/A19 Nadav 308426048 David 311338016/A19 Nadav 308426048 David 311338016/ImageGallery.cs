@@ -17,7 +17,7 @@ namespace A19_Nadav_308426048_David_311338016
         private Album m_CurrentAlbum;
         private Form m_OpenedBy;
 
-        public ImageGallery(FacebookAppManager i_FacebookAppMananger, Form i_OpenedBy)
+        public ImageGallery(Form i_OpenedBy)
         {
             r_FacebookAppMananger = FacebookAppManager.GetFacebookManagerInstance();
             m_OpenedBy = i_OpenedBy;

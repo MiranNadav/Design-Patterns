@@ -21,12 +21,12 @@ namespace A19_Nadav_308426048_David_311338016
         {
             r_FacebookAppManager = FacebookAppManager.GetFacebookManagerInstance();
             r_User = r_FacebookAppManager.CurrentUser;
-            
-           //userBindingSource.DataSource = r_User;
+
 
             InitializeComponent();
 
-            listBoxMyName.Invoke(new Action(() => userBindingSource.DataSource = r_User));
+            userBindingSource.DataSource = r_User;
+            //listBoxMyName.Invoke(new Action(() => userBindingSource.DataSource = r_User));
             m_OpenedBy = i_OpenedBy;
         }
 

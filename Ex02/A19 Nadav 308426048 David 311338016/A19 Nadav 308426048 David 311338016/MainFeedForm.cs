@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Facebook;
@@ -60,6 +61,87 @@ namespace A19_Nadav_308426048_David_311338016
             fetchAllFriendsPosts();
         }
 
+        private void fetchBasicDetails()
+        {
+            fetchProfilePicture();
+            fetchWelcomeMessage();
+        }
+
+        private void fetchProfilePicture()
+        {
+            ProfilePictureBox.Invoke(new Action(() => ProfilePictureBox.LoadAsync(r_FacebookManager.CurrentUser.PictureNormalURL)));
+            //ProfilePictureBox.LoadAsync(r_FacebookManager.CurrentUser.PictureNormalURL);
+        }
+
+        private void fetchWelcomeMessage()
+        {
+            setDayStatus();
+            WelcomeLabel.Invoke(new Action(() => WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", r_FacebookManager.CurrentUser.FirstName, r_FacebookManager.CurrentUser.LastName, m_CurrentDayStatus)));
+            //WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", r_FacebookManager.CurrentUser.FirstName, r_FacebookManager.CurrentUser.LastName, m_CurrentDayStatus);
+        }
+
+        private void setDayStatus()
+        {
+            int Hour = DateTime.Now.Hour;
+            if (Hour >= 6 && Hour < 12)
+            {
+                m_CurrentDayStatus = DayStatus.morning;
+            }
+            else if (Hour >= 12 && Hour < 18)
+            {
+                m_CurrentDayStatus = DayStatus.afternoon;
+            }
+            else
+            {
+                m_CurrentDayStatus = DayStatus.evening;
+            }
+        }
+
+        private void fetchFriendsButton_Click(object sender, EventArgs e)
+        {
+            fetchAllFriends();
+        }
+
+        private void fetchAllFriends()
+        {
+            foreach (User friend in r_FacebookManager.Friends)
+            {
+                listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName)));
+                //listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName);
+            }
+        }
+
+        private void fetchAlbumPictures()
+        {
+            foreach (Album album in r_FacebookManager.Albums)
+            {
+                foreach (Photo photo in album.Photos)
+                {
+                    PictureBox picbox = new PictureBox();
+                    //TODO: check why this throws exception
+                    //picbox.Invoke(new Action(() => picbox.LoadAsync(photo.PictureNormalURL)));
+                    //picbox.LoadAsync(photo.PictureNormalURL);
+                }
+            }
+        }
+
+        private void fetchPosts_Click(object sender, EventArgs e)
+        {
+            fetchAllPosts();
+        }
+
+        private void fetchAllPosts()
+        {
+            foreach (Post post in r_FacebookManager.Posts)
+            {
+                if (post.Message != null)
+                {
+                    listBoxBestPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.Message)));
+                    //listBoxPosts.Items.Add(post.Message);
+                }
+            }
+        }
+
         private void fetchAllEvents()
         {
             if (r_FacebookManager.Events != null)
@@ -68,17 +150,27 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     if (fbEvent.Name != null)
                     {
-                        listBoxEvents.Items.Add(fbEvent.Name);
+                        listBoxEvents.Invoke(new Action(() => listBoxEvents.Items.Add(fbEvent.Name)));
+                        //listBoxEvents.Items.Add(fbEvent.Name);
                     }
                 }
             }
         }
 
-        private void fetchAllFriendsPosts()
+        private void myLikesButton_Click(object sender, EventArgs e)
         {
-            foreach (Post post in r_FacebookManager.FriendsPosts)
+            fetchAllLikes();
+        }
+
+        private void fetchAllLikes()
+        {
+            if (r_FacebookManager.LikedPages != null)
             {
-                listBoxFriendsPosts.Items.Add(post.Message);
+                foreach (Page page in r_FacebookManager.LikedPages)
+                {
+                    listBoxLikes.Invoke(new Action(() => listBoxLikes.Items.Add(page.Name)));
+                    //listBoxLikes.Items.Add(page.Name);
+                }
             }
         }
 
@@ -90,33 +182,27 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     if (group.Name != null)
                     {
-                        listBoxGroups.Items.Add(group.Name);
+                        listBoxGroups.Invoke(new Action(() => listBoxGroups.Items.Add(group.Name)));
+                        //listBoxGroups.Items.Add(group.Name);
                     }
                 }
+            }
+        }
+
+        private void fetchAllFriendsPosts()
+        {
+            foreach (Post post in r_FacebookManager.FriendsPosts)
+            {
+                listBoxFriendsPosts.Invoke(new Action(() => listBoxFriendsPosts.Items.Add(post.Message)));
+                //listBoxFriendsPosts.Items.Add(post.Message);
             }
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            populateDetails();
-        }
-
-        private void fetchBasicDetails()
-        {
-            fetchProfilePicture();
-            fetchWelcomeMessage();
-        }
-
-        private void fetchWelcomeMessage()
-        {
-            setDayStatus();
-            WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", r_FacebookManager.CurrentUser.FirstName, r_FacebookManager.CurrentUser.LastName, m_CurrentDayStatus);
-        }
-
-        private void fetchProfilePicture()
-        {
-            ProfilePictureBox.LoadAsync(r_FacebookManager.CurrentUser.PictureNormalURL);
+            new Thread(populateDetails).Start();
+            //populateDetails();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -157,39 +243,6 @@ namespace A19_Nadav_308426048_David_311338016
             return DialogResult;
         }
 
-        private void setDayStatus()
-        {
-            int Hour = DateTime.Now.Hour;
-            if (Hour >= 6 && Hour < 12)
-            {
-                m_CurrentDayStatus = DayStatus.morning;
-            }
-            else if (Hour >= 12 && Hour < 18)
-            {
-                m_CurrentDayStatus = DayStatus.afternoon;
-            }
-            else
-            {
-                m_CurrentDayStatus = DayStatus.evening;
-            }
-        }
-
-        private void fetchPosts_Click(object sender, EventArgs e)
-        {
-            fetchAllPosts();
-        }
-
-        private void fetchAllPosts()
-        {
-            foreach (Post post in r_FacebookManager.Posts)
-            {
-                if (post.Message != null)
-                {
-                    listBoxPosts.Items.Add(post.Message);
-                }
-            }
-        }
-
         private void fetchMostLikedPosts()
         {
             if (!string.IsNullOrEmpty(textBoxLikesLimit.Text)
@@ -211,20 +264,8 @@ namespace A19_Nadav_308426048_David_311338016
             listBoxSameMonthFriends.Items.Clear();
             foreach (User friend in r_FacebookManager.GetSameMonthFriends(pickMonthComboBox.Text))
             {
-                listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName + " - " + friend.Birthday);
-            }
-        }
-
-        private void fetchFriendsButton_Click(object sender, EventArgs e)
-        {
-            fetchAllFriends();
-        }
-
-        private void fetchAllFriends()
-        {
-            foreach (User friend in r_FacebookManager.Friends)
-            {
-                listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName);
+                listBoxSameMonthFriends.Invoke(new Action(() => listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName)));
+                //listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName + " - " + friend.Birthday);
             }
         }
 
@@ -240,21 +281,6 @@ namespace A19_Nadav_308426048_David_311338016
             uploadPostForm.Show();
         }
 
-        private void myLikesButton_Click(object sender, EventArgs e)
-        {
-            fetchAllLikes();
-        }
-
-        private void fetchAllLikes()
-        {
-            if (r_FacebookManager.LikedPages != null)
-            {
-                foreach (Page page in r_FacebookManager.LikedPages)
-                {
-                    listBoxLikes.Items.Add(page.Name);
-                }
-            }
-        }
 
         private void fetchBestPostsButton_Click(object sender, EventArgs e)
         {
@@ -277,17 +303,6 @@ namespace A19_Nadav_308426048_David_311338016
             MessageBox.Show("Total Likes:\n" + totalLikes, "Your Likes");
         }
 
-        private void fetchAlbumPictures()
-        {
-            foreach (Album album in r_FacebookManager.Albums)
-            {
-                foreach (Photo photo in album.Photos)
-                {
-                    PictureBox picbox = new PictureBox();
-                    picbox.LoadAsync(photo.PictureNormalURL);
-                }
-            }
-        }
 
         private void fetchAllPhotosButton_Click(object sender, EventArgs e)
         {
@@ -320,7 +335,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void openGalleryButton_Click(object sender, EventArgs e)
         {
-            ImageGallery imageGallery = new ImageGallery(r_FacebookManager, this);
+            ImageGallery imageGallery = new ImageGallery(this);
             this.Hide();
             imageGallery.ShowDialog();
         }
@@ -341,8 +356,9 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void openAboutMeButton_Click(object sender, EventArgs e)
         {
-            AboutMe aboutMe= new AboutMe(this);
+            AboutMe aboutMe = new AboutMe(this);
             this.Hide();
+            aboutMe.ShowDialog();
         }
     }
 }
