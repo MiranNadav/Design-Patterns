@@ -131,5 +131,10 @@ namespace A19_Nadav_308426048_David_311338016
             this.Hide();
             m_OpenedBy.Show();
         }
+
+        private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            m_OpenedBy.Show();
+        }
     }
 }

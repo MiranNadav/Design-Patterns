@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class AboutMe
+    partial class AboutMeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -610,6 +610,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "AboutMe";
             this.Text = "PagesDataBinding";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AboutMe_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();

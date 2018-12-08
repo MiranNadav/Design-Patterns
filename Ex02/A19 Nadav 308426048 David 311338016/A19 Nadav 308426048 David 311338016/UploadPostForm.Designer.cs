@@ -85,6 +85,7 @@
             this.Controls.Add(this.textBoxPostDetails);
             this.Name = "UploadPostForm";
             this.Text = "Upload Post";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UploadPostForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

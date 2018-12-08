@@ -12,13 +12,13 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class ImageGallery : Form
+    public partial class ImageGalleryForm : Form
     {
         private readonly FacebookAppManager r_FacebookAppMananger;
         private Album m_CurrentAlbum;
         private Form m_OpenedBy;
 
-        public ImageGallery(Form i_OpenedBy)
+        public ImageGalleryForm(Form i_OpenedBy)
         {
             r_FacebookAppMananger = FacebookAppManager.GetFacebookManagerInstance();
             m_OpenedBy = i_OpenedBy;
@@ -28,6 +28,7 @@ namespace A19_Nadav_308426048_David_311338016
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
+
             new Thread(fetchAlbumList).Start();
         }
 
@@ -92,6 +93,11 @@ namespace A19_Nadav_308426048_David_311338016
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
+            m_OpenedBy.Show();
+        }
+
+        private void ImageGallery_FormClosing(object sender, FormClosingEventArgs e)
+        {
             m_OpenedBy.Show();
         }
     }

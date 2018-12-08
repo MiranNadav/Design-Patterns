@@ -317,7 +317,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initializeFriendsBirthdayForm()
         {
-            FriendsBirthdayForm friendsBirthdayForm = new FriendsBirthdayForm(this);
+            FriendsBirthdayForm friendsBirthdayForm = FormFactory.GetFreindsBirthdayForm(this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
@@ -329,14 +329,14 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initalizeSearchForm()
         {
-            SearchForm friendsBirthdayForm = new SearchForm(this);
+            SearchForm friendsBirthdayForm = FormFactory.GetSearchForm(this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
 
         private void openGalleryButton_Click(object sender, EventArgs e)
         {
-            ImageGallery imageGallery = new ImageGallery(this);
+            ImageGalleryForm imageGallery = FormFactory.GetImageGalleryForm(this);
             this.Hide();
             imageGallery.ShowDialog();
         }
@@ -357,7 +357,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void openAboutMeButton_Click(object sender, EventArgs e)
         {
-            AboutMe aboutMe = new AboutMe(this);
+            AboutMeForm aboutMe = FormFactory.GetAboutMeForm(this);
             this.Hide();
             aboutMe.ShowDialog();
         }

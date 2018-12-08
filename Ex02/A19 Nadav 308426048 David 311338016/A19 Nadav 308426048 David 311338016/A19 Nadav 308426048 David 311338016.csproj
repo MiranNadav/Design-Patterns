@@ -59,17 +59,18 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="AppStartSequence.cs" />
     <Compile Include="FacebookAppManager.cs" />
+    <Compile Include="FormFactory.cs" />
     <Compile Include="FriendsBirthdayForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FriendsBirthdayForm.Designer.cs">
       <DependentUpon>FriendsBirthdayForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageGallery.cs">
+    <Compile Include="ImageGalleryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageGallery.Designer.cs">
-      <DependentUpon>ImageGallery.cs</DependentUpon>
+    <Compile Include="ImageGalleryForm.Designer.cs">
+      <DependentUpon>ImageGalleryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs" />
     <Compile Include="LoginForm.cs">
@@ -84,11 +85,11 @@
     <Compile Include="MainFeedForm.Designer.cs">
       <DependentUpon>MainFeedForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AboutMe.cs">
+    <Compile Include="AboutMeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutMe.Designer.cs">
-      <DependentUpon>AboutMe.cs</DependentUpon>
+    <Compile Include="AboutMeForm.Designer.cs">
+      <DependentUpon>AboutMeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,8 +110,8 @@
     <EmbeddedResource Include="FriendsBirthdayForm.resx">
       <DependentUpon>FriendsBirthdayForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageGallery.resx">
-      <DependentUpon>ImageGallery.cs</DependentUpon>
+    <EmbeddedResource Include="ImageGalleryForm.resx">
+      <DependentUpon>ImageGalleryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -118,8 +119,8 @@
     <EmbeddedResource Include="MainFeedForm.resx">
       <DependentUpon>MainFeedForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AboutMe.resx">
-      <DependentUpon>AboutMe.cs</DependentUpon>
+    <EmbeddedResource Include="AboutMeForm.resx">
+      <DependentUpon>AboutMeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

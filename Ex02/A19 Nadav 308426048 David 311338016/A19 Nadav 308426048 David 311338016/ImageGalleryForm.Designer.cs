@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class ImageGallery
+    partial class ImageGalleryForm
     {
         /// <summary>
         /// Required designer variable.
@@ -75,6 +75,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ImageGallery";
             this.Text = "ImageGallery";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ImageGallery_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
