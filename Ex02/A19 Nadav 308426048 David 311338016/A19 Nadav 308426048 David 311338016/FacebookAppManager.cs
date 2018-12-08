@@ -83,11 +83,6 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        private void showUnableToFetchMessage()
-        {
-            MessageBoxHandler.ShowUnableToFetchMessageBox();
-        }
-
         private void setAlbums()
         {
             try
@@ -223,6 +218,11 @@ namespace A19_Nadav_308426048_David_311338016
             Random random = new Random();
             int friendIndex = random.Next(0, amountOfFriends);
             return Friends[friendIndex];
+        }
+
+        private void showUnableToFetchMessage()
+        {
+            MessageBoxHandler.ShowUnableToFetchMessageBox();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
@@ -22,16 +23,31 @@ namespace A19_Nadav_308426048_David_311338016
             r_FacebookAppMananger = FacebookAppManager.GetFacebookManagerInstance();
             m_OpenedBy = i_OpenedBy;
             InitializeComponent();
-            fetchAlbumList();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            new Thread(fetchAlbumList).Start();
         }
 
         private void fetchAlbumList()
         {
             foreach (Album album in r_FacebookAppMananger.Albums)
             {
-                albumsListComboBox.Items.Add(album.Name);
+                albumsListComboBox.Invoke(new Action(() => albumsListComboBox.Items.Add(album.Name)));
+                //albumsListComboBox.Items.Add(album.Name);
             }
         }
+
+        private void albumsListComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedAlbumIndex = albumsListComboBox.SelectedIndex;
+            m_CurrentAlbum = r_FacebookAppMananger.Albums[selectedAlbumIndex];
+            cleanAllPictures();
+            populateImages();
+        }
+
 
         private void populateImages()
         {
@@ -59,14 +75,6 @@ namespace A19_Nadav_308426048_David_311338016
                 pb.Location = location;
                 Controls.Add(pb);
             }
-        }
-
-        private void albumsListComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int selectedAlbumIndex = albumsListComboBox.SelectedIndex;
-            m_CurrentAlbum = r_FacebookAppMananger.Albums[selectedAlbumIndex];
-            cleanAllPictures();
-            populateImages();
         }
 
         private void cleanAllPictures()

@@ -48,12 +48,19 @@ namespace A19_Nadav_308426048_David_311338016
             this.Size = m_AppSettings.LastWindowSize;
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            new Thread(populateDetails).Start();
+            // populateDetails();
+        }
+
         private void populateDetails()
         {
             fetchBasicDetails();
             fetchAllFriends();
             fetchAllLikes();
-            fetchAlbumPictures();
+            //fetchAlbumPictures(); TODO: DELETE (?)
             fetchAllPosts();
             fetchAllEvents();
             fetchAllLikes();
@@ -111,19 +118,20 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        private void fetchAlbumPictures()
-        {
-            foreach (Album album in r_FacebookManager.Albums)
-            {
-                foreach (Photo photo in album.Photos)
-                {
-                    PictureBox picbox = new PictureBox();
-                    //TODO: check why this throws exception
-                    //picbox.Invoke(new Action(() => picbox.LoadAsync(photo.PictureNormalURL)));
-                    //picbox.LoadAsync(photo.PictureNormalURL);
-                }
-            }
-        }
+        //TODO: should this be deleted? I dont think we use it any more.
+        //private void fetchAlbumPictures()
+        //{
+        //    foreach (Album album in r_FacebookManager.Albums)
+        //    {
+        //        foreach (Photo photo in album.Photos)
+        //        {
+        //            PictureBox picbox = new PictureBox();
+        //            //TODO: check why this throws exception
+        //            //picbox.Invoke(new Action(() => picbox.LoadAsync(photo.PictureNormalURL)));
+        //            //picbox.LoadAsync(photo.PictureNormalURL);
+        //        }
+        //    }
+        //}
 
         private void fetchPosts_Click(object sender, EventArgs e)
         {
@@ -196,13 +204,6 @@ namespace A19_Nadav_308426048_David_311338016
                 listBoxFriendsPosts.Invoke(new Action(() => listBoxFriendsPosts.Items.Add(post.Message)));
                 //listBoxFriendsPosts.Items.Add(post.Message);
             }
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-            new Thread(populateDetails).Start();
-            //populateDetails();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -303,11 +304,11 @@ namespace A19_Nadav_308426048_David_311338016
             MessageBox.Show("Total Likes:\n" + totalLikes, "Your Likes");
         }
 
-
-        private void fetchAllPhotosButton_Click(object sender, EventArgs e)
-        {
-            fetchAlbumPictures();
-        }
+        //TODO: DELETE
+        //private void fetchAllPhotosButton_Click(object sender, EventArgs e)
+        //{
+        //    fetchAlbumPictures();
+        //}
 
         private void openBirthdayGameButton_Click(object sender, EventArgs e)
         {

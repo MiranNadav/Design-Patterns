@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,18 +22,20 @@ namespace A19_Nadav_308426048_David_311338016
         {
             r_FacebookAppManager = FacebookAppManager.GetFacebookManagerInstance();
             r_User = r_FacebookAppManager.CurrentUser;
-
-
             InitializeComponent();
-
             userBindingSource.DataSource = r_User;
-            //listBoxMyName.Invoke(new Action(() => userBindingSource.DataSource = r_User));
             m_OpenedBy = i_OpenedBy;
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        protected override void OnShown(EventArgs e)
         {
+            base.OnShown(e);
+            new Thread(bindDataSourceToUser).Start();
+        }
 
+        private void bindDataSourceToUser()
+        {
+            listBoxMyName.Invoke(new Action(() => userBindingSource.DataSource = r_User));
         }
 
         private void backButton_Click(object sender, EventArgs e)
