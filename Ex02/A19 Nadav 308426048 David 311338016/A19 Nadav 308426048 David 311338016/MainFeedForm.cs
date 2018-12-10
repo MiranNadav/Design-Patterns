@@ -45,7 +45,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             this.StartPosition = FormStartPosition.Manual;
             this.Location = m_AppSettings.LastWindowLocation;
-            this.Size = m_AppSettings.LastWindowSize;
+            this.Size = m_AppSettings.LastWindowSize;   
         }
 
         protected override void OnShown(EventArgs e)
@@ -53,6 +53,11 @@ namespace A19_Nadav_308426048_David_311338016
             base.OnShown(e);
             new Thread(populateDetails).Start();
             // populateDetails();
+        }
+
+        private void MainFeedForm_Shown(object sender, EventArgs e)
+        {
+            new Thread(populateDetails).Start();
         }
 
         private void populateDetails()
@@ -317,7 +322,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initializeFriendsBirthdayForm()
         {
-            FriendsBirthdayForm friendsBirthdayForm = FormFactory.GetFreindsBirthdayForm(this);
+            FriendsBirthdayForm friendsBirthdayForm = FormFactory.GetFriendsBirthdayForm(this);
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
@@ -360,6 +365,11 @@ namespace A19_Nadav_308426048_David_311338016
             AboutMeForm aboutMe = FormFactory.GetAboutMeForm(this);
             this.Hide();
             aboutMe.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Thread(populateDetails).Start();
         }
     }
 }

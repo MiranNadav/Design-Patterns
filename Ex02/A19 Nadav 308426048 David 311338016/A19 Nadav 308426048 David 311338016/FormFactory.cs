@@ -15,12 +15,12 @@ namespace A19_Nadav_308426048_David_311338016
             return new LoginForm();
         }
 
-        public static MainFeedForm GetMAinFeedForm(LoginResult i_LoginResult, AppSettings i_AppSettings)
+        public static MainFeedForm GetMainFeedForm(LoginResult i_LoginResult, AppSettings i_AppSettings)
         {
             return new MainFeedForm(i_LoginResult, i_AppSettings);
         }
 
-        public static FriendsBirthdayForm GetFreindsBirthdayForm(Form i_OpendBy)
+        public static FriendsBirthdayForm GetFriendsBirthdayForm(Form i_OpendBy)
         {
             return new FriendsBirthdayForm(i_OpendBy);
         }

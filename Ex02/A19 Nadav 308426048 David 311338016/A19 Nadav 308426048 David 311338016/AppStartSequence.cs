@@ -21,7 +21,7 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     LoginResult connectionResult = connection.ConnectionResult;
 
-                    Application.Run(FormFactory.GetMAinFeedForm(connectionResult, appSettings));
+                    Application.Run(FormFactory.GetMainFeedForm(connectionResult, appSettings));
                 }
                 else
                 {

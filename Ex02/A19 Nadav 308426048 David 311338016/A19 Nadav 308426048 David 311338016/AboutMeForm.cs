@@ -23,7 +23,6 @@ namespace A19_Nadav_308426048_David_311338016
             r_FacebookAppManager = FacebookAppManager.GetFacebookManagerInstance();
             r_User = r_FacebookAppManager.CurrentUser;
             InitializeComponent();
-            userBindingSource.DataSource = r_User;
             m_OpenedBy = i_OpenedBy;
         }
 
@@ -35,7 +34,14 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void bindDataSourceToUser()
         {
-            listBoxMyName.Invoke(new Action(() => userBindingSource.DataSource = r_User));
+            if (!listBoxMyName.InvokeRequired)
+            {
+                userBindingSource.DataSource = r_User;
+            }
+            else
+            {
+                listBoxMyName.Invoke(new Action(() => userBindingSource.DataSource = r_User));
+            }
         }
 
         private void backButton_Click(object sender, EventArgs e)

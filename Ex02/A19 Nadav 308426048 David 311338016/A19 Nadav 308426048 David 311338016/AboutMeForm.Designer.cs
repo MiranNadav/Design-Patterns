@@ -81,6 +81,7 @@
             this.verfiedCheckBox1 = new System.Windows.Forms.CheckBox();
             this.listBoxMyName = new System.Windows.Forms.ListBox();
             this.backButton = new System.Windows.Forms.Button();
+            this.bindtest = new System.Windows.Forms.MaskedTextBox();
             aboutLabel1 = new System.Windows.Forms.Label();
             birthdayLabel1 = new System.Windows.Forms.Label();
             emailLabel1 = new System.Windows.Forms.Label();
@@ -176,7 +177,7 @@
             // localeLabel1
             // 
             localeLabel1.AutoSize = true;
-            localeLabel1.Location = new System.Drawing.Point(17, 281);
+            localeLabel1.Location = new System.Drawing.Point(237, 65);
             localeLabel1.Name = "localeLabel1";
             localeLabel1.Size = new System.Drawing.Size(42, 13);
             localeLabel1.TabIndex = 63;
@@ -185,7 +186,7 @@
             // middleNameLabel1
             // 
             middleNameLabel1.AutoSize = true;
-            middleNameLabel1.Location = new System.Drawing.Point(17, 307);
+            middleNameLabel1.Location = new System.Drawing.Point(237, 91);
             middleNameLabel1.Name = "middleNameLabel1";
             middleNameLabel1.Size = new System.Drawing.Size(72, 13);
             middleNameLabel1.TabIndex = 65;
@@ -194,7 +195,7 @@
             // nameLabel2
             // 
             nameLabel2.AutoSize = true;
-            nameLabel2.Location = new System.Drawing.Point(17, 333);
+            nameLabel2.Location = new System.Drawing.Point(237, 117);
             nameLabel2.Name = "nameLabel2";
             nameLabel2.Size = new System.Drawing.Size(38, 13);
             nameLabel2.TabIndex = 67;
@@ -203,7 +204,7 @@
             // religionLabel1
             // 
             religionLabel1.AutoSize = true;
-            religionLabel1.Location = new System.Drawing.Point(17, 359);
+            religionLabel1.Location = new System.Drawing.Point(237, 143);
             religionLabel1.Name = "religionLabel1";
             religionLabel1.Size = new System.Drawing.Size(48, 13);
             religionLabel1.TabIndex = 69;
@@ -212,7 +213,7 @@
             // timeZoneLabel1
             // 
             timeZoneLabel1.AutoSize = true;
-            timeZoneLabel1.Location = new System.Drawing.Point(17, 385);
+            timeZoneLabel1.Location = new System.Drawing.Point(237, 169);
             timeZoneLabel1.Name = "timeZoneLabel1";
             timeZoneLabel1.Size = new System.Drawing.Size(61, 13);
             timeZoneLabel1.TabIndex = 71;
@@ -221,7 +222,7 @@
             // userNameLabel1
             // 
             userNameLabel1.AutoSize = true;
-            userNameLabel1.Location = new System.Drawing.Point(17, 411);
+            userNameLabel1.Location = new System.Drawing.Point(237, 195);
             userNameLabel1.Name = "userNameLabel1";
             userNameLabel1.Size = new System.Drawing.Size(63, 13);
             userNameLabel1.TabIndex = 73;
@@ -230,7 +231,7 @@
             // verfiedLabel1
             // 
             verfiedLabel1.AutoSize = true;
-            verfiedLabel1.Location = new System.Drawing.Point(17, 439);
+            verfiedLabel1.Location = new System.Drawing.Point(237, 223);
             verfiedLabel1.Name = "verfiedLabel1";
             verfiedLabel1.Size = new System.Drawing.Size(43, 13);
             verfiedLabel1.TabIndex = 75;
@@ -239,7 +240,7 @@
             // idLabel4
             // 
             idLabel4.AutoSize = true;
-            idLabel4.Location = new System.Drawing.Point(17, 501);
+            idLabel4.Location = new System.Drawing.Point(237, 285);
             idLabel4.Name = "idLabel4";
             idLabel4.Size = new System.Drawing.Size(19, 13);
             idLabel4.TabIndex = 77;
@@ -248,7 +249,7 @@
             // offsetYLabel1
             // 
             offsetYLabel1.AutoSize = true;
-            offsetYLabel1.Location = new System.Drawing.Point(17, 527);
+            offsetYLabel1.Location = new System.Drawing.Point(237, 311);
             offsetYLabel1.Name = "offsetYLabel1";
             offsetYLabel1.Size = new System.Drawing.Size(48, 13);
             offsetYLabel1.TabIndex = 79;
@@ -257,7 +258,7 @@
             // sourceURLLabel1
             // 
             sourceURLLabel1.AutoSize = true;
-            sourceURLLabel1.Location = new System.Drawing.Point(17, 553);
+            sourceURLLabel1.Location = new System.Drawing.Point(237, 337);
             sourceURLLabel1.Name = "sourceURLLabel1";
             sourceURLLabel1.Size = new System.Drawing.Size(69, 13);
             sourceURLLabel1.TabIndex = 81;
@@ -266,7 +267,7 @@
             // checkinsCountLabel1
             // 
             checkinsCountLabel1.AutoSize = true;
-            checkinsCountLabel1.Location = new System.Drawing.Point(17, 613);
+            checkinsCountLabel1.Location = new System.Drawing.Point(237, 397);
             checkinsCountLabel1.Name = "checkinsCountLabel1";
             checkinsCountLabel1.Size = new System.Drawing.Size(85, 13);
             checkinsCountLabel1.TabIndex = 83;
@@ -275,7 +276,7 @@
             // descriptionLabel1
             // 
             descriptionLabel1.AutoSize = true;
-            descriptionLabel1.Location = new System.Drawing.Point(17, 639);
+            descriptionLabel1.Location = new System.Drawing.Point(237, 423);
             descriptionLabel1.Name = "descriptionLabel1";
             descriptionLabel1.Size = new System.Drawing.Size(63, 13);
             descriptionLabel1.TabIndex = 85;
@@ -284,7 +285,7 @@
             // idLabel5
             // 
             idLabel5.AutoSize = true;
-            idLabel5.Location = new System.Drawing.Point(17, 665);
+            idLabel5.Location = new System.Drawing.Point(237, 449);
             idLabel5.Name = "idLabel5";
             idLabel5.Size = new System.Drawing.Size(19, 13);
             idLabel5.TabIndex = 87;
@@ -293,7 +294,7 @@
             // likesCountLabel1
             // 
             likesCountLabel1.AutoSize = true;
-            likesCountLabel1.Location = new System.Drawing.Point(17, 691);
+            likesCountLabel1.Location = new System.Drawing.Point(237, 475);
             likesCountLabel1.Name = "likesCountLabel1";
             likesCountLabel1.Size = new System.Drawing.Size(66, 13);
             likesCountLabel1.TabIndex = 89;
@@ -328,6 +329,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.bindtest);
             this.panel1.Controls.Add(checkinsCountLabel1);
             this.panel1.Controls.Add(this.checkinsCountTextBox1);
             this.panel1.Controls.Add(descriptionLabel1);
@@ -385,7 +387,7 @@
             // checkinsCountTextBox1
             // 
             this.checkinsCountTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Hometown.CheckinsCount", true));
-            this.checkinsCountTextBox1.Location = new System.Drawing.Point(108, 610);
+            this.checkinsCountTextBox1.Location = new System.Drawing.Point(328, 394);
             this.checkinsCountTextBox1.Name = "checkinsCountTextBox1";
             this.checkinsCountTextBox1.Size = new System.Drawing.Size(100, 20);
             this.checkinsCountTextBox1.TabIndex = 84;
@@ -397,7 +399,7 @@
             // descriptionTextBox1
             // 
             this.descriptionTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Hometown.Description", true));
-            this.descriptionTextBox1.Location = new System.Drawing.Point(108, 636);
+            this.descriptionTextBox1.Location = new System.Drawing.Point(328, 420);
             this.descriptionTextBox1.Name = "descriptionTextBox1";
             this.descriptionTextBox1.Size = new System.Drawing.Size(100, 20);
             this.descriptionTextBox1.TabIndex = 86;
@@ -405,7 +407,7 @@
             // idTextBox5
             // 
             this.idTextBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Hometown.Id", true));
-            this.idTextBox5.Location = new System.Drawing.Point(108, 662);
+            this.idTextBox5.Location = new System.Drawing.Point(328, 446);
             this.idTextBox5.Name = "idTextBox5";
             this.idTextBox5.Size = new System.Drawing.Size(100, 20);
             this.idTextBox5.TabIndex = 88;
@@ -413,7 +415,7 @@
             // likesCountTextBox1
             // 
             this.likesCountTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Hometown.LikesCount", true));
-            this.likesCountTextBox1.Location = new System.Drawing.Point(108, 688);
+            this.likesCountTextBox1.Location = new System.Drawing.Point(328, 472);
             this.likesCountTextBox1.Name = "likesCountTextBox1";
             this.likesCountTextBox1.Size = new System.Drawing.Size(100, 20);
             this.likesCountTextBox1.TabIndex = 90;
@@ -445,7 +447,7 @@
             // idTextBox4
             // 
             this.idTextBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Cover.Id", true));
-            this.idTextBox4.Location = new System.Drawing.Point(92, 498);
+            this.idTextBox4.Location = new System.Drawing.Point(312, 282);
             this.idTextBox4.Name = "idTextBox4";
             this.idTextBox4.Size = new System.Drawing.Size(100, 20);
             this.idTextBox4.TabIndex = 78;
@@ -453,7 +455,7 @@
             // offsetYTextBox1
             // 
             this.offsetYTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Cover.OffsetY", true));
-            this.offsetYTextBox1.Location = new System.Drawing.Point(92, 524);
+            this.offsetYTextBox1.Location = new System.Drawing.Point(312, 308);
             this.offsetYTextBox1.Name = "offsetYTextBox1";
             this.offsetYTextBox1.Size = new System.Drawing.Size(100, 20);
             this.offsetYTextBox1.TabIndex = 80;
@@ -461,7 +463,7 @@
             // sourceURLTextBox1
             // 
             this.sourceURLTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Cover.SourceURL", true));
-            this.sourceURLTextBox1.Location = new System.Drawing.Point(92, 550);
+            this.sourceURLTextBox1.Location = new System.Drawing.Point(312, 334);
             this.sourceURLTextBox1.Name = "sourceURLTextBox1";
             this.sourceURLTextBox1.Size = new System.Drawing.Size(100, 20);
             this.sourceURLTextBox1.TabIndex = 82;
@@ -526,7 +528,7 @@
             // localeTextBox1
             // 
             this.localeTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Locale", true));
-            this.localeTextBox1.Location = new System.Drawing.Point(95, 278);
+            this.localeTextBox1.Location = new System.Drawing.Point(315, 62);
             this.localeTextBox1.Name = "localeTextBox1";
             this.localeTextBox1.Size = new System.Drawing.Size(104, 20);
             this.localeTextBox1.TabIndex = 64;
@@ -534,7 +536,7 @@
             // middleNameTextBox1
             // 
             this.middleNameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "MiddleName", true));
-            this.middleNameTextBox1.Location = new System.Drawing.Point(95, 304);
+            this.middleNameTextBox1.Location = new System.Drawing.Point(315, 88);
             this.middleNameTextBox1.Name = "middleNameTextBox1";
             this.middleNameTextBox1.Size = new System.Drawing.Size(104, 20);
             this.middleNameTextBox1.TabIndex = 66;
@@ -542,7 +544,7 @@
             // nameTextBox2
             // 
             this.nameTextBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Name", true));
-            this.nameTextBox2.Location = new System.Drawing.Point(95, 330);
+            this.nameTextBox2.Location = new System.Drawing.Point(315, 114);
             this.nameTextBox2.Name = "nameTextBox2";
             this.nameTextBox2.Size = new System.Drawing.Size(104, 20);
             this.nameTextBox2.TabIndex = 68;
@@ -550,7 +552,7 @@
             // religionTextBox1
             // 
             this.religionTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Religion", true));
-            this.religionTextBox1.Location = new System.Drawing.Point(95, 356);
+            this.religionTextBox1.Location = new System.Drawing.Point(315, 140);
             this.religionTextBox1.Name = "religionTextBox1";
             this.religionTextBox1.Size = new System.Drawing.Size(104, 20);
             this.religionTextBox1.TabIndex = 70;
@@ -558,7 +560,7 @@
             // timeZoneTextBox1
             // 
             this.timeZoneTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "TimeZone", true));
-            this.timeZoneTextBox1.Location = new System.Drawing.Point(95, 382);
+            this.timeZoneTextBox1.Location = new System.Drawing.Point(315, 166);
             this.timeZoneTextBox1.Name = "timeZoneTextBox1";
             this.timeZoneTextBox1.Size = new System.Drawing.Size(104, 20);
             this.timeZoneTextBox1.TabIndex = 72;
@@ -566,7 +568,7 @@
             // userNameTextBox1
             // 
             this.userNameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "UserName", true));
-            this.userNameTextBox1.Location = new System.Drawing.Point(95, 408);
+            this.userNameTextBox1.Location = new System.Drawing.Point(315, 192);
             this.userNameTextBox1.Name = "userNameTextBox1";
             this.userNameTextBox1.Size = new System.Drawing.Size(104, 20);
             this.userNameTextBox1.TabIndex = 74;
@@ -574,7 +576,7 @@
             // verfiedCheckBox1
             // 
             this.verfiedCheckBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.userBindingSource, "Verfied", true));
-            this.verfiedCheckBox1.Location = new System.Drawing.Point(95, 434);
+            this.verfiedCheckBox1.Location = new System.Drawing.Point(315, 218);
             this.verfiedCheckBox1.Name = "verfiedCheckBox1";
             this.verfiedCheckBox1.Size = new System.Drawing.Size(104, 24);
             this.verfiedCheckBox1.TabIndex = 76;
@@ -601,14 +603,21 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // AboutMe
+            // bindtest
+            // 
+            this.bindtest.Location = new System.Drawing.Point(507, 66);
+            this.bindtest.Name = "bindtest";
+            this.bindtest.Size = new System.Drawing.Size(100, 20);
+            this.bindtest.TabIndex = 97;
+            // 
+            // AboutMeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 972);
+            this.ClientSize = new System.Drawing.Size(752, 749);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.panel1);
-            this.Name = "AboutMe";
+            this.Name = "AboutMeForm";
             this.Text = "PagesDataBinding";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AboutMe_FormClosing);
             this.panel1.ResumeLayout(false);
@@ -622,7 +631,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.BindingSource userBindingSource;
         private System.Windows.Forms.ListBox listBoxMyName;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.TextBox checkinsCountTextBox1;
@@ -649,5 +657,7 @@
         private System.Windows.Forms.TextBox timeZoneTextBox1;
         private System.Windows.Forms.TextBox userNameTextBox1;
         private System.Windows.Forms.CheckBox verfiedCheckBox1;
+        private System.Windows.Forms.MaskedTextBox bindtest;
+        public System.Windows.Forms.BindingSource userBindingSource;
     }
 }
