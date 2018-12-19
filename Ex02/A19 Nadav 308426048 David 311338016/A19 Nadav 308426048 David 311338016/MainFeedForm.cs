@@ -35,7 +35,8 @@ namespace A19_Nadav_308426048_David_311338016
             m_TryingToLogout = false;
             m_LoggedInResult = i_Result;
             r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
-            r_FacebookManager.SetActionToInvokeAfterThreadIsFinish(populateDetails);
+            r_FacebookManager.m_ActivateAfterThreadIsFinished += populateDetails;
+            //r_FacebookManager.SetActionToInvokeAfterThreadIsFinish(populateDetails);
             r_FacebookManager.CurrentUser = m_LoggedInResult.LoggedInUser;
             m_AppSettings = i_AppSettings;
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             this.StartPosition = FormStartPosition.Manual;
             this.Location = m_AppSettings.LastWindowLocation;
-            this.Size = m_AppSettings.LastWindowSize;   
+            this.Size = m_AppSettings.LastWindowSize;
         }
 
         protected override void OnShown(EventArgs e)
