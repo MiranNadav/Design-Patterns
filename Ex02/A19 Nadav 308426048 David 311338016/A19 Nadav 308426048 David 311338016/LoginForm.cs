@@ -58,7 +58,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initialMainFeedForm()
         {
-            MainFeedForm mainFeedForm = FormFactory.GetMainFeedForm(m_LoggedinUser, m_AppSettings);
+            MainFeedForm mainFeedForm = ReturnableFormFactory.GetMainFeedForm(m_LoggedinUser, m_AppSettings);
             this.Hide();
             mainFeedForm.ShowDialog();
         }

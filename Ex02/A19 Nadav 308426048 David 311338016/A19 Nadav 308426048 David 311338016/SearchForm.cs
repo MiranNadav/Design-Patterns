@@ -4,16 +4,12 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class SearchForm : Form
+    public partial class SearchForm : ReturnableForm
     {
-        private readonly FacebookAppManager r_FacebookManager;
-        private Form m_OpenedBy;
         private string m_TextToFind;
 
-        public SearchForm(Form i_OpenedBy)
+        public SearchForm(Form i_OpenedBy) : base(i_OpenedBy)
         {
-            r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
-            m_OpenedBy = i_OpenedBy;
             InitializeComponent();
         }
 
@@ -45,7 +41,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (friendsFindingsIncludeCheckBox.Checked)
             {
-                foreach (User user in r_FacebookManager.Friends)
+                foreach (User user in FacebookAppManager.Friends)
                 {
                     foreach (Post post in user.Posts)
                     {
@@ -65,7 +61,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (groupsFindingsIncludeCheckBox.Checked)
             {
-                foreach (Group group in r_FacebookManager.Groups)
+                foreach (Group group in FacebookAppManager.Groups)
                 {
                     foreach (Post post in group.WallPosts)
                     {
@@ -85,7 +81,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (pageFindingsIncludeCheckBox.Checked)
             {
-                foreach (Page page in r_FacebookManager.LikedPages)
+                foreach (Page page in FacebookAppManager.LikedPages)
                 {
                     foreach (Post post in page.WallPosts)
                     {
@@ -105,7 +101,7 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (eventsFindingsIncludeCheckBox.Checked)
             {
-                foreach (Event myEvent in r_FacebookManager.Events)
+                foreach (Event myEvent in FacebookAppManager.Events)
                 {
                     foreach (Post post in myEvent.WallPosts)
                     {
@@ -128,13 +124,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            m_OpenedBy.Show();
+            base.GoBack();
         }
 
         private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            m_OpenedBy.Show();
+            base.CloseForm();
         }
     }
 }

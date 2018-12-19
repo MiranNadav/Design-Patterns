@@ -35,7 +35,8 @@ namespace A19_Nadav_308426048_David_311338016
             m_TryingToLogout = false;
             m_LoggedInResult = i_Result;
             r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
-            r_FacebookManager.CurrentUser = i_Result.LoggedInUser;
+            r_FacebookManager.SetActionToInvokeAfterThreadIsFinish(populateDetails);
+            r_FacebookManager.CurrentUser = m_LoggedInResult.LoggedInUser;
             m_AppSettings = i_AppSettings;
             InitializeComponent();
             loadSettingsFromAppSettingsFile();
@@ -51,13 +52,13 @@ namespace A19_Nadav_308426048_David_311338016
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            new Thread(populateDetails).Start();
+            //new Thread(populateDetails).Start();
             // populateDetails();
         }
 
         private void MainFeedForm_Shown(object sender, EventArgs e)
         {
-            new Thread(populateDetails).Start();
+            //new Thread(populateDetails).Start();
         }
 
         private void populateDetails()
@@ -322,7 +323,8 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initializeFriendsBirthdayForm()
         {
-            FriendsBirthdayForm friendsBirthdayForm = FormFactory.GetFriendsBirthdayForm(this);
+            FormType formType = FormType.FriendsBirthday;
+            FriendsBirthdayForm friendsBirthdayForm = ReturnableFormFactory.GetForm(formType, this) as FriendsBirthdayForm;
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
@@ -334,14 +336,16 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initalizeSearchForm()
         {
-            SearchForm friendsBirthdayForm = FormFactory.GetSearchForm(this);
+            FormType formType = FormType.Search;
+            SearchForm friendsBirthdayForm = ReturnableFormFactory.GetForm(formType, this) as SearchForm;
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
 
         private void openGalleryButton_Click(object sender, EventArgs e)
         {
-            ImageGalleryForm imageGallery = FormFactory.GetImageGalleryForm(this);
+            FormType formType = FormType.ImageGallery;
+            ImageGalleryForm imageGallery = ReturnableFormFactory.GetForm(formType, this) as ImageGalleryForm;
             this.Hide();
             imageGallery.ShowDialog();
         }
@@ -362,14 +366,11 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void openAboutMeButton_Click(object sender, EventArgs e)
         {
-            AboutMeForm aboutMe = FormFactory.GetAboutMeForm(this);
+            FormType formType = FormType.AboutMe;
+            AboutMeForm aboutMe = ReturnableFormFactory.GetForm(formType, this) as AboutMeForm;
             this.Hide();
             aboutMe.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new Thread(populateDetails).Start();
-        }
     }
 }

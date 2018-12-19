@@ -10,15 +10,11 @@ using System.Windows.Forms;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class UploadPostForm : Form
+    public partial class UploadPostForm : ReturnableForm
     {
-        private readonly FacebookAppManager r_FacebookManager;
-        private Form m_OpenedBy;
 
-        public UploadPostForm(Form i_OpenedBy)
+        public UploadPostForm(Form i_OpenedBy) : base(i_OpenedBy)
         {
-            r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
-            m_OpenedBy = i_OpenedBy;
             InitializeComponent();
         }
 
@@ -33,7 +29,7 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 try
                 {
-                    r_FacebookManager.UploadPost(textBoxPostDetails.Text);
+                    FacebookAppManager.UploadPost(textBoxPostDetails.Text);
                 }
                 catch (Exception)
                 {
@@ -48,13 +44,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            m_OpenedBy.Show();
+            base.GoBack();
         }
 
         private void UploadPostForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            m_OpenedBy.Show();
+            base.CloseForm();
         }
     }
 }

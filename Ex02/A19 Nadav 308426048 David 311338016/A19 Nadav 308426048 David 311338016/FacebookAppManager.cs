@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 
@@ -10,6 +11,10 @@ namespace A19_Nadav_308426048_David_311338016
     public class FacebookAppManager
     {
         private User m_CurrentUser;
+
+        //TODO: check how to name deligates and actions
+        private delegate void doAfterThredIsFinishedPointer();
+        private Action m_ActivateAfterThreadIsFinished;
 
         public User CurrentUser
         {
@@ -20,7 +25,15 @@ namespace A19_Nadav_308426048_David_311338016
             set
             {
                 m_CurrentUser = value;
-                setAll();
+                ThreadStart fetchDataFromUserThread = setAll;
+                fetchDataFromUserThread += () =>
+                {
+                    doAfterThredIsFinishedPointer pointerOfFunctionToDoAfter = new doAfterThredIsFinishedPointer(m_ActivateAfterThreadIsFinished);
+                    pointerOfFunctionToDoAfter.Invoke();
+                };
+
+                Thread thread = new Thread(fetchDataFromUserThread) { IsBackground = true };
+                thread.Start();
             }
         }
 
@@ -58,7 +71,13 @@ namespace A19_Nadav_308426048_David_311338016
             return s_FacebookAppManagerInstance;
         }
 
-        private FacebookAppManager(){}
+        //TODO: what is this?
+        private FacebookAppManager() { }
+
+        public void SetActionToInvokeAfterThreadIsFinish(Action i_Action)
+        {
+            m_ActivateAfterThreadIsFinished = i_Action;
+        }
 
         private void setAll()
         {

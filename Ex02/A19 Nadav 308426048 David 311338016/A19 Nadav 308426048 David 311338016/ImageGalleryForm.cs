@@ -12,16 +12,12 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class ImageGalleryForm : Form
+    public partial class ImageGalleryForm : ReturnableForm
     {
-        private readonly FacebookAppManager r_FacebookAppMananger;
         private Album m_CurrentAlbum;
-        private Form m_OpenedBy;
 
-        public ImageGalleryForm(Form i_OpenedBy)
+        public ImageGalleryForm(Form i_OpenedBy) : base(i_OpenedBy)
         {
-            r_FacebookAppMananger = FacebookAppManager.GetFacebookManagerInstance();
-            m_OpenedBy = i_OpenedBy;
             InitializeComponent();
         }
 
@@ -34,7 +30,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchAlbumList()
         {
-            foreach (Album album in r_FacebookAppMananger.Albums)
+            foreach (Album album in FacebookAppManager.Albums)
             {
                 albumsListComboBox.Invoke(new Action(() => albumsListComboBox.Items.Add(album.Name)));
                 //albumsListComboBox.Items.Add(album.Name);
@@ -44,7 +40,7 @@ namespace A19_Nadav_308426048_David_311338016
         private void albumsListComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedAlbumIndex = albumsListComboBox.SelectedIndex;
-            m_CurrentAlbum = r_FacebookAppMananger.Albums[selectedAlbumIndex];
+            m_CurrentAlbum = FacebookAppManager.Albums[selectedAlbumIndex];
             cleanAllPictures();
             populateImages();
         }
@@ -92,13 +88,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            m_OpenedBy.Show();
+            base.GoBack();
         }
 
         private void ImageGallery_FormClosing(object sender, FormClosingEventArgs e)
         {
-            m_OpenedBy.Show();
+            base.CloseForm();
         }
     }
 }
