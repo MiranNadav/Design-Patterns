@@ -13,7 +13,6 @@ namespace A19_Nadav_308426048_David_311338016
         private User m_CurrentUser;
 
         //TODO: check how to name deligates and actions
-        //private delegate void doAfterThredIsFinishedPointer();
         public event Action m_ActivateAfterThreadIsFinished;
 
         public User CurrentUser
@@ -28,7 +27,6 @@ namespace A19_Nadav_308426048_David_311338016
                 ThreadStart fetchDataFromUserThread = setAll;
                 fetchDataFromUserThread += () =>
                 {
-                    //doAfterThredIsFinishedPointer pointerOfFunctionToDoAfter = new doAfterThredIsFinishedPointer(m_ActivateAfterThreadIsFinished);
                     m_ActivateAfterThreadIsFinished.Invoke();
                 };
 
@@ -71,13 +69,7 @@ namespace A19_Nadav_308426048_David_311338016
             return s_FacebookAppManagerInstance;
         }
 
-        //TODO: what is this?
         private FacebookAppManager() { }
-
-        //public void SetActionToInvokeAfterThreadIsFinish(Action i_Action)
-        //{
-        //    m_ActivateAfterThreadIsFinished = i_Action;
-        //}
 
         private void setAll()
         {

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class UploadPostForm : ReturnableForm
+    public partial class UploadPostForm : FadeReturnForm
     {
 
         public UploadPostForm(Form i_OpenedBy) : base(i_OpenedBy)
@@ -40,16 +40,6 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 MessageBoxHandler.ShowUserInformationMessageBox("Please fill in your post status", "Missing Details");
             }
-        }
-
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            base.GoBack();
-        }
-
-        private void UploadPostForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            base.CloseForm();
         }
     }
 }

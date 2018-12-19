@@ -28,19 +28,23 @@ namespace A19_Nadav_308426048_David_311338016
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
         private readonly FacebookAppManager r_FacebookManager;
-        private bool m_TryingToLogout;
+        private bool m_TryingToLogout = false;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
-            m_TryingToLogout = false;
+            InitializeComponent();
+            m_AppSettings = i_AppSettings;
+            loadSettingsFromAppSettingsFile();
             m_LoggedInResult = i_Result;
             r_FacebookManager = FacebookAppManager.GetFacebookManagerInstance();
             r_FacebookManager.m_ActivateAfterThreadIsFinished += populateDetails;
-            //r_FacebookManager.SetActionToInvokeAfterThreadIsFinish(populateDetails);
             r_FacebookManager.CurrentUser = m_LoggedInResult.LoggedInUser;
-            m_AppSettings = i_AppSettings;
-            InitializeComponent();
-            loadSettingsFromAppSettingsFile();
+        }
+
+        //TODO: should we extract more thing to load? (and if we should, is it important?)
+        private void MainFeedForm_Load(object sender, EventArgs e)
+        {
+            toggleButtons(false);
         }
 
         private void loadSettingsFromAppSettingsFile()
@@ -73,6 +77,7 @@ namespace A19_Nadav_308426048_David_311338016
             fetchAllLikes();
             fetchAllGroups();
             fetchAllFriendsPosts();
+            toggleButtons(true);
         }
 
         private void fetchBasicDetails()
@@ -226,7 +231,9 @@ namespace A19_Nadav_308426048_David_311338016
                         saveUserSettings();
                     }
 
-                    Application.Exit();
+                    //TODO: SHOW THIS TO NADA 
+                    //When using application.exit its not working.
+                    Environment.Exit(0);
                 }
                 else
                 {
@@ -373,5 +380,17 @@ namespace A19_Nadav_308426048_David_311338016
             aboutMe.ShowDialog();
         }
 
+
+        //TODO: should we use an enum in this?
+        private void toggleButtons(bool i_ToggleTo)
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is Button)
+                {
+                    control.BeginInvoke(new Action(() => control.Enabled = i_ToggleTo));
+                }
+            }
+        }
     }
 }

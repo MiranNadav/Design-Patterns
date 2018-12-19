@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class AboutMeForm : Form
+    public partial class AboutMeForm : FadeReturnForm
     {
         private readonly FacebookAppManager r_FacebookAppManager;
         private readonly User r_User;
         private Form m_OpenedBy;
 
-        public AboutMeForm(Form i_OpenedBy)
+        public AboutMeForm(Form i_OpenedBy) : base(i_OpenedBy)
         {
             r_FacebookAppManager = FacebookAppManager.GetFacebookManagerInstance();
             r_User = r_FacebookAppManager.CurrentUser;
@@ -42,17 +42,6 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 listBoxMyName.Invoke(new Action(() => userBindingSource.DataSource = r_User));
             }
-        }
-
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            m_OpenedBy.Show();
-        }
-
-        private void AboutMe_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            m_OpenedBy.Show();
         }
     }
 }

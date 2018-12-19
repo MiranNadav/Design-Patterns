@@ -32,60 +32,51 @@
             this.textBoxPostDetails = new System.Windows.Forms.TextBox();
             this.uploadPostTitleLabel = new System.Windows.Forms.Label();
             this.uploadPostButton = new System.Windows.Forms.Button();
-            this.backButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxPostDetails
             // 
-            this.textBoxPostDetails.Location = new System.Drawing.Point(237, 113);
+            this.textBoxPostDetails.Location = new System.Drawing.Point(356, 174);
+            this.textBoxPostDetails.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxPostDetails.Multiline = true;
             this.textBoxPostDetails.Name = "textBoxPostDetails";
             this.textBoxPostDetails.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxPostDetails.Size = new System.Drawing.Size(299, 166);
+            this.textBoxPostDetails.Size = new System.Drawing.Size(446, 253);
             this.textBoxPostDetails.TabIndex = 8;
             // 
             // uploadPostTitleLabel
             // 
             this.uploadPostTitleLabel.AutoSize = true;
             this.uploadPostTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uploadPostTitleLabel.Location = new System.Drawing.Point(215, 49);
+            this.uploadPostTitleLabel.Location = new System.Drawing.Point(322, 75);
+            this.uploadPostTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uploadPostTitleLabel.Name = "uploadPostTitleLabel";
-            this.uploadPostTitleLabel.Size = new System.Drawing.Size(365, 31);
+            this.uploadPostTitleLabel.Size = new System.Drawing.Size(555, 47);
             this.uploadPostTitleLabel.TabIndex = 10;
             this.uploadPostTitleLabel.Text = "Upload a new Facebook post";
             // 
             // uploadPostButton
             // 
-            this.uploadPostButton.Location = new System.Drawing.Point(315, 333);
+            this.uploadPostButton.Location = new System.Drawing.Point(472, 512);
+            this.uploadPostButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uploadPostButton.Name = "uploadPostButton";
-            this.uploadPostButton.Size = new System.Drawing.Size(156, 49);
+            this.uploadPostButton.Size = new System.Drawing.Size(234, 75);
             this.uploadPostButton.TabIndex = 11;
             this.uploadPostButton.Text = "Upload";
             this.uploadPostButton.UseVisualStyleBackColor = true;
             this.uploadPostButton.Click += new System.EventHandler(this.uploadPostButton_Click);
             // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(40, 49);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
-            this.backButton.TabIndex = 31;
-            this.backButton.Text = "<--  Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
             // UploadPostForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.backButton);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.uploadPostButton);
             this.Controls.Add(this.uploadPostTitleLabel);
             this.Controls.Add(this.textBoxPostDetails);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UploadPostForm";
             this.Text = "Upload Post";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UploadPostForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,6 +87,5 @@
         private System.Windows.Forms.TextBox textBoxPostDetails;
         private System.Windows.Forms.Label uploadPostTitleLabel;
         private System.Windows.Forms.Button uploadPostButton;
-        private System.Windows.Forms.Button backButton;
     }
 }

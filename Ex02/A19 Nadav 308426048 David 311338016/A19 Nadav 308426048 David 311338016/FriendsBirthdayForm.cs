@@ -11,11 +11,11 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class FriendsBirthdayForm : ReturnableForm
+    public partial class FriendsBirthdayForm : FadeReturnForm
     {
         public User m_GeneratedFriend { get; set; }
 
-        public FriendsBirthdayForm(Form i_OpenedMe) : base(i_OpenedMe) 
+        public FriendsBirthdayForm(Form i_OpenedMe) : base(i_OpenedMe)
         {
             InitializeComponent();
         }
@@ -57,16 +57,6 @@ namespace A19_Nadav_308426048_David_311338016
         private void checkIfCorrectBirthdayButton_Click(object sender, EventArgs e)
         {
             checkIfBirthdayIsCorrect();
-        }
-
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            base.GoBack();
-        }
-
-        private void FriendsBirthdayForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            base.CloseForm();
         }
     }
 }

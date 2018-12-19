@@ -34,21 +34,22 @@
             this.friendRandomGeneratorButton = new System.Windows.Forms.Button();
             this.birthDatePickTime = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.backButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // FriendNameTextBox
             // 
-            this.FriendNameTextBox.Location = new System.Drawing.Point(12, 77);
+            this.FriendNameTextBox.Location = new System.Drawing.Point(18, 118);
+            this.FriendNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FriendNameTextBox.Name = "FriendNameTextBox";
-            this.FriendNameTextBox.Size = new System.Drawing.Size(254, 20);
+            this.FriendNameTextBox.Size = new System.Drawing.Size(379, 26);
             this.FriendNameTextBox.TabIndex = 27;
             // 
             // checkIfCorrectBirthdayButton
             // 
-            this.checkIfCorrectBirthdayButton.Location = new System.Drawing.Point(12, 149);
+            this.checkIfCorrectBirthdayButton.Location = new System.Drawing.Point(18, 229);
+            this.checkIfCorrectBirthdayButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkIfCorrectBirthdayButton.Name = "checkIfCorrectBirthdayButton";
-            this.checkIfCorrectBirthdayButton.Size = new System.Drawing.Size(254, 23);
+            this.checkIfCorrectBirthdayButton.Size = new System.Drawing.Size(381, 35);
             this.checkIfCorrectBirthdayButton.TabIndex = 26;
             this.checkIfCorrectBirthdayButton.Text = "Check if you are right!";
             this.checkIfCorrectBirthdayButton.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // 
             // friendRandomGeneratorButton
             // 
-            this.friendRandomGeneratorButton.Location = new System.Drawing.Point(12, 48);
+            this.friendRandomGeneratorButton.Location = new System.Drawing.Point(18, 74);
+            this.friendRandomGeneratorButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.friendRandomGeneratorButton.Name = "friendRandomGeneratorButton";
-            this.friendRandomGeneratorButton.Size = new System.Drawing.Size(254, 23);
+            this.friendRandomGeneratorButton.Size = new System.Drawing.Size(381, 35);
             this.friendRandomGeneratorButton.TabIndex = 25;
             this.friendRandomGeneratorButton.Text = "Generate a friend";
             this.friendRandomGeneratorButton.UseVisualStyleBackColor = true;
@@ -66,46 +68,37 @@
             // 
             // birthDatePickTime
             // 
-            this.birthDatePickTime.Location = new System.Drawing.Point(12, 123);
+            this.birthDatePickTime.Location = new System.Drawing.Point(18, 189);
+            this.birthDatePickTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.birthDatePickTime.Name = "birthDatePickTime";
-            this.birthDatePickTime.Size = new System.Drawing.Size(254, 20);
+            this.birthDatePickTime.Size = new System.Drawing.Size(379, 26);
             this.birthDatePickTime.TabIndex = 24;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 104);
+            this.label1.Location = new System.Drawing.Point(18, 160);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 13);
+            this.label1.Size = new System.Drawing.Size(250, 20);
             this.label1.TabIndex = 28;
             this.label1.Text = "Please Enter your friends birthday:";
             // 
-            // backButton
-            // 
-            this.backButton.Location = new System.Drawing.Point(15, 12);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
-            this.backButton.TabIndex = 29;
-            this.backButton.Text = "<--  Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
             // FriendsBirthdayForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 183);
-            this.Controls.Add(this.backButton);
+            this.ClientSize = new System.Drawing.Size(418, 282);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.FriendNameTextBox);
             this.Controls.Add(this.checkIfCorrectBirthdayButton);
             this.Controls.Add(this.friendRandomGeneratorButton);
             this.Controls.Add(this.birthDatePickTime);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FriendsBirthdayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FriendsBirthdayForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FriendsBirthdayForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,6 +111,5 @@
         private System.Windows.Forms.Button friendRandomGeneratorButton;
         private System.Windows.Forms.DateTimePicker birthDatePickTime;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button backButton;
     }
 }

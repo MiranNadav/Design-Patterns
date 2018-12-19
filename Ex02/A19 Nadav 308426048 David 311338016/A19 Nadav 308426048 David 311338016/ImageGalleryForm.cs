@@ -12,7 +12,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class ImageGalleryForm : ReturnableForm
+    public partial class ImageGalleryForm : FadeReturnForm
     {
         private Album m_CurrentAlbum;
 
@@ -84,16 +84,6 @@ namespace A19_Nadav_308426048_David_311338016
                     Controls.RemoveAt(i);
                 }
             }
-        }
-
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            base.GoBack();
-        }
-
-        private void ImageGallery_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            base.CloseForm();
         }
     }
 }

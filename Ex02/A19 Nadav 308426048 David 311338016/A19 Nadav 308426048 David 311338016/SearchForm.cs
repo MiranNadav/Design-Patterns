@@ -4,7 +4,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class SearchForm : ReturnableForm
+    public partial class SearchForm : FadeReturnForm
     {
         private string m_TextToFind;
 
@@ -120,16 +120,6 @@ namespace A19_Nadav_308426048_David_311338016
         private void textToFindTextBox_TextChanged(object sender, EventArgs e)
         {
             m_TextToFind = textToFindTextBox.Text;
-        }
-
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            base.GoBack();
-        }
-
-        private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            base.CloseForm();
         }
     }
 }
