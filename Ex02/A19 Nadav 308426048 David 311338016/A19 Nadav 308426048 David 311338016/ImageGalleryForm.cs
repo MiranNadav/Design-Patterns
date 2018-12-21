@@ -5,8 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
@@ -24,16 +22,14 @@ namespace A19_Nadav_308426048_David_311338016
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-
-            new Thread(fetchAlbumList).Start();
+            fetchAlbumList();
         }
 
         private void fetchAlbumList()
         {
             foreach (Album album in FacebookAppManager.Albums)
             {
-                albumsListComboBox.Invoke(new Action(() => albumsListComboBox.Items.Add(album.Name)));
-                //albumsListComboBox.Items.Add(album.Name);
+                albumsListComboBox.Items.Add(album.Name);
             }
         }
 

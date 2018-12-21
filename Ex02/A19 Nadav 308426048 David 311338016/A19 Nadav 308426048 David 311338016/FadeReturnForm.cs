@@ -12,22 +12,21 @@ namespace A19_Nadav_308426048_David_311338016
 {
     public partial class FadeReturnForm : Form
     {
-        private Form m_OpenedBy;
         public FacebookAppManager FacebookAppManager { get; set; }
+
+        public FadeReturnForm() { }
 
         public FadeReturnForm(Form i_OpenedBy)
         {
             FacebookAppManager = FacebookAppManager.GetFacebookManagerInstance();
-            m_OpenedBy = i_OpenedBy;
             Owner = i_OpenedBy;
             InitializeComponent();
         }
 
         private void goBackToOwner()
         {
-            this.Hide();
-            m_OpenedBy.Show();
-            //Owner.Show();
+            Hide();
+            Owner.Show();
         }
 
         public virtual void CloseForm()
@@ -36,6 +35,11 @@ namespace A19_Nadav_308426048_David_311338016
         }
 
         private void fadeTimer_Tick(object sender, EventArgs e)
+        {
+            doFade();
+        }
+
+        private void doFade()
         {
             if (Opacity > 0.0)
             {

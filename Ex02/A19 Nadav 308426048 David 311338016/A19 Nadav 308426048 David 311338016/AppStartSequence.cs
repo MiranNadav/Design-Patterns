@@ -21,19 +21,19 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     LoginResult connectionResult = connection.ConnectionResult;
 
-                    Application.Run(ReturnableFormFactory.GetMainFeedForm(connectionResult, appSettings));
+                    Application.Run(new MainFeedForm(connectionResult, appSettings));
                 }
                 else
                 {
                     appSettings.DeleteAppSettingsFile();
                     DialogResult okWasPressed;
                     okWasPressed = MessageBox.Show("There was a problem while connecting you with your saved setting. Please login again", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Run(ReturnableFormFactory.GetLoginForm());
+                    Application.Run(new LoginForm());
                 }
             }
             else
             {
-                Application.Run(ReturnableFormFactory.GetLoginForm());
+                Application.Run(new LoginForm());
             }
         }
     }

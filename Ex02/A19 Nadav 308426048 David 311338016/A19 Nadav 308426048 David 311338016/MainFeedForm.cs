@@ -41,7 +41,6 @@ namespace A19_Nadav_308426048_David_311338016
             r_FacebookManager.CurrentUser = m_LoggedInResult.LoggedInUser;
         }
 
-        //TODO: should we extract more thing to load? (and if we should, is it important?)
         private void MainFeedForm_Load(object sender, EventArgs e)
         {
             toggleButtons(false);
@@ -49,21 +48,9 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void loadSettingsFromAppSettingsFile()
         {
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = m_AppSettings.LastWindowLocation;
-            this.Size = m_AppSettings.LastWindowSize;
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-            //new Thread(populateDetails).Start();
-            // populateDetails();
-        }
-
-        private void MainFeedForm_Shown(object sender, EventArgs e)
-        {
-            //new Thread(populateDetails).Start();
+            StartPosition = FormStartPosition.Manual;
+            Location = m_AppSettings.LastWindowLocation;
+            Size = m_AppSettings.LastWindowSize;
         }
 
         private void populateDetails()
@@ -71,7 +58,6 @@ namespace A19_Nadav_308426048_David_311338016
             fetchBasicDetails();
             fetchAllFriends();
             fetchAllLikes();
-            //fetchAlbumPictures(); TODO: DELETE (?)
             fetchAllPosts();
             fetchAllEvents();
             fetchAllLikes();
@@ -89,14 +75,12 @@ namespace A19_Nadav_308426048_David_311338016
         private void fetchProfilePicture()
         {
             ProfilePictureBox.Invoke(new Action(() => ProfilePictureBox.LoadAsync(r_FacebookManager.CurrentUser.PictureNormalURL)));
-            //ProfilePictureBox.LoadAsync(r_FacebookManager.CurrentUser.PictureNormalURL);
         }
 
         private void fetchWelcomeMessage()
         {
             setDayStatus();
             WelcomeLabel.Invoke(new Action(() => WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", r_FacebookManager.CurrentUser.FirstName, r_FacebookManager.CurrentUser.LastName, m_CurrentDayStatus)));
-            //WelcomeLabel.Text = string.Format("Hello {0} {1},\ngood {2}!", r_FacebookManager.CurrentUser.FirstName, r_FacebookManager.CurrentUser.LastName, m_CurrentDayStatus);
         }
 
         private void setDayStatus()
@@ -126,24 +110,8 @@ namespace A19_Nadav_308426048_David_311338016
             foreach (User friend in r_FacebookManager.Friends)
             {
                 listViewFriends.Invoke(new Action(() => listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName)));
-                //listViewFriends.Items.Add(friend.FirstName + " " + friend.LastName);
             }
         }
-
-        //TODO: should this be deleted? I dont think we use it any more.
-        //private void fetchAlbumPictures()
-        //{
-        //    foreach (Album album in r_FacebookManager.Albums)
-        //    {
-        //        foreach (Photo photo in album.Photos)
-        //        {
-        //            PictureBox picbox = new PictureBox();
-        //            //TODO: check why this throws exception
-        //            //picbox.Invoke(new Action(() => picbox.LoadAsync(photo.PictureNormalURL)));
-        //            //picbox.LoadAsync(photo.PictureNormalURL);
-        //        }
-        //    }
-        //}
 
         private void fetchPosts_Click(object sender, EventArgs e)
         {
@@ -157,7 +125,6 @@ namespace A19_Nadav_308426048_David_311338016
                 if (post.Message != null)
                 {
                     listBoxBestPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.Message)));
-                    //listBoxPosts.Items.Add(post.Message);
                 }
             }
         }
@@ -171,7 +138,6 @@ namespace A19_Nadav_308426048_David_311338016
                     if (fbEvent.Name != null)
                     {
                         listBoxEvents.Invoke(new Action(() => listBoxEvents.Items.Add(fbEvent.Name)));
-                        //listBoxEvents.Items.Add(fbEvent.Name);
                     }
                 }
             }
@@ -189,7 +155,6 @@ namespace A19_Nadav_308426048_David_311338016
                 foreach (Page page in r_FacebookManager.LikedPages)
                 {
                     listBoxLikes.Invoke(new Action(() => listBoxLikes.Items.Add(page.Name)));
-                    //listBoxLikes.Items.Add(page.Name);
                 }
             }
         }
@@ -203,7 +168,6 @@ namespace A19_Nadav_308426048_David_311338016
                     if (group.Name != null)
                     {
                         listBoxGroups.Invoke(new Action(() => listBoxGroups.Items.Add(group.Name)));
-                        //listBoxGroups.Items.Add(group.Name);
                     }
                 }
             }
@@ -214,7 +178,6 @@ namespace A19_Nadav_308426048_David_311338016
             foreach (Post post in r_FacebookManager.FriendsPosts)
             {
                 listBoxFriendsPosts.Invoke(new Action(() => listBoxFriendsPosts.Items.Add(post.Message)));
-                //listBoxFriendsPosts.Items.Add(post.Message);
             }
         }
 
@@ -231,8 +194,6 @@ namespace A19_Nadav_308426048_David_311338016
                         saveUserSettings();
                     }
 
-                    //TODO: SHOW THIS TO NADA 
-                    //When using application.exit its not working.
                     Environment.Exit(0);
                 }
                 else
@@ -248,14 +209,6 @@ namespace A19_Nadav_308426048_David_311338016
             m_AppSettings.LastWindowLocation = this.Location;
             m_AppSettings.LastAccessToken = m_LoggedInResult.AccessToken;
             m_AppSettings.SaveAppSettingsToFile();
-        }
-
-        private DialogResult showUserMessageBox(string messageText, string title, MessageBoxButtons buttons, MessageBoxIcon icon)
-        {
-            DialogResult dialogResult;
-            dialogResult = MessageBox.Show(messageText, title, buttons, icon);
-
-            return DialogResult;
         }
 
         private void fetchMostLikedPosts()
@@ -280,7 +233,6 @@ namespace A19_Nadav_308426048_David_311338016
             foreach (User friend in r_FacebookManager.GetSameMonthFriends(pickMonthComboBox.Text))
             {
                 listBoxSameMonthFriends.Invoke(new Action(() => listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName)));
-                //listBoxSameMonthFriends.Items.Add(friend.FirstName + " " + friend.LastName + " - " + friend.Birthday);
             }
         }
 
@@ -292,7 +244,7 @@ namespace A19_Nadav_308426048_David_311338016
         private void initalizePostForm()
         {
             UploadPostForm uploadPostForm = new UploadPostForm(this);
-            this.Hide();
+            Hide();
             uploadPostForm.Show();
         }
 
@@ -315,14 +267,8 @@ namespace A19_Nadav_308426048_David_311338016
         private void showAllLikes()
         {
             int totalLikes = r_FacebookManager.GetAmountOfLikes();
-            MessageBox.Show("Total Likes:\n" + totalLikes, "Your Likes");
+            MessageBoxHandler.ShowUserInformationMessageBox("Total Likes:\n" + totalLikes, "Your Likes");
         }
-
-        //TODO: DELETE
-        //private void fetchAllPhotosButton_Click(object sender, EventArgs e)
-        //{
-        //    fetchAlbumPictures();
-        //}
 
         private void openBirthdayGameButton_Click(object sender, EventArgs e)
         {
@@ -352,13 +298,23 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void openGalleryButton_Click(object sender, EventArgs e)
         {
+            initializeGalleryForm();
+        }
+
+        private void initializeGalleryForm()
+        {
             FormType formType = FormType.ImageGallery;
             ImageGalleryForm imageGallery = ReturnableFormFactory.GetForm(formType, this) as ImageGalleryForm;
-            this.Hide();
+            Hide();
             imageGallery.ShowDialog();
         }
 
         private void LogOutButton_Click(object sender, EventArgs e)
+        {
+            doLogout();
+        }
+
+        private void doLogout()
         {
             DialogResult shouldLogout = MessageBoxHandler.ShowUserMessageBoxWithResponse("Are you sure you want to log out?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (shouldLogout == DialogResult.Yes)
@@ -366,7 +322,7 @@ namespace A19_Nadav_308426048_David_311338016
                 m_AppSettings.DeleteAppSettingsFile();
                 m_AppSettings.RememberUser = false;
                 m_TryingToLogout = true;
-                this.Hide();
+                Hide();
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
             }
@@ -374,14 +330,17 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void openAboutMeButton_Click(object sender, EventArgs e)
         {
+            initializeAboutMeForm();
+        }
+
+        private void initializeAboutMeForm()
+        {
             FormType formType = FormType.AboutMe;
             AboutMeForm aboutMe = ReturnableFormFactory.GetForm(formType, this) as AboutMeForm;
-            this.Hide();
+            Hide();
             aboutMe.ShowDialog();
         }
 
-
-        //TODO: should we use an enum in this?
         private void toggleButtons(bool i_ToggleTo)
         {
             foreach (Control control in Controls)

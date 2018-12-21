@@ -49,7 +49,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.ProfilePictureBox = new System.Windows.Forms.PictureBox();
             this.openGalleryButton = new System.Windows.Forms.Button();
             this.LogOutButton = new System.Windows.Forms.Button();
@@ -68,10 +67,9 @@
             // FacebookLogoPictureBox
             // 
             FacebookLogoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("FacebookLogoPictureBox.Image")));
-            FacebookLogoPictureBox.Location = new System.Drawing.Point(-4, 503);
-            FacebookLogoPictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            FacebookLogoPictureBox.Location = new System.Drawing.Point(-3, 327);
             FacebookLogoPictureBox.Name = "FacebookLogoPictureBox";
-            FacebookLogoPictureBox.Size = new System.Drawing.Size(255, 231);
+            FacebookLogoPictureBox.Size = new System.Drawing.Size(170, 150);
             FacebookLogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             FacebookLogoPictureBox.TabIndex = 15;
             FacebookLogoPictureBox.TabStop = false;
@@ -81,29 +79,25 @@
             this.WelcomeLabel.AutoSize = true;
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.WelcomeLabel.Location = new System.Drawing.Point(18, 14);
-            this.WelcomeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(128, 20);
+            this.WelcomeLabel.Size = new System.Drawing.Size(88, 13);
             this.WelcomeLabel.TabIndex = 1;
             this.WelcomeLabel.Text = "Welcome Text";
             // 
             // listBoxPosts
             // 
             this.listBoxPosts.FormattingEnabled = true;
-            this.listBoxPosts.ItemHeight = 20;
-            this.listBoxPosts.Location = new System.Drawing.Point(338, 83);
-            this.listBoxPosts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxPosts.Location = new System.Drawing.Point(225, 54);
             this.listBoxPosts.Name = "listBoxPosts";
-            this.listBoxPosts.Size = new System.Drawing.Size(392, 184);
+            this.listBoxPosts.Size = new System.Drawing.Size(263, 121);
             this.listBoxPosts.TabIndex = 2;
             // 
             // listViewFriends
             // 
-            this.listViewFriends.Location = new System.Drawing.Point(1188, 83);
-            this.listViewFriends.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewFriends.Location = new System.Drawing.Point(792, 54);
             this.listViewFriends.Name = "listViewFriends";
-            this.listViewFriends.Size = new System.Drawing.Size(152, 281);
+            this.listViewFriends.Size = new System.Drawing.Size(103, 184);
             this.listViewFriends.TabIndex = 4;
             this.listViewFriends.UseCompatibleStateImageBehavior = false;
             // 
@@ -113,10 +107,9 @@
             this.uploadPostButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.uploadPostButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uploadPostButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.uploadPostButton.Location = new System.Drawing.Point(339, 292);
-            this.uploadPostButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uploadPostButton.Location = new System.Drawing.Point(226, 190);
             this.uploadPostButton.Name = "uploadPostButton";
-            this.uploadPostButton.Size = new System.Drawing.Size(393, 77);
+            this.uploadPostButton.Size = new System.Drawing.Size(262, 50);
             this.uploadPostButton.TabIndex = 6;
             this.uploadPostButton.Text = "Upload a Post";
             this.uploadPostButton.UseVisualStyleBackColor = false;
@@ -125,11 +118,9 @@
             // listBoxLikes
             // 
             this.listBoxLikes.FormattingEnabled = true;
-            this.listBoxLikes.ItemHeight = 20;
-            this.listBoxLikes.Location = new System.Drawing.Point(976, 83);
-            this.listBoxLikes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxLikes.Location = new System.Drawing.Point(651, 54);
             this.listBoxLikes.Name = "listBoxLikes";
-            this.listBoxLikes.Size = new System.Drawing.Size(187, 284);
+            this.listBoxLikes.Size = new System.Drawing.Size(126, 186);
             this.listBoxLikes.TabIndex = 8;
             // 
             // fetchBestPostsButton
@@ -138,10 +129,9 @@
             this.fetchBestPostsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fetchBestPostsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fetchBestPostsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.fetchBestPostsButton.Location = new System.Drawing.Point(344, 422);
-            this.fetchBestPostsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.fetchBestPostsButton.Location = new System.Drawing.Point(229, 274);
             this.fetchBestPostsButton.Name = "fetchBestPostsButton";
-            this.fetchBestPostsButton.Size = new System.Drawing.Size(180, 35);
+            this.fetchBestPostsButton.Size = new System.Drawing.Size(120, 23);
             this.fetchBestPostsButton.TabIndex = 10;
             this.fetchBestPostsButton.Text = "Show best Posts";
             this.fetchBestPostsButton.UseVisualStyleBackColor = false;
@@ -150,19 +140,16 @@
             // listBoxBestPosts
             // 
             this.listBoxBestPosts.FormattingEnabled = true;
-            this.listBoxBestPosts.ItemHeight = 20;
-            this.listBoxBestPosts.Location = new System.Drawing.Point(344, 508);
-            this.listBoxBestPosts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxBestPosts.Location = new System.Drawing.Point(229, 330);
             this.listBoxBestPosts.Name = "listBoxBestPosts";
-            this.listBoxBestPosts.Size = new System.Drawing.Size(178, 224);
+            this.listBoxBestPosts.Size = new System.Drawing.Size(120, 147);
             this.listBoxBestPosts.TabIndex = 11;
             // 
             // textBoxLikesLimit
             // 
-            this.textBoxLikesLimit.Location = new System.Drawing.Point(344, 468);
-            this.textBoxLikesLimit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxLikesLimit.Location = new System.Drawing.Point(229, 304);
             this.textBoxLikesLimit.Name = "textBoxLikesLimit";
-            this.textBoxLikesLimit.Size = new System.Drawing.Size(178, 26);
+            this.textBoxLikesLimit.Size = new System.Drawing.Size(120, 20);
             this.textBoxLikesLimit.TabIndex = 12;
             this.textBoxLikesLimit.Text = "Likes limit";
             // 
@@ -172,10 +159,9 @@
             this.fetchSameMonthFriendsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fetchSameMonthFriendsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fetchSameMonthFriendsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.fetchSameMonthFriendsButton.Location = new System.Drawing.Point(532, 422);
-            this.fetchSameMonthFriendsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.fetchSameMonthFriendsButton.Location = new System.Drawing.Point(355, 274);
             this.fetchSameMonthFriendsButton.Name = "fetchSameMonthFriendsButton";
-            this.fetchSameMonthFriendsButton.Size = new System.Drawing.Size(182, 35);
+            this.fetchSameMonthFriendsButton.Size = new System.Drawing.Size(121, 23);
             this.fetchSameMonthFriendsButton.TabIndex = 13;
             this.fetchSameMonthFriendsButton.Text = "Friends by Month";
             this.fetchSameMonthFriendsButton.UseVisualStyleBackColor = false;
@@ -184,11 +170,9 @@
             // listBoxSameMonthFriends
             // 
             this.listBoxSameMonthFriends.FormattingEnabled = true;
-            this.listBoxSameMonthFriends.ItemHeight = 20;
-            this.listBoxSameMonthFriends.Location = new System.Drawing.Point(534, 508);
-            this.listBoxSameMonthFriends.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxSameMonthFriends.Location = new System.Drawing.Point(356, 330);
             this.listBoxSameMonthFriends.Name = "listBoxSameMonthFriends";
-            this.listBoxSameMonthFriends.Size = new System.Drawing.Size(178, 224);
+            this.listBoxSameMonthFriends.Size = new System.Drawing.Size(120, 147);
             this.listBoxSameMonthFriends.TabIndex = 14;
             // 
             // showAllLikesButton
@@ -197,10 +181,9 @@
             this.showAllLikesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showAllLikesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showAllLikesButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.showAllLikesButton.Location = new System.Drawing.Point(50, 415);
-            this.showAllLikesButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.showAllLikesButton.Location = new System.Drawing.Point(33, 270);
             this.showAllLikesButton.Name = "showAllLikesButton";
-            this.showAllLikesButton.Size = new System.Drawing.Size(219, 69);
+            this.showAllLikesButton.Size = new System.Drawing.Size(146, 45);
             this.showAllLikesButton.TabIndex = 16;
             this.showAllLikesButton.Text = "Show total amount of Likes";
             this.showAllLikesButton.UseVisualStyleBackColor = false;
@@ -222,10 +205,9 @@
             "10",
             "11",
             "12"});
-            this.pickMonthComboBox.Location = new System.Drawing.Point(532, 466);
-            this.pickMonthComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pickMonthComboBox.Location = new System.Drawing.Point(355, 303);
             this.pickMonthComboBox.Name = "pickMonthComboBox";
-            this.pickMonthComboBox.Size = new System.Drawing.Size(180, 28);
+            this.pickMonthComboBox.Size = new System.Drawing.Size(121, 21);
             this.pickMonthComboBox.TabIndex = 17;
             // 
             // openBirthdayGameButton
@@ -234,10 +216,9 @@
             this.openBirthdayGameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openBirthdayGameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openBirthdayGameButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.openBirthdayGameButton.Location = new System.Drawing.Point(50, 292);
-            this.openBirthdayGameButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.openBirthdayGameButton.Location = new System.Drawing.Point(33, 190);
             this.openBirthdayGameButton.Name = "openBirthdayGameButton";
-            this.openBirthdayGameButton.Size = new System.Drawing.Size(219, 52);
+            this.openBirthdayGameButton.Size = new System.Drawing.Size(146, 34);
             this.openBirthdayGameButton.TabIndex = 20;
             this.openBirthdayGameButton.Text = "Open Birthday Game";
             this.openBirthdayGameButton.UseVisualStyleBackColor = false;
@@ -249,10 +230,9 @@
             this.searchInAllFacebook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchInAllFacebook.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchInAllFacebook.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.searchInAllFacebook.Location = new System.Drawing.Point(50, 354);
-            this.searchInAllFacebook.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchInAllFacebook.Location = new System.Drawing.Point(33, 230);
             this.searchInAllFacebook.Name = "searchInAllFacebook";
-            this.searchInAllFacebook.Size = new System.Drawing.Size(219, 52);
+            this.searchInAllFacebook.Size = new System.Drawing.Size(146, 34);
             this.searchInAllFacebook.TabIndex = 21;
             this.searchInAllFacebook.Text = "Multi Element Search!";
             this.searchInAllFacebook.UseVisualStyleBackColor = false;
@@ -263,10 +243,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(333, 46);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(222, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 20);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 22;
             this.label1.Text = "My Posts";
             // 
@@ -275,10 +254,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(1182, 46);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(788, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 20);
+            this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 23;
             this.label2.Text = "Friends";
             // 
@@ -287,10 +265,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(972, 46);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(648, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 20);
+            this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 24;
             this.label3.Text = "Liked Pages";
             // 
@@ -299,19 +276,17 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(1184, 422);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(789, 274);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 20);
+            this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 25;
             this.label4.Text = "My Pics";
             // 
             // ProfilePictureBox
             // 
-            this.ProfilePictureBox.Location = new System.Drawing.Point(68, 123);
-            this.ProfilePictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ProfilePictureBox.Location = new System.Drawing.Point(45, 80);
             this.ProfilePictureBox.Name = "ProfilePictureBox";
-            this.ProfilePictureBox.Size = new System.Drawing.Size(168, 146);
+            this.ProfilePictureBox.Size = new System.Drawing.Size(112, 95);
             this.ProfilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ProfilePictureBox.TabIndex = 0;
             this.ProfilePictureBox.TabStop = false;
@@ -324,10 +299,9 @@
             this.openGalleryButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.openGalleryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openGalleryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openGalleryButton.Location = new System.Drawing.Point(1188, 448);
-            this.openGalleryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.openGalleryButton.Location = new System.Drawing.Point(792, 291);
             this.openGalleryButton.Name = "openGalleryButton";
-            this.openGalleryButton.Size = new System.Drawing.Size(144, 106);
+            this.openGalleryButton.Size = new System.Drawing.Size(96, 69);
             this.openGalleryButton.TabIndex = 26;
             this.openGalleryButton.Text = "Open Gallery";
             this.openGalleryButton.UseVisualStyleBackColor = false;
@@ -341,10 +315,9 @@
             this.LogOutButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogOutButton.Location = new System.Drawing.Point(81, 69);
-            this.LogOutButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LogOutButton.Location = new System.Drawing.Point(54, 45);
             this.LogOutButton.Name = "LogOutButton";
-            this.LogOutButton.Size = new System.Drawing.Size(142, 35);
+            this.LogOutButton.Size = new System.Drawing.Size(95, 23);
             this.LogOutButton.TabIndex = 27;
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = false;
@@ -353,11 +326,9 @@
             // listBoxEvents
             // 
             this.listBoxEvents.FormattingEnabled = true;
-            this.listBoxEvents.ItemHeight = 20;
-            this.listBoxEvents.Location = new System.Drawing.Point(766, 83);
-            this.listBoxEvents.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxEvents.Location = new System.Drawing.Point(511, 54);
             this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(187, 284);
+            this.listBoxEvents.Size = new System.Drawing.Size(126, 186);
             this.listBoxEvents.TabIndex = 29;
             // 
             // label5
@@ -365,10 +336,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(764, 46);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(509, 30);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 20);
+            this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 30;
             this.label5.Text = "Events";
             // 
@@ -377,21 +347,18 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(762, 422);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(508, 274);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 20);
+            this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 32;
             this.label6.Text = "Groups";
             // 
             // listBoxGroups
             // 
             this.listBoxGroups.FormattingEnabled = true;
-            this.listBoxGroups.ItemHeight = 20;
-            this.listBoxGroups.Location = new System.Drawing.Point(766, 448);
-            this.listBoxGroups.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxGroups.Location = new System.Drawing.Point(511, 291);
             this.listBoxGroups.Name = "listBoxGroups";
-            this.listBoxGroups.Size = new System.Drawing.Size(187, 284);
+            this.listBoxGroups.Size = new System.Drawing.Size(126, 186);
             this.listBoxGroups.TabIndex = 31;
             // 
             // label7
@@ -399,21 +366,18 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(972, 422);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(648, 274);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(126, 20);
+            this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 34;
             this.label7.Text = "Friends Posts";
             // 
             // listBoxFriendsPosts
             // 
             this.listBoxFriendsPosts.FormattingEnabled = true;
-            this.listBoxFriendsPosts.ItemHeight = 20;
-            this.listBoxFriendsPosts.Location = new System.Drawing.Point(976, 448);
-            this.listBoxFriendsPosts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxFriendsPosts.Location = new System.Drawing.Point(651, 291);
             this.listBoxFriendsPosts.Name = "listBoxFriendsPosts";
-            this.listBoxFriendsPosts.Size = new System.Drawing.Size(187, 284);
+            this.listBoxFriendsPosts.Size = new System.Drawing.Size(126, 186);
             this.listBoxFriendsPosts.TabIndex = 33;
             // 
             // openAboutMeButton
@@ -422,10 +386,9 @@
             this.openAboutMeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openAboutMeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openAboutMeButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.openAboutMeButton.Location = new System.Drawing.Point(50, 494);
-            this.openAboutMeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.openAboutMeButton.Location = new System.Drawing.Point(33, 321);
             this.openAboutMeButton.Name = "openAboutMeButton";
-            this.openAboutMeButton.Size = new System.Drawing.Size(219, 52);
+            this.openAboutMeButton.Size = new System.Drawing.Size(146, 34);
             this.openAboutMeButton.TabIndex = 35;
             this.openAboutMeButton.Text = "About ME";
             this.openAboutMeButton.UseVisualStyleBackColor = false;
@@ -433,10 +396,10 @@
             // 
             // MainFeedForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1376, 740);
+            this.ClientSize = new System.Drawing.Size(917, 481);
             this.Controls.Add(this.openAboutMeButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBoxFriendsPosts);
@@ -468,7 +431,6 @@
             this.Controls.Add(this.ProfilePictureBox);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainFeedForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook";
@@ -501,7 +463,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button openGalleryButton;
         private System.Windows.Forms.Button LogOutButton;
         private System.Windows.Forms.ListBox listBoxEvents;

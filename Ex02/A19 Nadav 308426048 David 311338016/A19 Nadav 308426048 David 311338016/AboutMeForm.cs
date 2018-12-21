@@ -29,7 +29,7 @@ namespace A19_Nadav_308426048_David_311338016
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            new Thread(bindDataSourceToUser).Start();
+            bindDataSourceToUser();
         }
 
         private void bindDataSourceToUser()
@@ -40,8 +40,9 @@ namespace A19_Nadav_308426048_David_311338016
             }
             else
             {
-                listBoxMyName.Invoke(new Action(() => userBindingSource.DataSource = r_User));
+                userBindingSource.DataSource = r_User;
             }
         }
+
     }
 }
