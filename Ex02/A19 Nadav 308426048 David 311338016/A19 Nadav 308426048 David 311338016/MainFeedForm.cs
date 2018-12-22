@@ -14,8 +14,9 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    partial class MainFeedForm : Form
+    public partial class MainFeedForm : Form
     {
+        private readonly FacebookAppManager r_FacebookManager;
         private LoginResult m_LoggedInResult;
 
         private enum DayStatus
@@ -25,7 +26,6 @@ namespace A19_Nadav_308426048_David_311338016
             afternoon
         }
 
-        private readonly FacebookAppManager r_FacebookManager;
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
 

@@ -73,7 +73,6 @@ namespace A19_Nadav_308426048_David_311338016
 
         public FacebookObjectCollection<Post> FriendsPosts { get; set; }
 
-
         public static FacebookAppManager GetFacebookManagerInstance()
         {
             if (s_FacebookAppManagerInstance == null)
