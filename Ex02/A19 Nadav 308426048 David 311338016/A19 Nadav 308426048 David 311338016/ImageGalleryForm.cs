@@ -10,7 +10,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class ImageGalleryForm : FadeReturnForm
+    public partial class ImageGalleryForm : ReturnableForm
     {
         private Album m_CurrentAlbum;
 

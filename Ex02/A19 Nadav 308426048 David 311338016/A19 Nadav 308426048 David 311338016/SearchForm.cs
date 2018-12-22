@@ -4,7 +4,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class SearchForm : FadeReturnForm
+    public partial class SearchForm : ReturnableForm
     {
         private string m_TextToFind;
 

@@ -51,7 +51,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ProfilePictureBox = new System.Windows.Forms.PictureBox();
             this.openGalleryButton = new System.Windows.Forms.Button();
-            this.LogOutButton = new System.Windows.Forms.Button();
+            this.forgetMeButton = new System.Windows.Forms.Button();
             this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -307,21 +307,21 @@
             this.openGalleryButton.UseVisualStyleBackColor = false;
             this.openGalleryButton.Click += new System.EventHandler(this.openGalleryButton_Click);
             // 
-            // LogOutButton
+            // forgetMeButton
             // 
-            this.LogOutButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.LogOutButton.BackColor = System.Drawing.Color.DimGray;
-            this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.LogOutButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogOutButton.Location = new System.Drawing.Point(54, 45);
-            this.LogOutButton.Name = "LogOutButton";
-            this.LogOutButton.Size = new System.Drawing.Size(95, 23);
-            this.LogOutButton.TabIndex = 27;
-            this.LogOutButton.Text = "Log Out";
-            this.LogOutButton.UseVisualStyleBackColor = false;
-            this.LogOutButton.Click += new System.EventHandler(this.LogOutButton_Click);
+            this.forgetMeButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.forgetMeButton.BackColor = System.Drawing.Color.DimGray;
+            this.forgetMeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.forgetMeButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.forgetMeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.forgetMeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgetMeButton.Location = new System.Drawing.Point(54, 45);
+            this.forgetMeButton.Name = "forgetMeButton";
+            this.forgetMeButton.Size = new System.Drawing.Size(95, 23);
+            this.forgetMeButton.TabIndex = 27;
+            this.forgetMeButton.Text = "Forget Me";
+            this.forgetMeButton.UseVisualStyleBackColor = false;
+            this.forgetMeButton.Click += new System.EventHandler(this.forgetMeButton_Click);
             // 
             // listBoxEvents
             // 
@@ -407,7 +407,7 @@
             this.Controls.Add(this.listBoxGroups);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBoxEvents);
-            this.Controls.Add(this.LogOutButton);
+            this.Controls.Add(this.forgetMeButton);
             this.Controls.Add(this.openGalleryButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -464,7 +464,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button openGalleryButton;
-        private System.Windows.Forms.Button LogOutButton;
+        private System.Windows.Forms.Button forgetMeButton;
         private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

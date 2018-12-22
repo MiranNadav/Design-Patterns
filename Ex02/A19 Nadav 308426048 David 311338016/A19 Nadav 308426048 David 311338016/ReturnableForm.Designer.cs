@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class FadeReturnForm
+    partial class ReturnableForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,15 +33,13 @@
             this.generalReturnButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // fadeTimer
-            // 
-            this.fadeTimer.Tick += new System.EventHandler(this.fadeTimer_Tick);
             // 
             // generalReturnButton
             // 
-            this.generalReturnButton.Location = new System.Drawing.Point(12, 12);
+            this.generalReturnButton.Location = new System.Drawing.Point(8, 8);
+            this.generalReturnButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.generalReturnButton.Name = "generalReturnButton";
-            this.generalReturnButton.Size = new System.Drawing.Size(99, 47);
+            this.generalReturnButton.Size = new System.Drawing.Size(66, 31);
             this.generalReturnButton.TabIndex = 0;
             this.generalReturnButton.Text = "<-- Back";
             this.generalReturnButton.UseVisualStyleBackColor = true;
@@ -49,10 +47,11 @@
             // 
             // ReturnableForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.generalReturnButton);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ReturnableForm";
             this.Text = "ReturnableForm";
             this.ResumeLayout(false);

@@ -28,7 +28,6 @@ namespace A19_Nadav_308426048_David_311338016
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
         private readonly FacebookAppManager r_FacebookManager;
-        private bool m_TryingToLogout = false;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
@@ -184,7 +183,7 @@ namespace A19_Nadav_308426048_David_311338016
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            if (!m_TryingToLogout && !e.CloseReason.Equals(CloseReason.ApplicationExitCall))
+            if (!e.CloseReason.Equals(CloseReason.ApplicationExitCall))
             {
                 DialogResult userWantToExit = MessageBoxHandler.ShowUserMessageBoxWithResponse("Are you sure you want to exit?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (userWantToExit == DialogResult.Yes)
@@ -309,23 +308,21 @@ namespace A19_Nadav_308426048_David_311338016
             imageGallery.ShowDialog();
         }
 
-        private void LogOutButton_Click(object sender, EventArgs e)
+        private void forgetMeButton_Click(object sender, EventArgs e)
         {
-            doLogout();
+            doForgetMe();
         }
 
-        private void doLogout()
+        private void doForgetMe()
         {
-            DialogResult shouldLogout = MessageBoxHandler.ShowUserMessageBoxWithResponse("Are you sure you want to log out?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult shouldLogout = MessageBoxHandler.ShowUserMessageBoxWithResponse("Are you sure you want to be forgoten? \n next time you use the app you will need to connect again", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (shouldLogout == DialogResult.Yes)
             {
                 m_AppSettings.DeleteAppSettingsFile();
                 m_AppSettings.RememberUser = false;
-                m_TryingToLogout = true;
-                Hide();
-                LoginForm loginForm = new LoginForm();
-                loginForm.Show();
             }
+
+            MessageBoxHandler.ShowUserInformationMessageBox("You where forrgoten!", "Success!");
         }
 
         private void openAboutMeButton_Click(object sender, EventArgs e)

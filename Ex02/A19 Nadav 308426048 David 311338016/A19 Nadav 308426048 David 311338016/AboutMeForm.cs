@@ -12,18 +12,14 @@ using System.Windows.Forms;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class AboutMeForm : FadeReturnForm
+    public partial class AboutMeForm : ReturnableForm
     {
-        private readonly FacebookAppManager r_FacebookAppManager;
         private readonly User r_User;
-        private Form m_OpenedBy;
 
-        public AboutMeForm(Form i_OpenedBy) : base(i_OpenedBy)
+        public AboutMeForm(Form i_OpenedBy): base(i_OpenedBy)
         {
-            r_FacebookAppManager = FacebookAppManager.GetFacebookManagerInstance();
-            r_User = r_FacebookAppManager.CurrentUser;
+            r_User = FacebookAppManager.CurrentUser;
             InitializeComponent();
-            m_OpenedBy = i_OpenedBy;
         }
 
         protected override void OnShown(EventArgs e)

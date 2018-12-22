@@ -11,13 +11,11 @@ namespace A19_Nadav_308426048_David_311338016
 
     public enum FormType
     {
-        Login = 0,
-        MainFeed = 1,
-        FriendsBirthday = 1,
-        Search = 2,
-        ImageGallery = 3,
-        UploadPost = 4,
-        AboutMe = 5
+        FriendsBirthday = 0,
+        Search = 1,
+        ImageGallery = 2,
+        UploadPost = 3,
+        AboutMe = 4
     }
 
     class ReturnableFormFactory
@@ -29,25 +27,28 @@ namespace A19_Nadav_308426048_David_311338016
             int formIndex = (int) i_FormType;
             switch (formIndex)
             {
-                case 1:
+                case 0:
                     toReturn = new FriendsBirthdayForm(i_OpenedBy);
                     break;
-                case 2:
+                case 1:
                     toReturn = new SearchForm(i_OpenedBy);
                     break;
-                case 3:
+                case 2:
                     toReturn = new ImageGalleryForm(i_OpenedBy);
                     break;
-                case 4:
+                case 3:
                     toReturn = new UploadPostForm(i_OpenedBy);
                     break;
-                case 5:
+                case 4:
                     toReturn = new AboutMeForm(i_OpenedBy);
                     break;
             }
+
             if (toReturn == null)
             {
-                return null;
+                throw new ArgumentException("Invalid FormType given!!!");
+
+
             }
             return toReturn;
         }

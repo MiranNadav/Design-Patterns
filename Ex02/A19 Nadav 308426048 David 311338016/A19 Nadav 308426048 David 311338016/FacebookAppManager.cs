@@ -11,8 +11,6 @@ namespace A19_Nadav_308426048_David_311338016
     public class FacebookAppManager
     {
         private User m_CurrentUser;
-
-        //TODO: check how to name deligates and actions
         public event Action m_ActivateAfterThreadIsFinished;
 
         public User CurrentUser
@@ -23,16 +21,34 @@ namespace A19_Nadav_308426048_David_311338016
             }
             set
             {
-                m_CurrentUser = value;
-                ThreadStart fetchDataFromUserThread = setAll;
-                fetchDataFromUserThread += () =>
+                if (m_CurrentUser == null)
                 {
-                    m_ActivateAfterThreadIsFinished.Invoke();
-                };
-
-                Thread thread = new Thread(fetchDataFromUserThread) { IsBackground = true };
-                thread.Start();
+                    lock (sr_InstanceUserLockContext)
+                    {
+                        if (m_CurrentUser == null)
+                        {
+                            m_CurrentUser = value;
+                            fetchDataFromFacebookUser();
+                        }
+                    }
+                }
+                else
+                {
+                    throw new Exception("user is already connected to facebook in the current seasion");
+                }
             }
+        }
+
+        private void fetchDataFromFacebookUser()
+        {
+            ThreadStart fetchDataFromUserThread = setAll;
+            fetchDataFromUserThread += () =>
+            {
+                m_ActivateAfterThreadIsFinished.Invoke();
+            };
+
+            Thread thread = new Thread(fetchDataFromUserThread) { IsBackground = true };
+            thread.Start();
         }
 
         public FacebookObjectCollection<User> Friends { get; set; }
@@ -52,6 +68,8 @@ namespace A19_Nadav_308426048_David_311338016
         private static FacebookAppManager s_FacebookAppManagerInstance = null;
 
         private static readonly object sr_InstanceLockContext = new object();
+
+        private static readonly object sr_InstanceUserLockContext = new object();
 
         public static FacebookAppManager GetFacebookManagerInstance()
         {
@@ -90,7 +108,6 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
             }
         }
 
@@ -102,7 +119,6 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
             }
         }
 
@@ -114,7 +130,6 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
             }
         }
 
@@ -126,7 +141,6 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
             }
         }
 
@@ -138,7 +152,6 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
             }
         }
 
@@ -150,7 +163,6 @@ namespace A19_Nadav_308426048_David_311338016
             }
             catch (Exception)
             {
-                showUnableToFetchMessage();
             }
         }
 

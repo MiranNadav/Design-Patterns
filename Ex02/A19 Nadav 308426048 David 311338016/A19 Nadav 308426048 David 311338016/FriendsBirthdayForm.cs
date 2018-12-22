@@ -11,7 +11,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public partial class FriendsBirthdayForm : FadeReturnForm
+    public partial class FriendsBirthdayForm : ReturnableForm
     {
         public User m_GeneratedFriend { get; set; }
 
