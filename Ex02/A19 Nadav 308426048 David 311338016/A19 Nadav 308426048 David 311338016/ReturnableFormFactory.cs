@@ -1,5 +1,5 @@
-﻿using FacebookWrapper;
-using System;
+﻿using System;
+using FacebookWrapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-
     public enum FormType
     {
         FriendsBirthday = 0,
@@ -18,9 +17,8 @@ namespace A19_Nadav_308426048_David_311338016
         AboutMe = 4
     }
 
-    class ReturnableFormFactory
+    public class ReturnableFormFactory
     {
-
         public static Form GetForm(FormType i_FormType, Form i_OpenedBy)
         {
             Form toReturn = null;
@@ -47,9 +45,8 @@ namespace A19_Nadav_308426048_David_311338016
             if (toReturn == null)
             {
                 throw new ArgumentException("Invalid FormType given!!!");
-
-
             }
+
             return toReturn;
         }
     }

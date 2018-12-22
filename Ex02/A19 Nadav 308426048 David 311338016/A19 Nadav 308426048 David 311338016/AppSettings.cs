@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    class AppSettings
+    public class AppSettings
     {
         public Point LastWindowLocation { get; set; }
 

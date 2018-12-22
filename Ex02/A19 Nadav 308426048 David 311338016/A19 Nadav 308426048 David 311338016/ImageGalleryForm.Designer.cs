@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class ImageGalleryForm
+    public partial class ImageGalleryForm
     {
         /// <summary>
         /// Required designer variable.

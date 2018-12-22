@@ -10,7 +10,14 @@ namespace A19_Nadav_308426048_David_311338016
 {
     public class FacebookAppManager
     {
+        private static readonly object sr_InstanceLockContext = new object();
+
+        private static readonly object sr_InstanceUserLockContext = new object();
+
+        private static FacebookAppManager s_FacebookAppManagerInstance = null;
+
         private User m_CurrentUser;
+
         public event Action m_ActivateAfterThreadIsFinished;
 
         public User CurrentUser
@@ -19,6 +26,7 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 return m_CurrentUser;
             }
+
             set
             {
                 if (m_CurrentUser == null)
@@ -65,11 +73,6 @@ namespace A19_Nadav_308426048_David_311338016
 
         public FacebookObjectCollection<Post> FriendsPosts { get; set; }
 
-        private static FacebookAppManager s_FacebookAppManagerInstance = null;
-
-        private static readonly object sr_InstanceLockContext = new object();
-
-        private static readonly object sr_InstanceUserLockContext = new object();
 
         public static FacebookAppManager GetFacebookManagerInstance()
         {
@@ -87,7 +90,9 @@ namespace A19_Nadav_308426048_David_311338016
             return s_FacebookAppManagerInstance;
         }
 
-        private FacebookAppManager() { }
+        private FacebookAppManager() // private constructor for singelton
+        {
+        }
 
         private void setAll()
         {

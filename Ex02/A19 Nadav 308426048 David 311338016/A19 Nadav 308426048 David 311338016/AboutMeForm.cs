@@ -1,5 +1,5 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
+using FacebookWrapper.ObjectModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +16,7 @@ namespace A19_Nadav_308426048_David_311338016
     {
         private readonly User r_User;
 
-        public AboutMeForm(Form i_OpenedBy): base(i_OpenedBy)
+        public AboutMeForm(Form i_OpenedBy) : base(i_OpenedBy)
         {
             r_User = FacebookAppManager.CurrentUser;
             InitializeComponent();
@@ -32,13 +32,12 @@ namespace A19_Nadav_308426048_David_311338016
         {
             if (!listBoxMyName.InvokeRequired)
             {
-                userBindingSource.DataSource = r_User;
+                UserBindingSource.DataSource = r_User;
             }
             else
             {
-                userBindingSource.DataSource = r_User;
+                UserBindingSource.DataSource = r_User;
             }
         }
-
     }
 }

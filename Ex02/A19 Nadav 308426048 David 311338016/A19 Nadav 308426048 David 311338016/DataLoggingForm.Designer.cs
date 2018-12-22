@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class DataLoggingForm
+    public partial class DataLoggingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class MainFeedForm
+    public partial class MainFeedForm
     {
         /// <summary>
         /// Required designer variable.

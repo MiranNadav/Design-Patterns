@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class FriendsBirthdayForm
+    public partial class FriendsBirthdayForm
     {
         /// <summary>
         /// Required designer variable.

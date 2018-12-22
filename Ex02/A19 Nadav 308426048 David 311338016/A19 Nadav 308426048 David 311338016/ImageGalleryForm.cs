@@ -41,7 +41,6 @@ namespace A19_Nadav_308426048_David_311338016
             populateImages();
         }
 
-
         private void populateImages()
         {
             List<string> list = new List<string>();

@@ -3,7 +3,7 @@ using FacebookWrapper;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    static class AppStartSequence
+    public static class AppStartSequence
     {
         public static void StartApp()
         {

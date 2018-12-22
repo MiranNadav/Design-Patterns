@@ -12,7 +12,9 @@ namespace A19_Nadav_308426048_David_311338016
 {
     public abstract partial class ReturnableForm : DataLoggingForm
     {
-        public ReturnableForm() { }
+        public ReturnableForm() // Empty constructor for no error in form designer. 
+        {
+        }
 
         public ReturnableForm(Form i_OpenedBy)
         {

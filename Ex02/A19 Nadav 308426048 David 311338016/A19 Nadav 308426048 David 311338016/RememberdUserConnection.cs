@@ -8,7 +8,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    class ConnectRememberdUser
+    public class ConnectRememberdUser
     {
         private string m_SavedAccessToken;
 

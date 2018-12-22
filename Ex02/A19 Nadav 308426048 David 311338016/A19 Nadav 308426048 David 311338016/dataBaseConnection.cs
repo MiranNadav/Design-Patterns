@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    class DataBaseConnection
+    public class DataBaseConnection
     {
         public static void InsertIntoDataBase(string i_InsertCommandText)
         {

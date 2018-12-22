@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class UploadPostForm
+    public partial class UploadPostForm
     {
         /// <summary>
         /// Required designer variable.

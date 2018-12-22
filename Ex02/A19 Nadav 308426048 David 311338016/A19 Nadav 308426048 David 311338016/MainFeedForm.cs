@@ -25,9 +25,9 @@ namespace A19_Nadav_308426048_David_311338016
             afternoon
         }
 
+        private readonly FacebookAppManager r_FacebookManager;
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
-        private readonly FacebookAppManager r_FacebookManager;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
@@ -246,7 +246,6 @@ namespace A19_Nadav_308426048_David_311338016
             Hide();
             uploadPostForm.Show();
         }
-
 
         private void fetchBestPostsButton_Click(object sender, EventArgs e)
         {

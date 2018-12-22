@@ -1,6 +1,6 @@
 ﻿namespace A19_Nadav_308426048_David_311338016
 {
-    partial class SearchForm
+    public partial class SearchForm
     {
         /// <summary>
         /// Required designer variable.

@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    partial class LoginForm : Form
+    public partial class LoginForm : Form
     {
         private AppSettings m_AppSettings;
         private LoginResult m_LoggedinUser;
