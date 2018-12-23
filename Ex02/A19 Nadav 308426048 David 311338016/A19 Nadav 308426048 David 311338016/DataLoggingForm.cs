@@ -38,7 +38,15 @@ namespace A19_Nadav_308426048_David_311338016
             string closingTimeMySql = convertToMySqlDate(formClosingTime);
             string creatingTimeMySql = convertToMySqlDate(m_FormCreatingTime);
             string insertCommand = string.Format("insert into FormsActivitiesLog (form_name, form_creating_time, form_closing_time, duration_time) values ('{0}', '{1}', '{2}', '{3}')", formName, creatingTimeMySql, closingTimeMySql, timeSpentOnForm);
-            new Thread(() => DataBaseConnection.InsertIntoDataBase(insertCommand)).Start();
+            try
+            {
+                new Thread(() => DataBaseConnection.InsertIntoDataBase(insertCommand)).Start();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unable to save data to DB");
+            }
+            
         }
 
         private string convertToMySqlDate(DateTime i_DateTime)
