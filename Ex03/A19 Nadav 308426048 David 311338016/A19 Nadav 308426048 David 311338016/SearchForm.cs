@@ -7,7 +7,12 @@ namespace A19_Nadav_308426048_David_311338016
     public partial class SearchForm : ReturnableForm
     {
         private string m_TextToFind;
+        private FindingsAggregator m_FindingsAggregator = new FindingsAggregator();
 
+        public SearchForm ()
+        {
+
+        }
         public SearchForm(Form i_OpenedBy) : base(i_OpenedBy)
         {
             InitializeComponent();
@@ -22,6 +27,7 @@ namespace A19_Nadav_308426048_David_311338016
                 setPagesFindings();
                 setGroupsFindings();
                 setFriendPostsFindings();
+                setAllFindingsWindow();
             }
             else
             {
@@ -29,8 +35,18 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
+        private void setAllFindingsWindow()
+        {
+            foreach(string finding in m_FindingsAggregator)
+            {
+                listBoxAllFindings.Items.Add(finding);
+            }
+        }
+
         private void cleanAllFindings()
         {
+            m_FindingsAggregator.ClearFindings();
+            listBoxAllFindings.Items.Clear();
             listBoxFriendsPostsFindings.Items.Clear();
             listBoxEventsFindings.Items.Clear();
             listBoxGroupsPostsFindings.Items.Clear();
@@ -39,7 +55,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void setFriendPostsFindings()
         {
-            if (friendsFindingsIncludeCheckBox.Checked)
+            if (friendsFindingsIncludeCheckBox.Checked && FacebookAppManager.Friends != null)
             {
                 foreach (User user in FacebookAppManager.Friends)
                 {
@@ -50,6 +66,8 @@ namespace A19_Nadav_308426048_David_311338016
                             if (post.Message.Contains(m_TextToFind))
                             {
                                 listBoxFriendsPostsFindings.Items.Add(post.Message);
+                                m_FindingsAggregator.AddFinding(post.Message, SearchFinding.TypeEnum.Post);
+
                             }
                         }
                     }
@@ -59,7 +77,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void setGroupsFindings()
         {
-            if (groupsFindingsIncludeCheckBox.Checked)
+            if (groupsFindingsIncludeCheckBox.Checked && FacebookAppManager.Groups != null)
             {
                 foreach (Group group in FacebookAppManager.Groups)
                 {
@@ -70,6 +88,8 @@ namespace A19_Nadav_308426048_David_311338016
                             if (post.Message.Contains(m_TextToFind))
                             {
                                 listBoxGroupsPostsFindings.Items.Add(post.Message);
+                                m_FindingsAggregator.AddFinding(post.Message, SearchFinding.TypeEnum.Group);
+
                             }
                         }
                     }
@@ -79,7 +99,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void setPagesFindings()
         {
-            if (pageFindingsIncludeCheckBox.Checked)
+            if (pageFindingsIncludeCheckBox.Checked && FacebookAppManager.LikedPages != null)
             {
                 foreach (Page page in FacebookAppManager.LikedPages)
                 {
@@ -90,6 +110,8 @@ namespace A19_Nadav_308426048_David_311338016
                             if (post.Message.Contains(m_TextToFind))
                             {
                                 listBoxPagesFindings.Items.Add(post.Message);
+                                m_FindingsAggregator.AddFinding(post.Message, SearchFinding.TypeEnum.Page);
+
                             }
                         }
                     }
@@ -99,7 +121,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void setEventsFindings()
         {
-            if (eventsFindingsIncludeCheckBox.Checked)
+            if (eventsFindingsIncludeCheckBox.Checked && FacebookAppManager.Events != null)
             {
                 foreach (Event myEvent in FacebookAppManager.Events)
                 {
@@ -110,6 +132,7 @@ namespace A19_Nadav_308426048_David_311338016
                             if (post.Message.Contains(m_TextToFind))
                             {
                                 listBoxEventsFindings.Items.Add(post.Message);
+                                m_FindingsAggregator.AddFinding(post.Message, SearchFinding.TypeEnum.Event);
                             }
                         }
                     }
