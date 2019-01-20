@@ -52,7 +52,10 @@ namespace A19_Nadav_308426048_David_311338016
             ThreadStart fetchDataFromUserThread = setAll;
             fetchDataFromUserThread += () =>
             {
-                m_ActivateAfterThreadIsFinished.Invoke();
+                if (m_ActivateAfterThreadIsFinished != null)
+                {
+                    m_ActivateAfterThreadIsFinished.Invoke();
+                }
             };
 
             Thread thread = new Thread(fetchDataFromUserThread) { IsBackground = true };

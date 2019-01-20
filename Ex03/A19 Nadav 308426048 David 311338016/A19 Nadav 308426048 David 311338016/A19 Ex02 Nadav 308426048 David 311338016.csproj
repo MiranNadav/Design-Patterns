@@ -85,6 +85,8 @@
       <DependentUpon>DataLoggingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FacebookAppManager.cs" />
+    <Compile Include="FindingsAggregator.cs" />
+    <Compile Include="MostLikedPostsHandler.cs" />
     <Compile Include="ReturnableFormFactory.cs" />
     <Compile Include="FriendsBirthdayForm.cs">
       <SubType>Form</SubType>
@@ -126,6 +128,7 @@
     <Compile Include="ReturnableForm.Designer.cs">
       <DependentUpon>ReturnableForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchFinding.cs" />
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>

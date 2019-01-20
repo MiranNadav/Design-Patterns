@@ -28,6 +28,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
+        private MostLikedPostsHandler m_MostLikedPostHandler;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
@@ -63,6 +64,7 @@ namespace A19_Nadav_308426048_David_311338016
             fetchAllGroups();
             fetchAllFriendsPosts();
             toggleButtons(true);
+            m_MostLikedPostHandler = new MostLikedPostsHandler();
         }
 
         private void fetchBasicDetails()
@@ -212,17 +214,34 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void fetchMostLikedPosts()
         {
-            if (!string.IsNullOrEmpty(textBoxLikesLimit.Text)
-                 && int.TryParse(textBoxLikesLimit.Text, out int likesLimit))
+            bool filterByLikes = LikesCheckBox.Checked;
+            bool filterByComments = CommentsCheckBox.Checked;
+            
+            if (!filterByLikes && !filterByComments)
             {
-                foreach (Post post in r_FacebookManager.GetMostLikedPosts(likesLimit))
-                {
-                    listBoxBestPosts.Items.Add(post.Message.Substring(0, 10) + " - " + post.LikedBy.Count);
-                }
+                MessageBox.Show("Filters not given!", "Wrong Input");
+            }
+            else if (filterByLikes && filterByComments)
+            {
+                m_MostLikedPostHandler.SetFilterStrategy(new FilterByLikesAndComments());
+            }
+            else if (filterByLikes)
+            {
+                m_MostLikedPostHandler.SetFilterStrategy(new FilterByLikes());
             }
             else
             {
-                MessageBox.Show("Invalid amount of likes", "Wrong Input");
+                m_MostLikedPostHandler.SetFilterStrategy(new FilterByComments());
+            }
+            m_MostLikedPostHandler.Filter();
+            populateMostLikedPosts();
+        }
+
+        private void populateMostLikedPosts()
+        {
+            foreach (Post post in m_MostLikedPostHandler.m_LikedPostsList)
+            {
+                listBoxBestPosts.Items.Add(post.Message.Substring(0, 10) + " - " + post.LikedBy.Count);
             }
         }
 
@@ -346,6 +365,15 @@ namespace A19_Nadav_308426048_David_311338016
                     control.BeginInvoke(new Action(() => control.Enabled = i_ToggleTo));
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataTable data = DataBaseConnection.GetFromDataBase(@"select form_name, sum(duration_time) as Duration
+from FormsActivitiesLog
+group by form_name");
+
+            Console.WriteLine();
         }
     }
 }

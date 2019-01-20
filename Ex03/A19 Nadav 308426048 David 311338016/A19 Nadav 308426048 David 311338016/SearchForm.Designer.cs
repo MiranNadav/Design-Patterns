@@ -67,17 +67,17 @@
             // listBoxGroupsPostsFindings
             // 
             this.listBoxGroupsPostsFindings.FormattingEnabled = true;
-            this.listBoxGroupsPostsFindings.Location = new System.Drawing.Point(28, 134);
+            this.listBoxGroupsPostsFindings.Location = new System.Drawing.Point(28, 309);
             this.listBoxGroupsPostsFindings.Name = "listBoxGroupsPostsFindings";
-            this.listBoxGroupsPostsFindings.Size = new System.Drawing.Size(226, 173);
+            this.listBoxGroupsPostsFindings.Size = new System.Drawing.Size(226, 95);
             this.listBoxGroupsPostsFindings.TabIndex = 2;
             // 
             // listBoxEventsFindings
             // 
             this.listBoxEventsFindings.FormattingEnabled = true;
-            this.listBoxEventsFindings.Location = new System.Drawing.Point(272, 134);
+            this.listBoxEventsFindings.Location = new System.Drawing.Point(271, 425);
             this.listBoxEventsFindings.Name = "listBoxEventsFindings";
-            this.listBoxEventsFindings.Size = new System.Drawing.Size(226, 173);
+            this.listBoxEventsFindings.Size = new System.Drawing.Size(226, 95);
             this.listBoxEventsFindings.TabIndex = 3;
             // 
             // findRelevantSearchesButton
@@ -93,23 +93,23 @@
             // listBoxPagesFindings
             // 
             this.listBoxPagesFindings.FormattingEnabled = true;
-            this.listBoxPagesFindings.Location = new System.Drawing.Point(272, 351);
+            this.listBoxPagesFindings.Location = new System.Drawing.Point(271, 309);
             this.listBoxPagesFindings.Name = "listBoxPagesFindings";
-            this.listBoxPagesFindings.Size = new System.Drawing.Size(226, 173);
+            this.listBoxPagesFindings.Size = new System.Drawing.Size(225, 95);
             this.listBoxPagesFindings.TabIndex = 5;
             // 
             // listBoxFriendsPostsFindings
             // 
             this.listBoxFriendsPostsFindings.FormattingEnabled = true;
-            this.listBoxFriendsPostsFindings.Location = new System.Drawing.Point(28, 351);
+            this.listBoxFriendsPostsFindings.Location = new System.Drawing.Point(28, 425);
             this.listBoxFriendsPostsFindings.Name = "listBoxFriendsPostsFindings";
-            this.listBoxFriendsPostsFindings.Size = new System.Drawing.Size(226, 173);
+            this.listBoxFriendsPostsFindings.Size = new System.Drawing.Size(226, 95);
             this.listBoxFriendsPostsFindings.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 117);
+            this.label2.Location = new System.Drawing.Point(44, 293);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 13);
             this.label2.TabIndex = 7;
@@ -118,7 +118,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(293, 117);
+            this.label3.Location = new System.Drawing.Point(293, 293);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 8;
@@ -127,7 +127,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(49, 334);
+            this.label4.Location = new System.Drawing.Point(49, 409);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 9;
@@ -136,7 +136,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(293, 334);
+            this.label5.Location = new System.Drawing.Point(293, 409);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 10;
@@ -147,7 +147,7 @@
             this.eventsFindingsIncludeCheckBox.AutoSize = true;
             this.eventsFindingsIncludeCheckBox.Checked = true;
             this.eventsFindingsIncludeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.eventsFindingsIncludeCheckBox.Location = new System.Drawing.Point(272, 117);
+            this.eventsFindingsIncludeCheckBox.Location = new System.Drawing.Point(272, 293);
             this.eventsFindingsIncludeCheckBox.Name = "eventsFindingsIncludeCheckBox";
             this.eventsFindingsIncludeCheckBox.Size = new System.Drawing.Size(15, 14);
             this.eventsFindingsIncludeCheckBox.TabIndex = 31;
@@ -158,7 +158,7 @@
             this.pageFindingsIncludeCheckBox.AutoSize = true;
             this.pageFindingsIncludeCheckBox.Checked = true;
             this.pageFindingsIncludeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.pageFindingsIncludeCheckBox.Location = new System.Drawing.Point(272, 335);
+            this.pageFindingsIncludeCheckBox.Location = new System.Drawing.Point(272, 410);
             this.pageFindingsIncludeCheckBox.Name = "pageFindingsIncludeCheckBox";
             this.pageFindingsIncludeCheckBox.Size = new System.Drawing.Size(15, 14);
             this.pageFindingsIncludeCheckBox.TabIndex = 32;
@@ -169,7 +169,7 @@
             this.groupsFindingsIncludeCheckBox.AutoSize = true;
             this.groupsFindingsIncludeCheckBox.Checked = true;
             this.groupsFindingsIncludeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.groupsFindingsIncludeCheckBox.Location = new System.Drawing.Point(28, 335);
+            this.groupsFindingsIncludeCheckBox.Location = new System.Drawing.Point(28, 410);
             this.groupsFindingsIncludeCheckBox.Name = "groupsFindingsIncludeCheckBox";
             this.groupsFindingsIncludeCheckBox.Size = new System.Drawing.Size(15, 14);
             this.groupsFindingsIncludeCheckBox.TabIndex = 33;
@@ -180,7 +180,7 @@
             this.friendsFindingsIncludeCheckBox.AutoSize = true;
             this.friendsFindingsIncludeCheckBox.Checked = true;
             this.friendsFindingsIncludeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.friendsFindingsIncludeCheckBox.Location = new System.Drawing.Point(28, 117);
+            this.friendsFindingsIncludeCheckBox.Location = new System.Drawing.Point(28, 293);
             this.friendsFindingsIncludeCheckBox.Name = "friendsFindingsIncludeCheckBox";
             this.friendsFindingsIncludeCheckBox.Size = new System.Drawing.Size(15, 14);
             this.friendsFindingsIncludeCheckBox.TabIndex = 34;
@@ -189,16 +189,16 @@
             // listBoxAllFindings
             // 
             this.listBoxAllFindings.FormattingEnabled = true;
-            this.listBoxAllFindings.Location = new System.Drawing.Point(149, 134);
+            this.listBoxAllFindings.Location = new System.Drawing.Point(28, 114);
             this.listBoxAllFindings.Name = "listBoxAllFindings";
-            this.listBoxAllFindings.Size = new System.Drawing.Size(226, 173);
+            this.listBoxAllFindings.Size = new System.Drawing.Size(468, 173);
             this.listBoxAllFindings.TabIndex = 35;
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 487);
+            this.ClientSize = new System.Drawing.Size(509, 553);
             this.Controls.Add(this.listBoxAllFindings);
             this.Controls.Add(this.friendsFindingsIncludeCheckBox);
             this.Controls.Add(this.groupsFindingsIncludeCheckBox);

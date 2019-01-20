@@ -59,6 +59,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.listBoxFriendsPosts = new System.Windows.Forms.ListBox();
             this.openAboutMeButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.LikesCheckBox = new System.Windows.Forms.CheckBox();
+            this.CommentsCheckBox = new System.Windows.Forms.CheckBox();
             FacebookLogoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(FacebookLogoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
@@ -140,14 +143,14 @@
             // listBoxBestPosts
             // 
             this.listBoxBestPosts.FormattingEnabled = true;
-            this.listBoxBestPosts.Location = new System.Drawing.Point(229, 330);
+            this.listBoxBestPosts.Location = new System.Drawing.Point(229, 341);
             this.listBoxBestPosts.Name = "listBoxBestPosts";
             this.listBoxBestPosts.Size = new System.Drawing.Size(120, 147);
             this.listBoxBestPosts.TabIndex = 11;
             // 
             // textBoxLikesLimit
             // 
-            this.textBoxLikesLimit.Location = new System.Drawing.Point(229, 304);
+            this.textBoxLikesLimit.Location = new System.Drawing.Point(225, 246);
             this.textBoxLikesLimit.Name = "textBoxLikesLimit";
             this.textBoxLikesLimit.Size = new System.Drawing.Size(120, 20);
             this.textBoxLikesLimit.TabIndex = 12;
@@ -170,7 +173,7 @@
             // listBoxSameMonthFriends
             // 
             this.listBoxSameMonthFriends.FormattingEnabled = true;
-            this.listBoxSameMonthFriends.Location = new System.Drawing.Point(356, 330);
+            this.listBoxSameMonthFriends.Location = new System.Drawing.Point(356, 343);
             this.listBoxSameMonthFriends.Name = "listBoxSameMonthFriends";
             this.listBoxSameMonthFriends.Size = new System.Drawing.Size(120, 147);
             this.listBoxSameMonthFriends.TabIndex = 14;
@@ -205,7 +208,7 @@
             "10",
             "11",
             "12"});
-            this.pickMonthComboBox.Location = new System.Drawing.Point(355, 303);
+            this.pickMonthComboBox.Location = new System.Drawing.Point(355, 311);
             this.pickMonthComboBox.Name = "pickMonthComboBox";
             this.pickMonthComboBox.Size = new System.Drawing.Size(121, 21);
             this.pickMonthComboBox.TabIndex = 17;
@@ -358,7 +361,7 @@
             this.listBoxGroups.FormattingEnabled = true;
             this.listBoxGroups.Location = new System.Drawing.Point(511, 291);
             this.listBoxGroups.Name = "listBoxGroups";
-            this.listBoxGroups.Size = new System.Drawing.Size(126, 186);
+            this.listBoxGroups.Size = new System.Drawing.Size(126, 199);
             this.listBoxGroups.TabIndex = 31;
             // 
             // label7
@@ -377,7 +380,7 @@
             this.listBoxFriendsPosts.FormattingEnabled = true;
             this.listBoxFriendsPosts.Location = new System.Drawing.Point(651, 291);
             this.listBoxFriendsPosts.Name = "listBoxFriendsPosts";
-            this.listBoxFriendsPosts.Size = new System.Drawing.Size(126, 186);
+            this.listBoxFriendsPosts.Size = new System.Drawing.Size(126, 199);
             this.listBoxFriendsPosts.TabIndex = 33;
             // 
             // openAboutMeButton
@@ -394,12 +397,51 @@
             this.openAboutMeButton.UseVisualStyleBackColor = false;
             this.openAboutMeButton.Click += new System.EventHandler(this.openAboutMeButton_Click);
             // 
+            // button1
+            // 
+            this.button1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(553, 248);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 23);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Get Data";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // LikesCheckBox
+            // 
+            this.LikesCheckBox.AutoSize = true;
+            this.LikesCheckBox.Location = new System.Drawing.Point(229, 303);
+            this.LikesCheckBox.Name = "LikesCheckBox";
+            this.LikesCheckBox.Size = new System.Drawing.Size(51, 17);
+            this.LikesCheckBox.TabIndex = 37;
+            this.LikesCheckBox.Text = "Likes";
+            this.LikesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // CommentsCheckBox
+            // 
+            this.CommentsCheckBox.AutoSize = true;
+            this.CommentsCheckBox.Location = new System.Drawing.Point(229, 321);
+            this.CommentsCheckBox.Name = "CommentsCheckBox";
+            this.CommentsCheckBox.Size = new System.Drawing.Size(75, 17);
+            this.CommentsCheckBox.TabIndex = 38;
+            this.CommentsCheckBox.Text = "Comments";
+            this.CommentsCheckBox.UseVisualStyleBackColor = true;
+            // 
             // MainFeedForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(917, 481);
+            this.ClientSize = new System.Drawing.Size(917, 500);
+            this.Controls.Add(this.CommentsCheckBox);
+            this.Controls.Add(this.LikesCheckBox);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.openAboutMeButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBoxFriendsPosts);
@@ -472,5 +514,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBoxFriendsPosts;
         private System.Windows.Forms.Button openAboutMeButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox LikesCheckBox;
+        private System.Windows.Forms.CheckBox CommentsCheckBox;
     }
 }
