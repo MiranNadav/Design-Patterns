@@ -34,10 +34,12 @@ namespace A19_Nadav_308426048_David_311338016
         {
             return GetEnumerator();
         }
+
         public void AddFinding(string i_Text, SearchFinding.TypeEnum i_Type)
         {
             m_AllFindings.Add(new SearchFinding(i_Text, i_Type));
         }
+
         public IEnumerable EventsFindings
         {
             get { return FindingsSource(SearchFinding.TypeEnum.Event); }
@@ -58,7 +60,6 @@ namespace A19_Nadav_308426048_David_311338016
             get { return FindingsSource(SearchFinding.TypeEnum.Post); }
         }
 
-
         private IEnumerable<string> FindingsSource(SearchFinding.TypeEnum i_Type)
         {
             foreach (SearchFinding finding in m_AllFindings)
@@ -69,6 +70,5 @@ namespace A19_Nadav_308426048_David_311338016
                 }
             }
         }
-
     }
 }

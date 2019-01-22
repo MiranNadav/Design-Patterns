@@ -17,6 +17,12 @@ namespace A19_Nadav_308426048_David_311338016
 
         private DateTime m_FormCreatingTime;
 
+        public event Action m_DoWhenFormIsClosed;
+
+        public string m_LastFormDetails;
+
+        public string GetLastFormDetails() { return m_LastFormDetails; }
+        
         public DataLoggingForm()
         {
             FacebookAppManager = FacebookAppManager.GetFacebookManagerInstance();
@@ -35,6 +41,8 @@ namespace A19_Nadav_308426048_David_311338016
             string formName = GetType().Name;
             DateTime formClosingTime = DateTime.Now;
             TimeSpan timeSpentOnForm = formClosingTime.Subtract(m_FormCreatingTime);
+            m_LastFormDetails = formName + ", " + Math.Round(timeSpentOnForm.TotalSeconds) + " seconds";
+            invokeAction();
             string closingTimeMySql = convertToMySqlDate(formClosingTime);
             string creatingTimeMySql = convertToMySqlDate(m_FormCreatingTime);
             string insertCommand = string.Format("insert into FormsActivitiesLog (form_name, form_creating_time, form_closing_time, duration_time) values ('{0}', '{1}', '{2}', '{3}')", formName, creatingTimeMySql, closingTimeMySql, timeSpentOnForm);
@@ -46,7 +54,15 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Console.WriteLine("Unable to save data to DB");
             }
-            
+
+        }
+
+        private void invokeAction()
+        {
+            if (m_DoWhenFormIsClosed != null)
+            {
+                m_DoWhenFormIsClosed.Invoke();
+            }
         }
 
         private string convertToMySqlDate(DateTime i_DateTime)

@@ -12,6 +12,7 @@ namespace A19_Nadav_308426048_David_311338016
         private readonly FacebookObjectCollection<Post> m_AllPosts = FacebookAppManager.GetFacebookManagerInstance().Posts;
         public List<Post> m_LikedPostsList = new List<Post>();
         private FilterStrategy m_FilterStrategy;
+        private static readonly int sr_MaxAmountOfLikes = 5;
 
         public void SetFilterStrategy(FilterStrategy i_FilterStrategy)
         {
@@ -35,61 +36,63 @@ namespace A19_Nadav_308426048_David_311338016
                 Console.WriteLine("Unable to filter without a strategy!");
             }
         }
-    }
 
-    public abstract class FilterStrategy
-    {
-        public abstract void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts);
-    }
-
-    public class FilterByLikes : FilterStrategy
-    {
-        public override void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
+        public interface FilterStrategy
         {
-            if (i_PostsList != null)
+            void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts);
+        }
+
+        public class FilterByLikes : FilterStrategy
+        {
+            public void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
             {
-                foreach (Post post in i_PostsList)
+                if (i_PostsList != null)
                 {
-                    if (post.LikedBy.Count > 5)
+                    foreach (Post post in i_PostsList)
                     {
-                        i_FilteredPosts.Add(post);
+                        if (post.LikedBy.Count > sr_MaxAmountOfLikes)
+                        {
+                            i_FilteredPosts.Add(post);
+                        }
+                    }
+                }
+            }
+        }
+
+        public class FilterByComments : FilterStrategy
+        {
+            public void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
+            {
+                if (i_FilteredPosts != null)
+                {
+                    foreach (Post post in i_PostsList)
+                    {
+                        if (post.Comments.Count > sr_MaxAmountOfLikes)
+                        {
+                            i_FilteredPosts.Add(post);
+                        }
+                    }
+                }
+            }
+        }
+
+        public class FilterByLikesAndComments : FilterStrategy
+        {
+            public void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
+            {
+                if (i_FilteredPosts != null)
+                {
+                    foreach (Post post in i_PostsList)
+                    {
+                        if (post.LikedBy.Count > sr_MaxAmountOfLikes && post.Comments.Count > sr_MaxAmountOfLikes)
+                        {
+                            i_FilteredPosts.Add(post);
+                        }
                     }
                 }
             }
         }
     }
 
-    public class FilterByComments : FilterStrategy
-    {
-        public override void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
-        {
-            if (i_FilteredPosts != null)
-            {
-                foreach (Post post in i_PostsList)
-                {
-                    if (post.Comments.Count > 5)
-                    {
-                        i_FilteredPosts.Add(post);
-                    }
-                }
-            }
-        }
-    }
 
-    public class FilterByLikesAndComments : FilterStrategy
-    {
-        public override void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
-        {
-            if (i_FilteredPosts != null)
-            {
-                foreach (Post post in i_PostsList)
-                {
-                    if (post.LikedBy.Count > 5 && post.Comments.Count > 5)
-                    {
-                        i_FilteredPosts.Add(post);
-                    }
-                }
-            }
-        }
-    }
 }

@@ -49,7 +49,7 @@ namespace A19_Nadav_308426048_David_311338016
             // Defualt Values 
             FilePath = i_filePath;
             LastWindowLocation = new Point(100, 100);
-            LastWindowSize = new Size(933, 520);
+            LastWindowSize = new Size(993, 539);
             RememberUser = false;
             LastAccessToken = null;
         }

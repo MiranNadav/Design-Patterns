@@ -223,15 +223,15 @@ namespace A19_Nadav_308426048_David_311338016
             }
             else if (filterByLikes && filterByComments)
             {
-                m_MostLikedPostHandler.SetFilterStrategy(new FilterByLikesAndComments());
+                m_MostLikedPostHandler.SetFilterStrategy(new MostLikedPostsHandler.FilterByLikesAndComments());
             }
             else if (filterByLikes)
             {
-                m_MostLikedPostHandler.SetFilterStrategy(new FilterByLikes());
+                m_MostLikedPostHandler.SetFilterStrategy(new MostLikedPostsHandler.FilterByLikes());
             }
             else
             {
-                m_MostLikedPostHandler.SetFilterStrategy(new FilterByComments());
+                m_MostLikedPostHandler.SetFilterStrategy(new MostLikedPostsHandler.FilterByComments());
             }
             m_MostLikedPostHandler.Filter();
             populateMostLikedPosts();
@@ -261,9 +261,14 @@ namespace A19_Nadav_308426048_David_311338016
 
         private void initalizePostForm()
         {
-            UploadPostForm uploadPostForm = new UploadPostForm(this);
+            FormType formType = FormType.UploadPost;
+            UploadPostForm uploadPostForm = ReturnableFormFactory.GetForm(formType, this) as UploadPostForm;
+            uploadPostForm.m_DoWhenFormIsClosed += () =>
+            {
+                setFormUsageDetails(uploadPostForm);
+            };
             Hide();
-            uploadPostForm.Show();
+            uploadPostForm.ShowDialog();
         }
 
         private void fetchBestPostsButton_Click(object sender, EventArgs e)
@@ -296,6 +301,10 @@ namespace A19_Nadav_308426048_David_311338016
         {
             FormType formType = FormType.FriendsBirthday;
             FriendsBirthdayForm friendsBirthdayForm = ReturnableFormFactory.GetForm(formType, this) as FriendsBirthdayForm;
+            friendsBirthdayForm.m_DoWhenFormIsClosed += () =>
+            {
+                setFormUsageDetails(friendsBirthdayForm);
+            };
             this.Hide();
             friendsBirthdayForm.ShowDialog();
         }
@@ -308,9 +317,13 @@ namespace A19_Nadav_308426048_David_311338016
         private void initalizeSearchForm()
         {
             FormType formType = FormType.Search;
-            SearchForm friendsBirthdayForm = ReturnableFormFactory.GetForm(formType, this) as SearchForm;
+            SearchForm searchForm = ReturnableFormFactory.GetForm(formType, this) as SearchForm;
+            searchForm.m_DoWhenFormIsClosed += () =>
+            {
+                setFormUsageDetails(searchForm);
+            };
             this.Hide();
-            friendsBirthdayForm.ShowDialog();
+            searchForm.ShowDialog();
         }
 
         private void openGalleryButton_Click(object sender, EventArgs e)
@@ -322,8 +335,22 @@ namespace A19_Nadav_308426048_David_311338016
         {
             FormType formType = FormType.ImageGallery;
             ImageGalleryForm imageGallery = ReturnableFormFactory.GetForm(formType, this) as ImageGalleryForm;
+            imageGallery.m_DoWhenFormIsClosed += () =>
+            {
+                setFormUsageDetails(imageGallery);
+            };
             Hide();
             imageGallery.ShowDialog();
+        }
+
+        private void setFormUsageDetails(DataLoggingForm i_Form)
+        {
+            if (listBoxFormUsageInfo.Items.Count == 5)
+            {
+                listBoxFormUsageInfo.Items.RemoveAt(0);
+            }
+
+            listBoxFormUsageInfo.Items.Add(i_Form.GetLastFormDetails());
         }
 
         private void forgetMeButton_Click(object sender, EventArgs e)
@@ -340,7 +367,7 @@ namespace A19_Nadav_308426048_David_311338016
                 m_AppSettings.RememberUser = false;
             }
 
-            MessageBoxHandler.ShowUserInformationMessageBox("You where forrgoten!", "Success!");
+            MessageBoxHandler.ShowUserInformationMessageBox("You were forrgoten!", "Success!");
         }
 
         private void openAboutMeButton_Click(object sender, EventArgs e)
@@ -352,6 +379,10 @@ namespace A19_Nadav_308426048_David_311338016
         {
             FormType formType = FormType.AboutMe;
             AboutMeForm aboutMe = ReturnableFormFactory.GetForm(formType, this) as AboutMeForm;
+            aboutMe.m_DoWhenFormIsClosed += () =>
+            {
+                setFormUsageDetails(aboutMe);
+            };
             Hide();
             aboutMe.ShowDialog();
         }
