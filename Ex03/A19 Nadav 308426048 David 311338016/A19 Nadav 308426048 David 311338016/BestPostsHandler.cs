@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    public class MostLikedPostsHandler
+    public class BestPostsHandler
     {
         private readonly FacebookObjectCollection<Post> m_AllPosts = FacebookAppManager.GetFacebookManagerInstance().Posts;
         public List<Post> m_LikedPostsList = new List<Post>();
         private FilterStrategy m_FilterStrategy;
-        private static readonly int sr_MaxAmountOfLikes = 5;
+        private static readonly int sr_MinAmountOfLikesAndComments = 5;
 
         public void SetFilterStrategy(FilterStrategy i_FilterStrategy)
         {
@@ -50,7 +50,7 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     foreach (Post post in i_PostsList)
                     {
-                        if (post.LikedBy.Count > sr_MaxAmountOfLikes)
+                        if (post.LikedBy.Count > sr_MinAmountOfLikesAndComments)
                         {
                             i_FilteredPosts.Add(post);
                         }
@@ -67,7 +67,7 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     foreach (Post post in i_PostsList)
                     {
-                        if (post.Comments.Count > sr_MaxAmountOfLikes)
+                        if (post.Comments.Count > sr_MinAmountOfLikesAndComments)
                         {
                             i_FilteredPosts.Add(post);
                         }
@@ -84,7 +84,7 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     foreach (Post post in i_PostsList)
                     {
-                        if (post.LikedBy.Count > sr_MaxAmountOfLikes && post.Comments.Count > sr_MaxAmountOfLikes)
+                        if (post.LikedBy.Count > sr_MinAmountOfLikesAndComments && post.Comments.Count > sr_MinAmountOfLikesAndComments)
                         {
                             i_FilteredPosts.Add(post);
                         }

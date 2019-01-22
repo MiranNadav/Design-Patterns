@@ -28,7 +28,7 @@ namespace A19_Nadav_308426048_David_311338016
 
         private DayStatus m_CurrentDayStatus;
         private AppSettings m_AppSettings;
-        private MostLikedPostsHandler m_MostLikedPostHandler;
+        private BestPostsHandler m_MostLikedPostHandler;
 
         public MainFeedForm(LoginResult i_Result, AppSettings i_AppSettings)
         {
@@ -64,7 +64,7 @@ namespace A19_Nadav_308426048_David_311338016
             fetchAllGroups();
             fetchAllFriendsPosts();
             toggleButtons(true);
-            m_MostLikedPostHandler = new MostLikedPostsHandler();
+            m_MostLikedPostHandler = new BestPostsHandler();
         }
 
         private void fetchBasicDetails()
@@ -223,15 +223,15 @@ namespace A19_Nadav_308426048_David_311338016
             }
             else if (filterByLikes && filterByComments)
             {
-                m_MostLikedPostHandler.SetFilterStrategy(new MostLikedPostsHandler.FilterByLikesAndComments());
+                m_MostLikedPostHandler.SetFilterStrategy(new BestPostsHandler.FilterByLikesAndComments());
             }
             else if (filterByLikes)
             {
-                m_MostLikedPostHandler.SetFilterStrategy(new MostLikedPostsHandler.FilterByLikes());
+                m_MostLikedPostHandler.SetFilterStrategy(new BestPostsHandler.FilterByLikes());
             }
             else
             {
-                m_MostLikedPostHandler.SetFilterStrategy(new MostLikedPostsHandler.FilterByComments());
+                m_MostLikedPostHandler.SetFilterStrategy(new BestPostsHandler.FilterByComments());
             }
             m_MostLikedPostHandler.Filter();
             populateMostLikedPosts();

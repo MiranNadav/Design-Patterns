@@ -66,8 +66,7 @@ namespace A19_Nadav_308426048_David_311338016
                             if (post.Message.Contains(m_TextToFind))
                             {
                                 listBoxFriendsPostsFindings.Items.Add(post.Message);
-                                m_FindingsAggregator.AddFinding(post.Message, SearchFinding.TypeEnum.Post);
-
+                                m_FindingsAggregator.AddFinding(post.Message);
                             }
                         }
                     }
@@ -88,7 +87,7 @@ namespace A19_Nadav_308426048_David_311338016
                             if (post.Message.Contains(m_TextToFind))
                             {
                                 listBoxGroupsPostsFindings.Items.Add(post.Message);
-                                m_FindingsAggregator.AddFinding(post.Message, SearchFinding.TypeEnum.Group);
+                                m_FindingsAggregator.AddFinding(post.Message);
 
                             }
                         }
@@ -110,7 +109,7 @@ namespace A19_Nadav_308426048_David_311338016
                             if (post.Message.Contains(m_TextToFind))
                             {
                                 listBoxPagesFindings.Items.Add(post.Message);
-                                m_FindingsAggregator.AddFinding(post.Message, SearchFinding.TypeEnum.Page);
+                                m_FindingsAggregator.AddFinding(post.Message);
 
                             }
                         }
@@ -132,7 +131,7 @@ namespace A19_Nadav_308426048_David_311338016
                             if (post.Message.Contains(m_TextToFind))
                             {
                                 listBoxEventsFindings.Items.Add(post.Message);
-                                m_FindingsAggregator.AddFinding(post.Message, SearchFinding.TypeEnum.Event);
+                                m_FindingsAggregator.AddFinding(post.Message);
                             }
                         }
                     }
