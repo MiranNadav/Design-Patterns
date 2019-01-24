@@ -22,7 +22,7 @@ namespace A19_Nadav_308426048_David_311338016
         public static Form GetForm(FormType i_FormType, Form i_OpenedBy)
         {
             Form toReturn = null;
-            int formIndex = (int) i_FormType;
+            int formIndex = (int)i_FormType;
             switch (formIndex)
             {
                 case 0:

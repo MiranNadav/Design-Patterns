@@ -1,25 +1,25 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FacebookWrapper.ObjectModel;
 
 namespace A19_Nadav_308426048_David_311338016
 {
     public class BestPostsHandler
     {
+        private static readonly int sr_MinAmountOfLikesAndComments = 5;
         private readonly FacebookObjectCollection<Post> m_AllPosts = FacebookAppManager.GetFacebookManagerInstance().Posts;
         public List<Post> m_LikedPostsList = new List<Post>();
-        private FilterStrategy m_FilterStrategy;
-        private static readonly int sr_MinAmountOfLikesAndComments = 5;
+        private IFilterStrategy m_FilterStrategy;
 
-        public void SetFilterStrategy(FilterStrategy i_FilterStrategy)
+        public void SetFilterStrategy(IFilterStrategy i_FilterStrategy)
         {
             m_FilterStrategy = i_FilterStrategy;
         }
 
-        public void Add (Post i_Post)
+        public void Add(Post i_Post)
         {
             m_LikedPostsList.Add(i_Post);
         }
@@ -37,12 +37,12 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        public interface FilterStrategy
+        public interface IFilterStrategy
         {
             void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts);
         }
 
-        public class FilterByLikes : FilterStrategy
+        public class FilterByLikes : IFilterStrategy
         {
             public void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
             {
@@ -59,7 +59,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        public class FilterByComments : FilterStrategy
+        public class FilterByComments : IFilterStrategy
         {
             public void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
             {
@@ -76,7 +76,7 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
 
-        public class FilterByLikesAndComments : FilterStrategy
+        public class FilterByLikesAndComments : IFilterStrategy
         {
             public void Filter(FacebookObjectCollection<Post> i_PostsList, List<Post> i_FilteredPosts)
             {
@@ -93,6 +93,4 @@ namespace A19_Nadav_308426048_David_311338016
             }
         }
     }
-
-
 }

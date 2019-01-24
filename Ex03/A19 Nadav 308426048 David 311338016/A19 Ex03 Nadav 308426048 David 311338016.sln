@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A19 Ex02 Nadav 308426048 David 311338016", "A19 Nadav 308426048 David 311338016\A19 Ex02 Nadav 308426048 David 311338016.csproj", "{47BA20C6-C8EF-456F-B4FE-C1BE9D6B6591}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A19 Ex03 Nadav 308426048 David 311338016", "A19 Nadav 308426048 David 311338016\A19 Ex03 Nadav 308426048 David 311338016.csproj", "{47BA20C6-C8EF-456F-B4FE-C1BE9D6B6591}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F75376EB-90EE-48BB-ABFE-EC1375CB8C1B}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Desktop\A19 Ex02 Nadav 308426048 David 311338016.txt = ..\..\..\..\Desktop\A19 Ex02 Nadav 308426048 David 311338016.txt
+		..\..\..\..\Desktop\A19 Ex03 Nadav 308426048 David 311338016.txt = ..\..\..\..\Desktop\A19 Ex03 Nadav 308426048 David 311338016.txt
 		..\..\..\..\Desktop\facebook.png = ..\..\..\..\Desktop\facebook.png
 	EndProjectSection
 EndProject

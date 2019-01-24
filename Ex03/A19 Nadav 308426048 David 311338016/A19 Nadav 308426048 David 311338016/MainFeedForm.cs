@@ -216,7 +216,8 @@ namespace A19_Nadav_308426048_David_311338016
         {
             bool filterByLikes = LikesCheckBox.Checked;
             bool filterByComments = CommentsCheckBox.Checked;
-            
+            listBoxBestPosts.Items.Clear();
+
             if (!filterByLikes && !filterByComments)
             {
                 MessageBox.Show("Filters not given!", "Wrong Input");
@@ -233,6 +234,7 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 m_MostLikedPostHandler.SetFilterStrategy(new BestPostsHandler.FilterByComments());
             }
+
             m_MostLikedPostHandler.Filter();
             populateMostLikedPosts();
         }
@@ -396,15 +398,6 @@ namespace A19_Nadav_308426048_David_311338016
                     control.BeginInvoke(new Action(() => control.Enabled = i_ToggleTo));
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DataTable data = DataBaseConnection.GetFromDataBase(@"select form_name, sum(duration_time) as Duration
-from FormsActivitiesLog
-group by form_name");
-
-            Console.WriteLine();
         }
     }
 }

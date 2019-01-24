@@ -47,12 +47,12 @@ namespace A19_Nadav_308426048_David_311338016
                 {
                     da.Fill(dataTable);
                 }
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
+
             return dataTable;
         }
     }

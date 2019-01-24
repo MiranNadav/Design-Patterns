@@ -21,7 +21,10 @@ namespace A19_Nadav_308426048_David_311338016
 
         public string m_LastFormDetails;
 
-        public string GetLastFormDetails() { return m_LastFormDetails; }
+        public string GetLastFormDetails()
+        {
+            return m_LastFormDetails;
+        }
         
         public DataLoggingForm()
         {
@@ -54,7 +57,6 @@ namespace A19_Nadav_308426048_David_311338016
             {
                 Console.WriteLine("Unable to save data to DB");
             }
-
         }
 
         private void invokeAction()

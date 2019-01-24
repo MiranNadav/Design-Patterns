@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace A19_Nadav_308426048_David_311338016
 {
-    class FindingsAggregator : IEnumerable<string>
+    public class FindingsAggregator : IEnumerable<string>
     {
-
         private List<string> m_AllFindings;
 
         public FindingsAggregator()
@@ -17,7 +16,7 @@ namespace A19_Nadav_308426048_David_311338016
             m_AllFindings = new List<string>();
         }
 
-        public void ClearFindings ()
+        public void ClearFindings()
         {
             m_AllFindings.Clear();
         }
@@ -39,36 +38,5 @@ namespace A19_Nadav_308426048_David_311338016
         {
             m_AllFindings.Add(i_Text);
         }
-
-        //public IEnumerable EventsFindings
-        //{
-        //    get { return FindingsSource(SearchFinding.TypeEnum.Event); }
-        //}
-
-        //public IEnumerable GroupsFindings
-        //{
-        //    get { return FindingsSource(SearchFinding.TypeEnum.Group); }
-        //}
-
-        //public IEnumerable PagesFindings
-        //{
-        //    get { return FindingsSource(SearchFinding.TypeEnum.Page); }
-        //}
-
-        //public IEnumerable PostsFindings
-        //{
-        //    get { return FindingsSource(SearchFinding.TypeEnum.Post); }
-        //}
-
-        //private IEnumerable<string> FindingsSource(SearchFinding.TypeEnum i_Type)
-        //{
-        //    foreach (SearchFinding finding in m_AllFindings)
-        //    {
-        //        if (finding.Type == i_Type)
-        //        {
-        //            yield return finding.Text;
-        //        }
-        //    }
-        //}
     }
 }
